@@ -1,0 +1,12 @@
+<?php
+/* DF_2: locales/ru/f_chat._ru
+chat russian locale
+c: 08.11.2012
+m: 26.04.2015 */
+
+$ged["chat_header"]="Чат - Интернет-Ферма";
+$ged["chat_info"]="Зарегистрируйтесь в системе <a href='../'>\"Интернет-Ферма\"</a>.";
+$ged["chat_nick"]="Ваше имя";
+$ged["chat_message"]="Ваше сообщение";
+$ged["chat_send"]="Отправить";
+?>

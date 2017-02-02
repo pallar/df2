@@ -1,0 +1,228 @@
+/*@media screen and (orientation:landscape) {
+	.not_support {
+		background:#0b4305;
+		bottom:0;
+		color:#fff;
+		font-size:36px;
+		left:0;
+		position:fixed;
+		right:0;
+		text-align:center;
+		top:0;
+		z-index:5;
+	}
+}
+
+@media screen and (orientation:portrait) {
+	.not_support {
+		display:none;
+	}
+}*/
+
+body {
+	background:#0b4305;
+	font-family:Arial;
+	min-height:320px;
+	position:relative;
+}
+
+input[type=button], input[type=submit] {
+	color:black;
+	cursor:pointer;
+}
+
+.css_wrapper {
+	height:100%;
+	width:100%;
+}
+
+.css_input {
+	border:none;
+	font-size:18px;
+	height:60px;
+	margin:15px 0 0 0;
+	padding:0;
+	text-align:center;
+	width:100%;
+}
+
+.css_input_0g0 {
+	background:#5a5;
+	border:none;
+	font-size:18px;
+	height:60px;
+	margin:15px 0 0 0;
+	padding:0;
+	text-align:center;
+	width:100%;
+}
+
+.css_input_0g1 {
+	background:#5af;
+	border:none;
+	font-size:18px;
+	height:60px;
+	margin:15px 0 0 0;
+	padding:0;
+	text-align:center;
+	width:100%;
+}
+
+.css_input_r00 {
+	background:#f55;
+	border:none;
+	font-size:18px;
+	height:60px;
+	margin:15px 0 0 0;
+	padding:0;
+	text-align:center;
+	width:100%;
+}
+
+.css_logo_div {
+	display:block;
+	position:absolute;
+	text-align:center;
+	top:75%;
+	width:100%;
+}
+
+.css_logo_div img {
+	height:100px;
+}
+
+.css_login_div {
+	border:1px dashed #fff;
+	left:50%;
+	margin:0 0 0 -140px;
+	position:absolute;
+	top:15px;
+	width:280px;
+}
+
+.css_login_div input[type=text], .css_login_div input[type=password] {
+	border:none;
+	font-size:18px;
+	height:40px;
+	margin:15px 0 0 15px;
+	width:250px;
+}
+
+.css_login_div input[type=submit] {
+	border:none;
+	font-size:18px;
+	height:60px;
+	margin:15px 0 15px 15px;
+	width:250px;
+}
+
+.css_menu_div {
+	left:50%;
+	margin:0 0 0 -160px;
+	position:absolute;
+	width:320px;
+}
+
+.css_menu_seld {
+	border:none;
+	font-size:30px;
+	height:60px;
+	line-height:60px;
+	margin:15px 0 0 0;
+	text-align:center;
+	width:100%;
+}
+
+.css_milk_table {
+	border-collapse:collapse;
+	color:#fff;
+	margin:0 auto;
+	width:100%;
+}
+
+.css_milk_table td {
+	border:1px solid #fff;
+	font-size:20px;
+	height:60px;
+	margin:1px;
+	padding:1px;
+	width:45%;
+}
+
+.css_milk_table td:first-child {
+	text-align:center;
+	width:39%;
+}
+
+.css_milk_table input[type=number] {
+	border:none;
+	font-size:20px;
+	height:100%;
+	line-height:100%;
+	text-align:center;
+	width:100%;
+}
+
+.css_milk_table input[type=text] {
+	border:none;
+	font-size:20px;
+	height:100%;
+	line-height:100%;
+	text-align:center;
+	width:100%;
+}
+
+.css_card_div {
+	background:#fff;
+	padding:10px 0;
+}
+
+.css_card_header {
+	border-bottom:2px solid #0b4305;
+	color:#0b4305;
+	font-size:24px;
+	font-weight:bold;
+	padding:10px 0 10px 0;
+	text-align:center;
+}
+
+.css_card_table {
+	color:#000;
+	font-size:16px;
+	font-weight:bold;
+	padding:0 3px 0 6px;
+	width:100%;
+}
+
+.css_card_td_label {
+	color:#555555;
+}
+
+.css_card_oper_div {
+	border-bottom:2px solid #fff;
+	color:#fff;
+	padding-bottom:5px;
+	padding-left:5%;
+	padding-top:10px;
+	width:95%;
+}
+
+.css_card_oper_dmY_div {
+	float:left;
+	font-size:20px;
+	width:40%;
+}
+
+.css_card_oper_description_div {
+	float:left;
+	font-size:20px;
+	width:60%;
+}
+
+.css_card_oper_comments_div {
+	color:#999;
+	font-size:14px;
+	font-style:italic;
+	padding-left:3%;
+	width:97%;
+}
