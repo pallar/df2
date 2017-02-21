@@ -8,7 +8,7 @@ m: 04.05.2015 */
 $db_host="localhost";
 $db_user="root";
 $db_password="20095230";
-$db_name="df2";
+$db_name="_026";
 
 $db=mysql_connect( $db_host, $db_user, $db_password );
 $myrev_res=mysql_query( 'SELECT VERSION() AS version' );

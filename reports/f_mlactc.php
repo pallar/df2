@@ -1,18 +1,18 @@
 <?php
-/*
-DF_2: reports/f_mlactc.php
+/* DF_2: reports/f_mlactc.php
 report: count lactations
-created: 09.06.2005
-modified: 08.08.2013
-*/
+c: 09.06.2005
+m: 15.02.2017 */
 
 //get all needed opers
 //from 22.07.2009 in this report all otels are ignored!
 $query="SELECT code, oper_id, day, month, year, cow_id, int_8
  FROM $opers
- WHERE oper_id=2048 OR oper_id=128 OR oper_id=256 OR ( oper_id=64 AND int_8=7 ) OR ( oper_id=64 AND int_8=6 )
- ORDER BY year*10000+month*100+day";
-if ( $filt_cowid>0 ) $query=$query." AND cow_id=".$filt_cowid;
+ WHERE";
+if ( $filt_cowid>0 ) $query=$query." cow_id=".$filt_cowid." AND (";
+$query=$query." oper_id=2048 OR oper_id=128 OR oper_id=256 OR ( oper_id=64 AND int_8=7 ) OR ( oper_id=64 AND int_8=6 )";
+if ( $filt_cowid>0 ) $query=$query.")";
+$query=$query." ORDER BY year*10000+month*100+day";
 $res=mysql_query( $query, $db );
 $sqlerr=mysql_errno();
 if ( $sqlerr==0 ) {

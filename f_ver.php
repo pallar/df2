@@ -5,7 +5,7 @@ c: 04.06.2008
 m: 13.01.2017 */
 
 //DONT CHANGE THIS FILE IN ANY CASE, BECAUSE YOU MAY DESTROY DATABASE!
-$app_rel="[2015:1120]"; $dbstruc_rel="[2009:0820]";
+$app_rel="[2015:1122]"; $dbstruc_rel="[2009:0820]";
 $log_me=0;
 
 $content_charset="utf-8";//windows-1251
