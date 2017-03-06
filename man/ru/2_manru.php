@@ -1,12 +1,12 @@
-<!-- Modified: 15.01.2014 -->
 <?php
+// Modified: 15.01.2014
 include "../../f_vars0.php";
 ?>
-<title>Интернет-Ферма. Инструкция. Раздел 2</title>
-</head>
 
+<title>Интернет-Ферма. Инструкция. Состав системы</title>
+</head>
 <?php
-include( "0_menuru.php" );
+include "0_menuru.php";
 ?>
 			<tr style='background:#f0ffff' height='40'>
 				<td colspan='6'>

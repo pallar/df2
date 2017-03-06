@@ -1,12 +1,12 @@
-<!-- Modified: 15.01.2014 -->
 <?php
+// Modified: 06.03.2017
 include "../../f_vars0.php";
 ?>
-<title>Интернет-Ферма. Инструкция. Раздел 5</title>
-</head>
 
+<title>Интернет-Ферма. Инструкция. Работа программы</title>
+</head>
 <?php
-include( "0_menutr.php" );
+include "0_menutr.php";
 ?>
 			<tr style='background:#f0ffff' height='40'>
 				<td colspan='6'>

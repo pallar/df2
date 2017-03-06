@@ -1,12 +1,12 @@
-<!-- Modified: 15.01.2014 -->
 <?php
+// Modified: 06.03.2017
 include "../../f_vars0.php";
 ?>
-<title>Інтернет-Ферма. Інструкція. Роздiл 1</title>
-</head>
 
+<title>Інтернет-Ферма. Інструкція. З чого почати</title>
+</head>
 <?php
-include( "0_menuuk.php" );
+include "0_menuuk.php";
 ?>
 			<tr style='background:#f0ffff' height='40'>
 				<td colspan='6'>

@@ -1,7 +1,8 @@
-<!-- Modified: 15.01.2014 -->
 <?php
+// Modified: 06.03.2017
 include "../../f_vars0.php";
 ?>
+
 <title>Интернет-Ферма. Инструкция</title>
 </head>
 <body style='margin:0'>
@@ -17,23 +18,23 @@ include "../../f_vars0.php";
 	<tr bgcolor='#f0ffff'>
 		<td colspan='2' width='60%'>
 			<div style='margin-left:10'><ul><font size='+2'>
-				<li style='margin-left:030'><a href='1_mantr.php'
+				<li style='margin-left:030'><a href='1_manru.php'
 				 onmouseout='this.style.color=""; this.style.fontSize=""'
 				 onmouseover='this.style.color="#00aacd"; this.style.fontSize="larger"'>
 				 С чего начать</a></li><br>
-				<li style='margin-left:060'><a href='2_mantr.php'
+				<li style='margin-left:060'><a href='2_manru.php'
 				 onmouseout='this.style.color=""; this.style.fontSize=""'
 				 onmouseover='this.style.color="#00aacd"; this.style.fontSize="larger"'>
 				 Состав системы</a></li><br>
-				<li style='margin-left:090'><a href='3_mantr.php'
+				<li style='margin-left:090'><a href='3_manru.php'
 				 onmouseout='this.style.color=""; this.style.fontSize=""'
 				 onmouseover='this.style.color="#00aacd"; this.style.fontSize="larger"'>
 				 Доильный зал</a></li><br>
-				<li style='margin-left:120'><a href='4_mantr.php'
+				<li style='margin-left:120'><a href='4_manru.php'
 				 onmouseout='this.style.color=""; this.style.fontSize=""'
 				 onmouseover='this.style.color="#00aacd"; this.style.fontSize="larger"'>
 				 Селекционные ворота (раскол)</a></li><br>
-				<li style='margin-left:150'><a href='5_mantr.php'
+				<li style='margin-left:150'><a href='5_manru.php'
 				 onmouseout='this.style.color=""; this.style.fontSize=""'
 				 onmouseover='this.style.color="#00aacd"; this.style.fontSize="larger"'>
 				 Работа программы</a></li><br>
@@ -45,9 +46,9 @@ include "../../f_vars0.php";
 		<td width='50%'>&nbsp;</td>
 		<td align='right' colspan='2' style='margin:7'>
 			<div style='margin:7'>
-				тел.: +380 432 523020<br>
+				тел./факс: +380 432 523020<br>
 <!--
-				e-mail:<br>
+				e-mail: abc@gmail.com<br>
 -->
 			</div>
 		</td>

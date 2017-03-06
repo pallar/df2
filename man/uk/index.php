@@ -1,7 +1,8 @@
-<!-- Modified: 15.01.2014 -->
+<!-- Modified: 06.03.2017 -->
 <?php
 include "../../f_vars0.php";
 ?>
+
 <title>Інтернет-Ферма. Iнструкцiя</title>
 </head>
 <body style='margin:0'>
@@ -45,9 +46,9 @@ include "../../f_vars0.php";
 		<td width='50%'>&nbsp;</td>
 		<td align='right' colspan='2' style='margin:7'>
 			<div style='margin:7'>
-				тел.: +380 432 523020<br>
+				тел./факс: +380 432 523020<br>
 <!--
-				e-mail:<br>
+				e-mail: abc@gmail.com<br>
 -->
 			</div>
 		</td>
