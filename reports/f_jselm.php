@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f_jselm.php
+/* DF_2: reports/f_jselm.php
 report: input select for any milk report
-created: 20.02.2007
-modified: 02.06.2014
-*/
+c: 20.02.2007
+m: 14.03.2017 */
 
 if ( $filts1>-1 ) {
 	$restrict_by_field1=1;
@@ -20,30 +18,26 @@ if ( $filts2>-1 ) {
 $query="SELECT
  d.cow_id,
  d.day, d.month, d.year,
- d.milk_kg,
- d.milk_begin, d.milk_end,
- d.milk_time,
+ d.milk_kg, d.milk_begin, d.milk_end, d.milk_time,
  d.id_time, d.rep_time,
  d.manual, d.retries, d.stopped, d.exhaust,
- d.mast_4,
- d.tr, d.ov,
- d.bd_num,
- c.cow_num, c.nick, d.milk_sess";
-if ( $outsele_*1==-1 ) $query=$query.", c.id";
+ d.mast_4, d.tr, d.ov,
+ d.bd_num, c.cow_num, c.nick, d.milk_sess";
+if ( $outsele_*1==-1 ) $query.=", c.id";
 else $query=$query.", ".$outsele_field;
-if ( $outsele_*1==-1 ) $query=$query."
+if ( $outsele_*1==-1 ) $query.="
  FROM $dbt d, $cows c
  WHERE c.id=d.cow_id";
-else $query=$query."
+else $query.="
  FROM $dbt d, $cows c, $outsele_table
  WHERE c.id=d.cow_id AND $outsele_field=$outsele_table.id";
-if ( $restrict_id*1>0 ) $query=$query." AND d.cow_id=$restrict_id";
-if ( $restrict_by_field*1>0 ) $query=$query." AND $restrict_field=$restrict_id";
-if ( $restrict_by_field1*1>0 ) $query=$query." AND $restrict_field1=$restrict_id1";
-if ( $filt_cowid*1>0 ) $query=$query." AND cow_id=$filt_cowid";
-if ( $bd_first*1>0 ) $query=$query." AND bd_num>=$bd_first AND bd_num<=$bd_last";
+if ( $restrict_id*1>0 ) $query.=" AND d.cow_id=$restrict_id";
+if ( $restrict_by_field*1>0 ) $query.=" AND $restrict_field=$restrict_id";
+if ( $restrict_by_field1*1>0 ) $query.=" AND $restrict_field1=$restrict_id1";
+if ( $filt_cowid*1>0 ) $query.=" AND cow_id=$filt_cowid";
+if ( $bd_first*1>0 ) $query.=" AND bd_num>=$bd_first";
+if ( $bd_last*1>0 ) $query.=" AND bd_num<=$bd_last";
 $query=$query.$WHEREADV."
  ORDER BY d.code";
-$res=mysql_query( $query, $db );
-$error=mysql_errno();
+$res=mysql_query( $query, $db ); $error=$sqlerr=mysql_errno();
 ?>

@@ -27,7 +27,7 @@ $cards_groups_tab_db=Var_FromDb( "cards-groups-tab", "ls", $userCoo );
 if ( trim( $cards_groups_tab_."." )!="." ) {
 } else $cards_groups_tab_=$cards_groups_tab_db;
 
-MainMenu( $php_mm["_05_cap"], "cards", "" );
+MainMenu( $php_mm["_05_"], "cards", "" );
 if( $guest_from_wan==1 & ( $userCoo<=0 | $userCoo==9 )) {
 	echo $php_mm["ACCESS_DENIED"]; return;
 }
@@ -52,10 +52,10 @@ echo "
 	<tr>
 		<td>
 			<div class='b_h'>
-				<a href='../".$hFrm['0500']."?cards_tab=2' class='$ocl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ostab_lnk_cap"]."&nbsp;&nbsp;</a>
-				<a href='../".$hFrm['0500']."?cards_tab=3' class='$tcl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_tstab_lnk_cap"]."&nbsp;&nbsp;</a>
-				<a href='../".$hFrm['0500']."?cards_tab=1' class='$ccl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_cstab_lnk_cap"]."&nbsp;&nbsp;</a>
-				<a href='../".$hFrm['0500']."?cards_tab=0' class='$gcl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_gstab_lnk_cap"]."&nbsp;&nbsp;</a>
+				<a href='../".$hFrm['0500']."?cards_tab=2' class='$ocl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ostab_lnk_"]."&nbsp;&nbsp;</a>
+				<a href='../".$hFrm['0500']."?cards_tab=3' class='$tcl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_tstab_lnk_"]."&nbsp;&nbsp;</a>
+				<a href='../".$hFrm['0500']."?cards_tab=1' class='$ccl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_cstab_lnk_"]."&nbsp;&nbsp;</a>
+				<a href='../".$hFrm['0500']."?cards_tab=0' class='$gcl'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_gstab_lnk_"]."&nbsp;&nbsp;</a>
 			</div>
 		</td>
 	</tr>

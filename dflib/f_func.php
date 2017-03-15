@@ -59,20 +59,10 @@ function StrCh2Ch( $s, $c_in, $c_out ) {
 	return $res;
 }
 
-function StrCutLen( $s, $s_len ) {
-	global $content_charset;
+function StrCutLen1( $s, $s_len, $contentCharset ) {
 	if ( strlen( $s )==0 ) $res='&nbsp;';
 	else {
-		$res=mb_substr( $s, 0, $s_len, $content_charset );
-		if ( $res!=$s ) $res=$res.'...';
-	}
-	return $res;
-}
-
-function StrCutLen1( $s, $s_len, $content_charset ) {
-	if ( strlen( $s )==0 ) $res='&nbsp;';
-	else {
-		$res=mb_substr( $s, 0, $s_len, $content_charset );
+		$res=mb_substr( $s, 0, $s_len, $contentCharset );
 		if ( $res!=$s ) $res=$res.'...';
 	}
 	return $res;
@@ -423,13 +413,13 @@ function Int2StrZ( $s, $length ) {
 	return $res;
 }
 
-function PhraseCarry1( $s, $ch, $len, $content_charset ) {
+function PhraseCarry1( $s, $ch, $len, $contentCharset ) {
 	$s=trim( $s ); $s_res="";
 	if ( strlen( $s )>$len ) {
 		while ( strlen( $s )>0 ) {
-			$s1=mb_substr( $s, 0, $len, $content_charset );
+			$s1=mb_substr( $s, 0, $len, $contentCharset );
 			if ( strlen( $s_res )>0 ) $s_res=$s_res.$ch.$s1; else $s_res=$s1;
-			$s=mb_substr( $s, $len, strlen( $s )-$len, $content_charset );
+			$s=mb_substr( $s, $len, strlen( $s )-$len, $contentCharset );
 		}
 	} else $s_res=$s;
 	$s_arr[0]=$s; $s_arr[1]=$s_res;
@@ -545,27 +535,27 @@ $body_tag_";
 	<li class='client_rtc'><span id='rtc_div'></span></li>
 	<li style='min-width:120px;'><a style='color:#33ffff;' onclick='Login_Show(); return false;'><span id='uname_div'>&nbsp;</span></a></li>
 	<li ".$efc[1]."><a href='../index.php'><span>".
-		$php_mm["_00_mnemo_btn_cap"]."</span></a></li>
+		$php_mm["_00_mnemo_btn_"]."</span></a></li>
 	<li ".$efc[2]."><a href='../".$hFrm['0100']."'><span>".
-		$php_mm["_00_detrep_btn_cap"]."</span></a></li>
+		$php_mm["_00_detrep_btn_"]."</span></a></li>
 	<li ".$efc[4]."><a href='../".$hFrm['0300']."'><span>".
-		$php_mm["_00_reps_btn_cap"]."</span></a></li>
+		$php_mm["_00_reps_btn_"]."</span></a></li>
 	<li ".$efc[5]."><a href='../".$hFrm['0500']."'><span>".
-		$php_mm["_00_cards_btn_cap"]."</span></a></li>";
+		$php_mm["_00_cards_btn_"]."</span></a></li>";
 		if ( $userCoo>0 ) echo "
 	<li ".$efc[6]."><a href='../".$hFrm['0600']."'><span>".
-		$php_mm["_00_opers_btn_cap"]."</span></a></li>";
+		$php_mm["_00_opers_btn_"]."</span></a></li>";
 		if ( $userCoo==2 ) echo "
 	<li ".$efc[7]."><a href='../".$hFrm['99']."'><span>".
-		$php_mm["_00_conf_btn_cap"]."</span></a></li>";
+		$php_mm["_00_conf_btn_"]."</span></a></li>";
 		else if ( $userCoo>0 ) echo "
 	<li ".$efc[7]."><a href='../".$hFrm['0700']."'><span>".
-		$php_mm["_00_conf_btn_cap"]."</span></a></li>";
+		$php_mm["_00_conf_btn_"]."</span></a></li>";
 		echo "
 	<li ".$efc[8]."><a href='../man/?lang=".$lang."' target='w1'><span>".
-		$php_mm["_00_man_btn_cap"]."</span></a></li>
+		$php_mm["_00_man_btn_"]."</span></a></li>
 	<li ".$efc[9]."><a onclick='Per_FromCoo(); Period_Show(); return false'><span>".
-		$php_mm["_00_per_btn_cap"]."</span></a></li>";
+		$php_mm["_00_per_btn_"]."</span></a></li>";
 	echo "
 </ul>
 </div>

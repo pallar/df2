@@ -83,10 +83,10 @@ if ( $add_oper!="" ) {
 	}
 	if ( $varsession!=1 ) include_once( "../oper/f_oprwd.php" );
 	if ( $userCoo!=9 ) echo "
-<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_cap"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
+<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
 	if ( $div_hide!=1 ) include_once( "../oper/f_dt.php" );//page's date
 	else if ( $varsession!=1 & $userCoo!=9 ) echo "
-&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_cap"]."</a>";
+&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_"]."</a>";
 	echo "
 <center>".$ged['mm'].":&nbsp;".
 "(<b>1</b>&nbsp;-".$ged['Depth,Chest'].")&nbsp;(<b>2</b>&nbsp;-".$ged['Width,Chest'].
@@ -156,9 +156,9 @@ if ( $add_oper!="" ) {
 			if ( $div_hide!=1 ) echo "
 		<td $cjust width='$td1w'>".$j."</td>";
 			echo "
-		<td $cjust height='22px' title='".StrCutLen( $row[3], 59)."' width='$td2w'>".StrCutLen( $row[3], 7 )."</td>
-		<td $rjust title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen( $row[1], 9 ).$cownum_div1."</b></td>
-		<td $cjust title='".StrCutLen( $row[2], 59 ) ."' width='$td4w'>".StrCutLen( $row[2], 3 )."</td>
+		<td $cjust height='22px' title='".StrCutLen1( $row[3], 59, $contentCharset )."' width='$td2w'>".StrCutLen1( $row[3], 7, $contentCharset )."</td>
+		<td $rjust title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen1( $row[1], 9, $contentCharset ).$cownum_div1."</b></td>
+		<td $cjust title='".StrCutLen1( $row[2], 59, $contentCharset ) ."' width='$td4w'>".StrCutLen1( $row[2], 3, $contentCharset )."</td>
 		<td style='background:#fff' width='$td5w'><input id='data1".$i."' maxlength='4' name='d1_[".$i."]' style='$rw_style; height:18px' type='text' value='$d1' onfocus='int_keyp( \"data1$i\", 1, 2500, 4 )' onclick='int_keyp( \"data1$i\", 1, 2500, 4 )' onkeypress='int_keyp( \"data1$i\", 1, 2500, 4 )'></td>
 		<td style='background:#fff' width='$td6w'><input id='data2".$i."' maxlength='3' name='d2_[".$i."]' style='$rw_style; height:18px' type='text' value='$d2' onfocus='int_keyp( \"data2$i\", 1, 800, 3 )' onclick='int_keyp( \"data2$i\", 1, 800, 3 )' onkeypress='int_keyp( \"data2$i\", 1, 800, 3 )'></td>
 		<td style='background:#fff' width='$td7w'><input id='data3".$i."' maxlength='4' name='d3_[".$i."]' style='$rw_style; height:18px' type='text' value='$d3' onfocus='int_keyp( \"data3$i\", 1, 1000, 4 )' onclick='int_keyp( \"data3$i\", 1, 1000, 4 )' onkeypress='int_keyp( \"data3$i\", 1, 1000, 4 )'></td>

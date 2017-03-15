@@ -20,15 +20,15 @@ if ( $ret_url==0 | $ret_url==5 ) $ret_url="../".$hFrm['0500'];
 //link to return [END]
 $modif_Ymd=date( "Y-m-d" ); $modif_His=date( "H:i:s" );
 $ox_id=$_GET["id"];
-$ox_c=$_13_oxcard_cap;
+$ox_c=$_13_oxcard_;
 
-MainMenu( $ox_c." - ".$php_mm["_com_app_cap"], "cards", "" );
+MainMenu( $ox_c." - ".$php_mm["_com_app_"], "cards", "" );
 
 $cox_cancel=$_GET["cox_cancel"]; $cox_save=$_GET["cox_save"];
 
 //discard changes & close card
 if ( $cox_cancel!="" ) {
-	Res_Draw( 3, $ret_url, "", $ox_c.":&nbsp;".$_13_card_no_changes_done_cap, $php_mm_tip[0] );
+	Res_Draw( 3, $ret_url, "", $ox_c.":&nbsp;".$_13_card_no_changes_done_, $php_mm_tip[0] );
 
 //save changes & close card
 } elseif ( $cox_save!="" ) {
@@ -65,7 +65,7 @@ if ( $cox_cancel!="" ) {
 	 modif_uid='$userCoo',
 	 modif_date='$modif_date'
 	 WHERE id='$ox_id'" );
-	Res_Draw( 3, $ret_url, "", $ox_c.":&nbsp;".$_13_card_changes_done_cap, $php_mm_tip[0] );
+	Res_Draw( 3, $ret_url, "", $ox_c.":&nbsp;".$_13_card_changes_done_, $php_mm_tip[0] );
 
 //init script
 } else {
@@ -139,7 +139,7 @@ if ( $cox_cancel!="" ) {
 <table style='height:80%; width:100%'>
 <tr>
 	<td>
-		<table class='tbl1 tbl1_h0'>
+		<table class='tbl1 tbl_h0'>
 		<tr height='7px'>
 			<td rowspan='12' width='5px'></td>
 			<td colspan='2'></td>
@@ -149,31 +149,31 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td width='20%'>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td width='30%'><input class='txt1 txt1_h0' maxlength='50' name='ox_nat' value='$ox_nat'></td>
-			<td width='20%'>&#8226;&nbsp;".$_13_card_birthday_date_cap."</td>
-			<td><a onclick='cal_u1( event, 0, 80 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt1 txt1_h0' id='date10' name='dates_[0]' size='8' style='cursor:pointer' value='$ox_bdt' onkeypress='return false;'></a></td>
+			<td width='30%'><input class='txt1 txt_h0' maxlength='50' name='ox_nat' value='$ox_nat'></td>
+			<td width='20%'>&#8226;&nbsp;".$_13_card_birthday_date_."</td>
+			<td><a onclick='cal_u1( event, 0, 80 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt1 txt_h0' id='date10' name='dates_[0]' size='8' style='cursor:pointer' value='$ox_bdt' onkeypress='return false;'></a></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td><input class='txt1 txt1_h0' maxlength='4' name='ox_num' value='$ox_num'></td>
+			<td><input class='txt1 txt_h0' maxlength='4' name='ox_num' value='$ox_num'></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&#8226;&nbsp;".$_13_card_birthday_num_cap."</td>
-			<td><input class='txt1 txt1_h0' maxlength='30' name='ox_bnu' value='$ox_bnu'></td>
+			<td>&#8226;&nbsp;".$_13_card_birthday_num_."</td>
+			<td><input class='txt1 txt_h0' maxlength='30' name='ox_bnu' value='$ox_bnu'></td>
 			<td>&#8226;&nbsp;".$ged["Nick"]."</td>
-			<td><input class='txt1 txt1_h0' maxlength='100' name='ox_nic' value='$ox_nic'></td>
+			<td><input class='txt1 txt_h0' maxlength='100' name='ox_nic' value='$ox_nic'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Exter._Defects"]."</td>
-			<td><input class='txt1 txt1_h0' maxlength='100' name='ox_def' value='$ox_def'></td>
-			<td>&#8226;&nbsp;".$_13_card_diff_owner_cap."</td>
+			<td><input class='txt1 txt_h0' maxlength='100' name='ox_def' value='$ox_def'></td>
+			<td>&#8226;&nbsp;".$_13_card_diff_owner_."</td>
 			<td><input name='ox_ali' type='checkbox' value='$ox_ali'>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Lot"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_loi'>";
+			<td><select class='sel1 sel_h0' name='ox_loi'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $lots", $db );
 	while ( $l_row=mysql_fetch_row( $res1 )) {
 		$idx=$l_row[0];
@@ -185,7 +185,7 @@ if ( $cox_cancel!="" ) {
 	echo "
 			</select></td>
 			<td>&#8226;&nbsp;".$ged["Group"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_gri'>";
+			<td><select class='sel1 sel_h0' name='ox_gri'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $groups", $db );
 	while ( $g_row=mysql_fetch_row( $res1 )) {
 		$idx=$g_row[0];
@@ -199,7 +199,7 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Breed"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_bri'>";
+			<td><select class='sel1 sel_h0' name='ox_bri'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $breeds", $db );
 	while ( $b_row=mysql_fetch_row( $res1 )) {
 		$idx=$b_row[0];
@@ -211,7 +211,7 @@ if ( $cox_cancel!="" ) {
 	echo "
 			</select></td>
 			<td>&#8226;&nbsp;".$ged["Subgroup"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_sgi'>";
+			<td><select class='sel1 sel_h0' name='ox_sgi'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $subgrs", $db );
 	while ( $s_row=mysql_fetch_row( $res1 )) {
 		$idx=$s_row[0];
@@ -225,7 +225,7 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Mom"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_moi'>";
+			<td><select class='sel1 sel_h0' name='ox_moi'>";
 	$res1=mysql_query( "SELECT $cows.id, $cows.cow_num, $cows.nick, $cows.breed_id,
 	 $breeds.num, $breeds.nick
 	 FROM $cows, $breeds
@@ -238,7 +238,7 @@ if ( $cox_cancel!="" ) {
 	mysql_free_result( $res1 );
 	echo "</select></td>
 			<td>&#8226;&nbsp;".$ged["Dad"]."</td>
-			<td><select class='sel1 sel1_h0' name='ox_dai'>";
+			<td><select class='sel1 sel_h0' name='ox_dai'>";
 	$res1=mysql_query( "SELECT $oxes.id, $oxes.num, $oxes.nick, $oxes.breed_id,
 	 $breeds.num, $breeds.nick
 	 FROM $oxes, $breeds
@@ -258,19 +258,19 @@ if ( $cox_cancel!="" ) {
 		<tr height='3px'><td colspan='5'></td></tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='4'><input class='txt1 txt1_h0' maxlength='100' name='ox_co_' value='$ox_co_'></td>
+			<td colspan='4'><input class='txt1 txt_h0' maxlength='100' name='ox_co_' value='$ox_co_'></td>
 		</tr>
 		</table>
-		<table class='tbl1 tbl1_h0'>
+		<table class='tbl1 tbl_h0'>
 		<tr height='5px'><td colspan='5'></td></tr>
 		<tr>
 			<td width='5px'></td>";
 	if ( $ox_id==1 ) echo "
-			<td style='color:#ff0000; padding-top:2px'><b>".$ox_c.":&nbsp;".$_13_card_protected_cap."</b></td>";
+			<td style='color:#ff0000; padding-top:2px'><b>".$ox_c.":&nbsp;".$_13_card_protected_."</b></td>";
 	else if ( $userCoo*1==9 ) echo "
-			<td style='color:#ff0000; padding-top:2px'><b>".$ox_c.":&nbsp;".$_13_card_anonymous_user_cap."</b></td>";
+			<td style='color:#ff0000; padding-top:2px'><b>".$ox_c.":&nbsp;".$_13_card_anonymous_user_."</b></td>";
 	else echo "
-			<td><input class='btn btn_h0 gradient_0f0' name='cox_save' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_cap"]."'></td>";
+			<td><input class='btn btn_h0 gradient_0f0' name='cox_save' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>";
 	echo "
 			<td width='3px'></td>
 			<td width='28%'><input class='btn btn_h0 gradient_f00' name='cox_cancel' style='width:100%' type='submit' value='X'></td>

@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f_mlactz.php
+/* DF_2: reports/f_mlactz.php
 report: total milk by lactation (ONLY CALCULATION)
-created: 09.06.2005
-modified: 23.08.2013
-*/
+c: 09.06.2005
+m: 14.03.2017 */
 
 function DateDiff( $start, $end ) {
 	$start_ts=strtotime( $start );
@@ -15,8 +13,8 @@ function DateDiff( $start, $end ) {
 
 function MilkPrediction( $Mday, $this_Mkg ) {
 /*
- $Mday=lactation day, where data exists
- $this_Mkg=milk (kg) at this day
+	$Mday=lactation day, where data exists
+	$this_Mkg=milk (kg) at this day
 */
 	$Mkg=array(
 	 '10'=>36, '20'=>42, '30'=>47, '60'=>48, '90'=>47, '120'=>45,
@@ -143,9 +141,9 @@ while ( $a=mysql_fetch_row( $x )) {
 							$milk_=$milka[305][$cowid]+$m; $milka[305][$cowid]=$milk_;
 						}
 					}
-				} mysql_free_result( $res );}
+				} mysql_free_result( $res ); }
 			}
-			if ( $mc<12 ) $mc++; else { $mc=1; $yc++;}
+			if ( $mc<12 ) $mc++; else { $mc=1; $yc++; }
 		}
 	}
 }

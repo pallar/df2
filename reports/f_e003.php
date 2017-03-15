@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f_e003.php
+/* DF_2: reports/f_e003.php
 report: dairy by cows
-created: 14.03.2011
-modified: 31.03.2011
-*/
+c: 14.03.2011
+m: 08.07.2015 */
 
 ob_start();//lock output to set cookies properly!
 

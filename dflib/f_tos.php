@@ -2,9 +2,9 @@
 /* DF_2: dflib/f_tos.php
 oxes list
 c: 10.12.2005
-m: 15.11.2015 */
+m: 15.03.2017 */
 
-if ( strlen( $oxes_title_ )<=0 ) $oxes_title_=$php_mm["_05_ostab_lnk_cap"].":&nbsp;".$php_mm["_05_list_cap"];
+if ( strlen( $oxes_title_ )<=0 ) $oxes_title_=$php_mm["_05_ostab_lnk_"].":&nbsp;".$php_mm["_05_list_"];
 if ( strlen( $oxes_order_ )<=0 ) $oxes_order_="$oxes.num*1";
 
 $i=0;
@@ -32,17 +32,17 @@ if ( $nocardsfilt!=1 ) {//dont show when in reports mode
 <tr height='40px'>
 	<td style='padding:5px' width='150px'>";
 	if ( $userCoo*1!=9 ) echo "
-		<a href='$PHP_SELF?ox_add=$i'><u>".$php_mm["_com_INSE_lnk_cap"]."</u></a>";
+		<a href='$PHP_SELF?ox_add=$i'><u>".$php_mm["_com_INSE_lnk_"]."</u></a>";
 	echo "
 	</td>
 </tr>
 </table>";
 }
 
-$ox_find=$_GET[ox_find];
-$ox_edit=$_GET[ox_edit];
-$ox_del=$_GET[ox_del];
-$ox_add=$_GET[ox_add];
+$ox_add=$_GET["ox_add"];
+$ox_del=$_GET["ox_del"];
+$ox_edit=$_GET["ox_edit"];
+$ox_find=$_GET["ox_find"];
 if ( $ox_add==$i ) {
 	$num="*.".$i;
 	$nick="*.".$i.".".$now_Ymd.".".$now_His;
@@ -60,23 +60,23 @@ if ( $ox_add==$i ) {
 if ( $nocardsfilt!=1 ) echo "
 <div style='height:38px; overflow-y:scroll; width:100%'>";
 echo "
-<table cellspacing='1px' class='st2'>
-<tr $cjust class='st_title2' style='height:28px'>
-	<td width='60px'>".$ged['Number']."</td>
-	<td width='101px'>".$ged['Nick']."</td>
-	<td width='101px'>".$ged['Nat._Id.']."</td>
-	<td width='65px'>".$ged['Birthday']."</td>
-	<td width='80px'>".$ged['Mom']."</td>
-	<td width='80px'>".$ged['Dad']."</td>
-	<td width='80px'>".$ged['Breed']."</td>
-	<td width='90px'>".$ged['Exter._Defects']."</td>
-	<td width='60px'>".$ged['Comment.']."</td>
+<table width='100%'>
+<tr $cjust style='height:28px'>
+	<td width='60px'>".$ged["Number"]."</td>
+	<td width='101px'>".$ged["Nick"]."</td>
+	<td width='101px'>".$ged["Nat._Id."]."</td>
+	<td width='65px'>".$ged["Birthday"]."</td>
+	<td width='80px'>".$ged["Mom"]."</td>
+	<td width='80px'>".$ged["Dad"]."</td>
+	<td width='80px'>".$ged["Breed"]."</td>
+	<td width='90px'>".$ged["Exter._Defects"]."</td>
+	<td width='60px'>".$ged["Comment."]."</td>
 </tr>
 </table>";
 if ( $nocardsfilt!=1 ) echo "
 </div>
 <div style='height:60%; overflow-y:scroll; width:100%'>
-<table cellspacing='1px' class='st2'>";
+<table width='100%'>";
 $res=mysql_query( "SELECT
  $oxes.id,
  $oxes.num, $oxes.nick,
@@ -100,14 +100,14 @@ while ( $row=mysql_fetch_row( $res )) {
 	$bdt=substr( $row[5], 8, 2 ).".".substr( $row[5], 5, 2 ).".".substr( $row[5], 0, 4 );
 	if ( $nocardsfilt!=1 ) echo "
 	<td $rjust style='height:28px' width='60px' onmouseover='style.cursor=\"pointer\"'><b><a href='../".$hFrm['0530']."?id=".$row[0]."'>$oxnum</b></td>
-	<td width='101px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[2]'/></td>
-	<td width='101px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[3]'/></td>
+	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[2]'/></td>
+	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[3]'/></td>
 	<td $cjust width='65px'>$bdt</td>
-	<td width='80px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[6]'/></td>
-	<td width='80px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[7]'/></td>
-	<td width='80px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[8]'/></td>
-	<td width='90px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[12]'/></td>
-	<td width='60px'><input readonly style='border:0px; height:100%; font-size:12; width:99%' type='text' value='$row[13]'/></td>";
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[6]'/></td>
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[7]'/></td>
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[8]'/></td>
+	<td width='90px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[12]'/></td>
+	<td width='60px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[13]'/></td>";
 	else echo "
 	<td $rjust style='height:28px' onmouseover='style.cursor=\"pointer\"'><b><a href='../".$hFrm['0530']."?ox_id=".$row[0]."&cards_groups_tab=".$cards_groups_tab_."'>$oxnum</b></td>
 	<td>$row[2]</td>
@@ -122,7 +122,7 @@ while ( $row=mysql_fetch_row( $res )) {
 </tr>";
 }
 echo "
-<tr $cjust class='st_title2' style='height:28px'>
+<tr $rjust style='height:28px'>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>

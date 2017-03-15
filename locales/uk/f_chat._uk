@@ -1,12 +1,12 @@
 <?php
-/* DF_2: locales/uk/f_chat._uk
+/* DF: locales/uk/f_chat._uk
 chat ukrainian locale
 c: 08.11.2012
-m: 31.03.2015 */
+m: 14.08.2015 */
 
-$ged['chat_header']="Чат - Інтернет-Ферма";
-$ged['chat_info']="Зареєструйтесь в системі <a href='../'>\"Інтернет-Ферма\"</a>.";
-$ged['chat_nick']="Ваше ім`я";
-$ged['chat_message']="Ваше повідомлення";
-$ged['chat_send']="Надіслати";
+$ged["chat_header"]="Чат - ".$php_mm["_com_app_"];
+$ged["chat_info"]="Зареєструйтесь в системі <a href='../'>\"".$php_mm["_com_app_"]."\"</a>.";
+$ged["chat_message"]="Ваше повідомлення";
+$ged["chat_nick"]="Ваше ім'я";
+$ged["chat_send"]="Надіслати";
 ?>

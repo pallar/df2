@@ -45,7 +45,7 @@ if ( $add_oper!="" ) {
 	}
 	if ( $varsession!=1 ) include_once( "../oper/f_oprwd.php" );
 	if ( $userCoo!=9 ) echo "
-<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_cap"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
+<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
 	if ( $div_hide!=1 ) include_once( "../oper/f_dt.php" );//page's date
 	if ( $varsession!=1 ) echo "<br><br>";
 	echo "
@@ -95,9 +95,9 @@ function reset_all_keyp( i_ ) {
 			if ( $div_hide!=1 ) echo "
 		<td rowspan='2' $cjust width='$td1w'>".$j."</td>";
 			echo "
-		<td $cjust height='22px' rowspan='2' title='".StrCutLen( $row[3], 59)."' width='$td2w'>".StrCutLen( $row[3], 7 )."</td>
-		<td $rjust rowspan='2' title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen( $row[1], 9 ).$cownum_div1."</b></td>
-		<td $cjust rowspan='2' title='".StrCutLen( $row[2], 59 ) ."' width='$td4w'>".StrCutLen( $row[2], 11 )."</td>
+		<td $cjust height='22px' rowspan='2' title='".StrCutLen1( $row[3], 59, $contentCharset )."' width='$td2w'>".StrCutLen1( $row[3], 7, $contentCharset )."</td>
+		<td $rjust rowspan='2' title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen1( $row[1], 9, $contentCharset ).$cownum_div1."</b></td>
+		<td $cjust rowspan='2' title='".StrCutLen1( $row[2], 59, $contentCharset ) ."' width='$td4w'>".StrCutLen1( $row[2], 11, $contentCharset )."</td>
 		<td height='22px' style='background:#fff' width='$td5w'><a onclick='cal_u1( event, 0, 0 ); cal_load1( sender_=".$i1." ); return false' href=''><input id='date1".$i1."' name='dates_[".$i1."]' size='8' style='$li_style; height:18px' type='text' value='$dmY' onkeypress='return false'></a></td>
 		<td height='22px' style='background:#fff' width='$td5w'><a onclick='cal_u1( event, 0, 0 ); cal_load1( sender_=".$i2." ); return false' href=''><input id='date1".$i2."' name='dates_[".$i2."]' size='8' style='$li_style; height:18px' type='text' value='$dmY' onkeypress='return false'></a></td>
 		<td height='22px' style='background:#fff' width='$td5w'><a onclick='cal_u1( event, 0, 0 ); cal_load1( sender_=".$i3." ); return false' href=''><input id='date1".$i3."' name='dates_[".$i3."]' size='8' style='$li_style; height:18px' type='text' value='$dmY' onkeypress='return false'></a></td>
@@ -105,40 +105,40 @@ function reset_all_keyp( i_ ) {
 		<td height='22px' style='background:#fff' width='$td5w'><a onclick='cal_u1( event, 0, 0 ); cal_load1( sender_=".$i5." ); return false' href=''><input id='date1".$i5."' name='dates_[".$i5."]' size='8' style='$li_style; height:18px' type='text' value='$dmY' onkeypress='return false'></a></td>
 		<td rowspan='2' style='background:#fff' width='$tdew'>
 			<a onclick='cal_u1( event, 0, 0 ); cal_load1( sender_=".$i." ); return false' href=''><input id='date1".$i."' name='dates_[".$i."]' size='8' style='$li_style; height:18px' type='text' value='$dmY' onkeypress='return false'></a>
-			<a onclick='reset_all_keyp( ".$i." ); return false' href=''><input size='8' style='border:none; cursor:pointer; height:24px; width:100%' type='text' value='".$_06_reset_cap."' onkeypress='return false'></a>
+			<a onclick='reset_all_keyp( ".$i." ); return false' href=''><input size='8' style='border:none; cursor:pointer; height:24px; width:100%' type='text' value='".$_06_reset_."' onkeypress='return false'></a>
 		</td>
 	</tr>";
 		GrTr();
 		echo "
 		<td width='$td5w'>
-			<input id='c1".$i1."' name='c1_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-			<input id='c2".$i1."' name='c2_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-			<input id='c3".$i1."' name='c3_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."$td5d
-			<input id='c9".$i1."' name='c9_[".$i1."]' style='cursor:pointer' title='$_06_every_second_day_cap' type='checkbox'>
+			<input id='c1".$i1."' name='c1_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+			<input id='c2".$i1."' name='c2_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+			<input id='c3".$i1."' name='c3_[".$i1."]' style='cursor:pointer' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."$td5d
+			<input id='c9".$i1."' name='c9_[".$i1."]' style='cursor:pointer' title='$_06_every_second_day_' type='checkbox'>
 		</td>
 		<td width='$td5w'>
-			<input id='c1".$i2."' name='c1_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-			<input id='c2".$i2."' name='c2_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-			<input id='c3".$i2."' name='c3_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."$td5d
-			<input id='c9".$i2."' name='c9_[".$i2."]' style='cursor:pointer' title='$_06_every_second_day_cap' type='checkbox'>
+			<input id='c1".$i2."' name='c1_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+			<input id='c2".$i2."' name='c2_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+			<input id='c3".$i2."' name='c3_[".$i2."]' style='cursor:pointer' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."$td5d
+			<input id='c9".$i2."' name='c9_[".$i2."]' style='cursor:pointer' title='$_06_every_second_day_' type='checkbox'>
 		</td>
 		<td width='$td5w'>
-			<input id='c1".$i3."' name='c1_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-			<input id='c2".$i3."' name='c2_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-			<input id='c3".$i3."' name='c3_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."$td5d
-			<input id='c9".$i3."' name='c9_[".$i3."]' style='cursor:pointer' title='$_06_every_second_day_cap' type='checkbox'>
+			<input id='c1".$i3."' name='c1_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+			<input id='c2".$i3."' name='c2_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+			<input id='c3".$i3."' name='c3_[".$i3."]' style='cursor:pointer' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."$td5d
+			<input id='c9".$i3."' name='c9_[".$i3."]' style='cursor:pointer' title='$_06_every_second_day_' type='checkbox'>
 		</td>
 		<td width='$td5w'>
-			<input id='c1".$i4."' name='c1_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-			<input id='c2".$i4."' name='c2_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-			<input id='c3".$i4."' name='c3_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."$td5d
-			<input id='c9".$i4."' name='c9_[".$i4."]' style='cursor:pointer' title='$_06_every_second_day_cap' type='checkbox'>
+			<input id='c1".$i4."' name='c1_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+			<input id='c2".$i4."' name='c2_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+			<input id='c3".$i4."' name='c3_[".$i4."]' style='cursor:pointer' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."$td5d
+			<input id='c9".$i4."' name='c9_[".$i4."]' style='cursor:pointer' title='$_06_every_second_day_' type='checkbox'>
 		</td>
 		<td height='$td5h' width='$td5w'>
-			<input id='c1".$i5."' name='c1_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-			<input id='c2".$i5."' name='c2_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-			<input id='c3".$i5."' name='c3_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."$td5d
-			<input id='c9".$i5."' name='c9_[".$i5."]' style='cursor:pointer' title='$_06_every_second_day_cap' type='checkbox'>
+			<input id='c1".$i5."' name='c1_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+			<input id='c2".$i5."' name='c2_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+			<input id='c3".$i5."' name='c3_[".$i5."]' style='cursor:pointer' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."$td5d
+			<input id='c9".$i5."' name='c9_[".$i5."]' style='cursor:pointer' title='$_06_every_second_day_' type='checkbox'>
 		</td>
 	</tr>";
 		}}

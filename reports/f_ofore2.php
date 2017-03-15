@@ -1,29 +1,28 @@
 <?php
-/*
-DF_2: reports/f_ofore[CAST]2.php
+/* DF_2: reports/f_ofore[CAST]2.php
 report: forecast for all cows (moving from group to group)
-created: 24.09.2008
-modified: 12.09.2014
-*/
+c: 24.09.2008
+m: 15.03.2017 */
 
 $dbt_ext="_o";
 
 ob_start();//lock output to set cookies properly!
 
-$graph=$_GET[graph]*1;
-$title_=$_GET[title];
+$graph=$_GET["graph"]*1; $title_=$title=$_GET["title"];
+
+$dontuse_filt=1;//ONLY IN THIS REPORT
 
 $outsele_=-1; $outsele_table=-1; $outsele_field=-1;
 
 $cows_cnt=0;
 
-$dontuse_filt=1;//ONLY IN THIS REPORT
-
 include( "f_jfilt.php" );
 include( "../dflib/f_filt1.php" );
-
 include( "../locales/$lang/f_rl._$lang" );
-$dontuse_period=$_GET[dontuse_period]*1;
+
+$sself="../".$hRep["ofore2"];
+
+$dontuse_period=$_GET["dontuse_period"]*1;
 if ( $dontuse_period==4 ) {
 	$du_p=0; $href_title_=$ged['r-td-Zapusk_Plan_From_To'];
 } elseif ( $dontuse_period==1 ) {
@@ -31,9 +30,9 @@ if ( $dontuse_period==4 ) {
 } else {
 	$du_p=4; $href_title_=$ged['r-td-Zapusk_Plan'];
 }
-$title_="<a href='".$PHP_SELF."?dontuse_period=".$du_p."&title=".$href_title_."'>".$title_."</a>";
+$title_="<a href='".$sself."?dontuse_period=".$du_p."&title=".$href_title_."'>".$title_."</a>";
 
-include( "fhead.php" );
+include( "frhead.php" );
 
 $yf=1991; $mf=1; $df=1;
 $yc=$yf; $mc=$mf; $dc=$df;
@@ -47,7 +46,7 @@ $y0z=$date0z[0]; $m0z=$date0z[1]; $d0z=$date0z[2];
 
 $db_id=0;
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo $ged['days_relative_to']."&nbsp;".$now_dmY."
 <table cellspacing='1' class='st2'>
 <tr $cjust class='st_title2' style='height:28px'>
@@ -139,7 +138,7 @@ $sqlerr=mysql_errno();
 if ( $sqlerr==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
 	$r=$row[0]*1;
 	$cows_cnt++;
-	$cownum=$row[1]; $cownick=$row[2];
+	$cwnum=$cownum_div.$row[1].$cownum_div1; $cwnick=$row[2];
 	$bth_date=$row[3];
 	$bth_date_arr=split( "-", $bth_date );
 	$age_days=DaysBetween( Date_FromDb2Scr( $bth_date, "." ), $end1 );
@@ -161,10 +160,10 @@ if ( $sqlerr==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
 	$abort_date_arr=split( "-", $abort_dates );
 	$ltname=$row[9]; $grname=$row[10]; $sgname=$row[11];
 //fix long rows [BEGIN]
-	$orow[cownick]=trim( StrCutLen( $cownick, 34 )); if ( strlen( $orow[cownick] )==strlen( $cownick )) $cownick=="";
-	$orow[ltname]=trim( StrCutLen( $ltname, 16 )); if ( strlen( $orow[ltname] )==strlen( $ltname )) $ltname=="";
-	$orow[grname]=trim( StrCutLen( $grname, 16 )); if ( strlen( $orow[grname] )==strlen( $grname )) $grname=="";
-	$orow[sgname]=trim( StrCutLen( $sgname, 16 )); if ( strlen( $orow[sgname] )==strlen( $sgname )) $sgname=="";
+	$orow[cwnick]=StrCutLen1( $cwnick, 34, $contentCharset ); if ( $orow[cwnick]==$cwnick ) $cwnick=="";
+	$orow[ltname]=StrCutLen1( $ltname, 16, $contentCharset ); if ( strlen( $orow[ltname] )==strlen( $ltname )) $ltname=="";
+	$orow[grname]=StrCutLen1( $grname, 16, $contentCharset ); if ( trlen( $orow[grname] )==strlen( $grname )) $grname=="";
+	$orow[sgname]=StrCutLen1( $sgname, 16, $contentCharset ); if ( $orow[sgname] )==strlen( $sgname )) $sgname=="";
 //fix long rows [END]
 //states [BEGIN]
 //insem? - may be inseminated
@@ -266,14 +265,14 @@ if ( $sqlerr==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
 			if ( $state_add!=-1 ) $state=$ged[$state].",&nbsp;".$ged[$state_add]; else $state=$ged[$state];
 			if ( $userCoo!=9 & $userCoo!=0 ) $prep_zapusk_days="<a href='../".$hFrm['0600']."' target='_blank'>".$prep_zapusk_days."</a>";
 			echo "
-	<td $rjust><b><a href='../".$hFrm['0520']."?cow_id=".$r."&ret0=-1' target='_blank'>".$cownum_div.$cownum.$cownum_div1."</a></b></td>
-	<td title='$cownick'><a href='../".$hFrm['0520']."?cow_id=".$r."&ret0=-1' target='_blank'>".$orow[cownick]."</a>&nbsp;</td>
-	<td title='$grname'>".$orow[grname]."&nbsp;</td>
-	<td $rjust>$prep_zapusk_days&nbsp;</td>
-	<td $rjust>$prep_zapusk_date_next&nbsp;</td>
-	<td $rjust>$zapusk_days&nbsp;</td>
-	<td $rjust>$zapusk_date_next&nbsp;</td>
-	<td $rjust>$age_days&nbsp;</td>
+	<td $rjust><b><a href='../".$hFrm['0520']."?cow_id=".$r."&ret0=-1' target='_blank'>".$cwnum."</a></b></td>
+	<td title='".$cwnick."'><a href='../".$hFrm['0520']."?cow_id=".$r."&ret0=-1' target='_blank'>".$orow[cwnick]."</a>&nbsp;</td>
+	<td title='".$grname."'>".$orow[grname]."&nbsp;</td>
+	<td $rjust>".$prep_zapusk_days."&nbsp;</td>
+	<td $rjust>".$prep_zapusk_date_next."&nbsp;</td>
+	<td $rjust>".$zapusk_days."&nbsp;</td>
+	<td $rjust>".$zapusk_date_next."&nbsp;</td>
+	<td $rjust>".$age_days."&nbsp;</td>
 </tr>";
 		}
 	} else $cows_cnt--;
@@ -281,7 +280,7 @@ if ( $sqlerr==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
 	mysql_free_result( $res1 );
 }
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	if ( $mq==0 ) {
 		$mt1="-";
 	} else {
@@ -300,7 +299,7 @@ if ( $graph==0 ) {
 </tr>
 </table><br>";
 
-} else if ( $graph==1 ) {
+} else {
 	$dots_set=$dots[0];
 	if ( $dots_cnt>300 ) $dots_cnt=300;//no more than 300 dots for JpGraph!
 	for ( $i=1; $i<=$dots_cnt; $i++ )
@@ -311,5 +310,5 @@ if ( $graph==0 ) {
 	} else;
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

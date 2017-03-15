@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f_jselm.php
+/* DF_2: reports/f_jselm2.php
 report: input select for any milk report
-created: 20.02.2007
-modified: 02.06.2014
-*/
+c: 20.02.2007
+m: 08.07.2015 */
 
 if ( $filts1>-1 ) {
 	$restrict_by_field1=1;
@@ -20,15 +18,11 @@ if ( $filts2>-1 ) {
 $query="SELECT
  d.cow_id,
  d.day, d.month, d.year,
- d.milk_kg,
- d.milk_begin, d.milk_end,
- d.milk_time,
+ d.milk_kg, d.milk_begin, d.milk_end, d.milk_time,
  d.id_time, d.rep_time,
  d.manual, d.retries, d.stopped, d.exhaust,
- d.mast_4,
- d.tr, d.ov,
- d.bd_num,
- c.cow_num, c.nick, d.milk_sess, d.r";
+ d.mast_4, d.tr, d.ov,
+ d.bd_num, c.cow_num, c.nick, d.milk_sess, d.r";
 if ( $outsele_*1==-1 ) $query=$query.", c.id";
 else $query=$query.", ".$outsele_field;
 if ( $outsele_*1==-1 ) $query=$query."
@@ -44,6 +38,5 @@ if ( $filt_cowid*1>0 ) $query=$query." AND cow_id=$filt_cowid";
 if ( $bd_first*1>0 ) $query=$query." AND bd_num>=$bd_first AND bd_num<=$bd_last";
 $query=$query.$WHEREADV."
  ORDER BY d.code";
-$res=mysql_query( $query, $db );
-$error=mysql_errno();
+$res=mysql_query( $query, $db ); $error=$sqlerr=mysql_errno();
 ?>

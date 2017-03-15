@@ -1,4 +1,4 @@
-function Menu_HotKeys() { 
+function Menu_HotKeys() {
 //IE
 	if ( navigator.appName!="Netscape" ) {
 		if ( window.event.keyCode==49 ) {
@@ -21,7 +21,7 @@ function Menu_HotKeys() {
 					e.preventDefault();//to cancel standard browser hot keys
 				} else if ( e.ctrlKey && e.which==117 ) {//Ctrl+u
 					e.preventDefault();//to cancel standard browser hot keys
-				} else if ( e.which==49 ) {//Ctrl+1
+				} else if ( e.which==49 ) {
 					parent.w3.location.href='../reports/f__parl.php';
 					return true;
 				} else if ( e.which==50 ) {//Ctrl+2

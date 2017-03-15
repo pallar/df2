@@ -25,7 +25,7 @@ if ( $userCoo*1==0 ) {
 	if ( strlen( $_id )<10 ) $local_id=md5( uniqid( rand(), true ));
 	else $local_id=$_id;
 	CookieSetSs( "_id", "$local_id", 60*60*24*3650 );
-	include( "../dflib/f_tmpclr.php" );
+	include( "../dflib/f_zaptmp.php" );
 	include( "../dflib/f_zap.php" );
 	include( "../dflib/f_perget.php" );
 	$res=mysql_query( "SELECT language FROM $globals" ); $sqlerr=mysql_errno();
@@ -47,7 +47,7 @@ include( "../locales/$lang/f_00._$lang" );
 
 $dev_b=$dev_1st; $dev_e=$dev_b+$devs_onmnemo-1;
 
-MainMenu( $php_mm["_00_cap"], "mnemo", "" );
+MainMenu( $php_mm["_00_"], "mnemo", "" );
 
 include( $hFrm['0010'] );
 

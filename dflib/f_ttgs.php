@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_ttgs.php
 tags list
 c: 30.12.2011
-m: 11.11.2015 */
+m: 15.03.2017 */
 
 echo "
 <script language='JavaScript' src='../dflib/f_input.js'></script>
@@ -97,40 +97,36 @@ if ( $send_buf!="" ) {
 			}
 		}
 	}
-	Res_Draw( 2, "../".$hFrm['0500'], "", "", $php_mm_tip[0] );
+	Res_Draw( 2, "../".$hFrm["0500"], "", "", $php_mm_tip[0] );
 
 } else {
-	if ( $nocardsfilt!=1 ) {//dont show when in reports mode
-		echo "
+	if ( $nocardsfilt!=1 ) echo "
 <table width='100%'>
 <tr height='40px'>
 	<td style='padding:5px' width='150px'></td>
-	<td><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_cap"]."'></td>
+	<td><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
 	<td></td>
 </tr>
-</table>";
-	}
-	if ( $nocardsfilt!=1 ) echo "
+</table>
 <div style='height:38px; width:100%; overflow-y:scroll'>";
 	echo "
-<table cellspacing='1px' class='st2' style='width:100%'>
-<tr $cjust class='st_title2' style='height:28px'>";
-	if ( $nocardsfilt!=1 ) echo "
-	<td style='width:60px'>".$ged['Number'].$num_order."</td>";
-	else echo "
-	<td style='width:60px'>".$ged['Number'].$num_order."</td>";
-	echo "
-	<td>".$ged['TAG'].$tag_order."</td>";
+<table width='100%'>
+<thead id='rep_thead'>
+<tr $cjust style='height:28px'>
+	<th style='width:60px'>".$ged["Number"].$num_order."</th>
+	<th>".$ged["TAG"].$tag_order."</th>";
 	if ( $rfid_mode==3 ) echo "
-	<td style='width:60px'>Stall</td>";
+	<th style='width:60px'>Stall</th>";
 	echo "
 </tr>
-</table>";
+</thead>";
 	if ( $nocardsfilt!=1 ) echo "
+</table>
 </div>
-<div style='height:60%; width:100%; overflow-y:scroll'>";
+<div style='height:60%; width:100%; overflow-y:scroll'>
+<table width='100%'>";
 	echo "
-<table class='st2' style='width:100%'>";
+<tbody id='rep_tbody'>";
 	$query="SELECT
 	 cow_num,
 	 rfid_native, rfid_num, rfid_date, rfid_time, stall_num
@@ -145,8 +141,8 @@ if ( $send_buf!="" ) {
 		} else {
 			$el_col="red"; $cownum=$row[0];
 		}
-		RepTr();
 		echo "
+<tr>
 	<td id='hilight[$jj]' style='height:28px; width:60px'><input id='n$jj' maxlength='$n_len' name='n$jj' size='$n_len' style='background-color:white; border:none; color:$el_col; font:9pt Tahoma,sans-serif; width:100%; height:18px' type='text' value='$cownum' onfocus='int_keyp( \"n$jj\", 1, 999999, $n_len )' onclick='int_keyp( \"n$jj\", 1, 999999, $n_len )' onkeypress='int_keyp( \"n$jj\", 1, 999999, $n_len )'";
 		if ( $userCoo!=9 ) echo "onkeyup='Ttgs__cow_num__Update( \"$row[1]\", this.value )'>";
 		echo "</td>
@@ -161,13 +157,16 @@ if ( $send_buf!="" ) {
 		$j++;
 	}
 	echo "
-<tr $rjust class='st_title2' style='height:28px'>
+</tbody>
+<tfoot id='rep_tfoot'>
+<tr $rjust height='28px'>
 	<td style='width:60px'>".$j."&nbsp;</td>
-	<td></td>";
+	<td>&nbsp;</td>";
 	if ( $rfid_mode==3 ) echo "
 	<td style='width:60px'>&nbsp;</td>";
 	echo "
 </tr>
+</tfoot>
 </table>";
 	if ( $nocardsfilt!=1 ) echo "
 </div>";

@@ -26,6 +26,6 @@ function CookieSet( cname, cvalue ) {
 }
 </script>
 
-<body style='margin-left:0; margin-right:0; padding:0' onload='Mnemo_Reload();'>
+<body style='margin-left:0; margin-right:0; padding:0' onload='Mnemo_Reload()'>
 	<div id='f__1st__div' style='margin:0'></div>
 </body>

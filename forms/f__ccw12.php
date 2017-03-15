@@ -1,8 +1,8 @@
 <?php
 /* DF_2: forms/f__ccw12.php
 form: cow card 2-mol ([c]ard of [c]o[w][1]part[2]:Ukraine)
-created: 04.08.2009
-modified: 11.11.2015 */
+c: 04.08.2009
+m: 13.03.2017 */
 
 ob_start();//lock output to set cookies properly!
 
@@ -854,7 +854,7 @@ if ( $cwc_cancel!="" ) {
 //	$cow_id=CookieGet( "ccwi" )*1;
 	mysql_query( "DROP TABLE IF EXISTS $buf_cows" );
 	mysql_query( "DROP TABLE IF EXISTS $buf_oxes" );
-	Res_Draw( 3, $ret_url, "", $cw_c.":&nbsp;".$_13_card_no_changes_done_cap, $php_mm_tip[0] );
+	Res_Draw( 3, $ret_url, "", $cw_c.":&nbsp;".$_13_card_no_changes_done_, $php_mm_tip[0] );
 
 //save changes to buffer
 } else if ( $cwc_buf!="" ) {
@@ -2227,5 +2227,5 @@ echo "
 </form>";
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

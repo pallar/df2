@@ -1,21 +1,17 @@
 <?php
-/*
-DF_2: reports/f_e003mt.php
+/* DF_2: reports/f_e003mt.php
 report: dairy by table
-created: 14.03.2011
-modified: 21.07.2011
-*/
+c: 14.03.2011
+m: 13.03.2017 */
 
-$graph=$_GET[graph]*1;
-$title_=$_GET[title];
+$graph=$_GET["graph"]*1; $title_=$title=$_GET["title"];
 
-$restrict_field=$_GET[select_field];
+$restrict_field=$_GET["select_field"];
 
 $outsele__=$outsele_;//ERROR!!!
 $outsele_field__=$outsele_field_;//ERROR!!!
 
 include( "f_jfilt.php" );
-//include( "fhead.php" );
 
 if ( $title_==$ged['RR2102'] ) $title_next=$ged['RR2102-'];
 if ( $title_==$ged['RR2103'] ) $title_next=$ged['RR2103-'];
@@ -42,7 +38,7 @@ if ( $error==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
 	$cws_ns[$row[0]*1]=$cws_cnt;//not sorted
 }}
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo "
 Номер корови;Надій,кг;;;<br>";
 }
@@ -105,5 +101,5 @@ $num;$mcws1;;;<br>";
 	}
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

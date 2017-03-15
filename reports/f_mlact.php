@@ -1,24 +1,23 @@
 <?php
-/*
-DF_2: reports/f_mlact.php
+/* DF_2: reports/f_mlact.php
 report: total milk by lactation
-created: 09.06.2005
-modified: 23.07.2013
-*/
+c: 09.06.2005
+m: 15.03.2017 */
 
 ob_start();//lock output to set cookies properly!
+$noCSS=$_GET["noCSS"]*1;
 
 $skip_echo=0;//to skip output of results and not graph mode
-$graph=$_GET[graph]*1;
-$title_=$_GET[title];
 
-$lact_restr=$_GET[lact_restrict]*1;//lactation number
+$graph=$_GET["graph"]*1; $title_=$title=$_GET["title"];
+
+$lact_restr=$_GET["lact_restrict"]*1;//lactation number
 
 $dontuse_filt=1;//IMPORTANT!
 $dontuse_period=1;
 
 include( "f_jfilt.php" );
-include( "fhead.php" );
+include( "frhead.php" );
 
 $vl=0; $cows_cnt=0; $t_sec=0;
 
@@ -35,5 +34,5 @@ include( "f_mlactc.php" );
 
 include( "f_mlactz.php" );
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

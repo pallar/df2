@@ -1,4 +1,4 @@
-<?php
+, $contentCharset<?php
 /* DF_2: oper/f_o_mlk.php
 oper ----1 (101) [milking]
 c: 09.01.2006
@@ -109,10 +109,10 @@ function milksess_keyp( i_ ) {
 	}
 	if ( $varsession!=1 ) include_once( "../oper/f_oprwd.php" );
 	if ( $userCoo!=9 ) echo "
-<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_cap"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
+<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
 	if ( $div_hide!=1 ) include_once( "../oper/f_dt.php" );//page's date
 	else if ( $varsession!=1 & $userCoo!=9 ) echo "
-&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_cap"]."</a>";
+&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_"]."</a>";
 	$query="SELECT $cows.id, $cows.cow_num, $cows.nick, $groups.nick FROM $cows, $groups WHERE $groups.id=$cows.gr_id";
 	if ( $varsession!=1 ) { $query.=" ORDER BY gr_id, cow_num*1";} else $query.=" AND $cows.id=$cow_id";
 	$res=mysql_query( $query, $db );
@@ -124,7 +124,7 @@ function milksess_keyp( i_ ) {
 		$row=mysql_fetch_row( $res );
 		echo "
 	<tr class='st_title2' style='font-weight:bold; height:27px'>
-		<td colspan='17'>".$ged['Group'].":&nbsp;<font color='red'>".$row[3]."</font><br>".$ged['Number'].":&nbsp;<font color='red'>".$row[1]."</font><br>".$ged['Nick'].":&nbsp;<font color='red'>".StrCutLen( $row[2], 59 )."</font></td>
+		<td colspan='17'>".$ged['Group'].":&nbsp;<font color='red'>".$row[3]."</font><br>".$ged['Number'].":&nbsp;<font color='red'>".$row[1]."</font><br>".$ged['Nick'].":&nbsp;<font color='red'>".StrCutLen1( $row[2], 59, $contentCharset )."</font></td>
 	</tr>
 	<tr $cjust class='st_title2' style='font-weight:bold; height:27px'>";
 	} else echo "
@@ -169,8 +169,8 @@ function milksess_keyp( i_ ) {
 			GrTr();
 			if ( $div_hide!=1 ) echo "
 		<td $cjust width='$td1w'>".$j."</td>
-		<td $cjust title='".StrCutLen( $row[3], 59)."' width='$td3w'>".StrCutLen( $row[3], 5 )."</td>
-		<td $rjust title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen( $row[1], 9 ).$cownum_div1."</b></td>";
+		<td $cjust title='".StrCutLen1( $row[3], 59, $contentCharset )."' width='$td3w'>".StrCutLen1( $row[3], 5, $contentCharset )."</td>
+		<td $rjust title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen1( $row[1], 9, $contentCharset ).$cownum_div1."</b></td>";
 			echo "
 		<td height='22px' width='$td5w'><input id='kg".$i."' maxlength='4' name='arr_kg[".$i."]' size='1' style='$rw_style; height:100%' type='text' value='$old_kg' onclick='real_keyp( \"kg$i\", 0, 30, 4, 1 )' onfocus='real_keyp( \"kg$i\", 0, 30, 4, 1 )' onkeypress='real_keyp( \"kg$i\", 0, 30, 4, 1 )'></td>
 		<td width='$td9w'><input id='kg0".$i."' maxlength='4' name='arr_kg0[".$i."]' size='1' style='$rw_style; height:100%' type='text' value='$old_kg0' onclick='real_keyp( \"kg0$i\", 0, 15, 4, 1 )' onfocus='real_keyp( \"kg0$i\", 0, 15, 4, 1 )' onkeypress='real_keyp( \"kg0$i\", 0, 15, 4, 1 )'></td>

@@ -17,7 +17,7 @@ if ( $hide_menu==0 ) MainMenu( $php_mm["_00_todo_btn_tip"], "todo", "" );
 $stop_f_jfilt_include=1;//IMPORTANT!
 
 if ( $hide_menu==0 ) echo "
-<a href='$rep_url_?hide_menu=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_cap"]."</b></a>";
+<a href='$rep_url_?hide_menu=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_"]."</b></a>";
 
 include( "../".$hDir["reps"]."f_diary.php" );
 

@@ -1,12 +1,12 @@
 <?php
-/* DF_2: locales/en/f_chat._en
+/* DF: locales/en/f_chat._en
 chat english locale
 c: 08.11.2012
-m: 26.04.2015 */
+m: 14.08.2015 */
 
-$ged["chat_header"]="Chat - Internet-Farm";
-$ged["chat_info"]="Login <a href='../'>\"Internet-Farm\"</a>.";
-$ged["chat_nick"]="Your name";
+$ged["chat_header"]="Chat - ".$php_mm["_com_app_"];
+$ged["chat_info"]="To send message you should be logged in <a href='../'>\"".$php_mm["_com_app_"]."\"</a>.";
 $ged["chat_message"]="Your message";
+$ged["chat_nick"]="Your name";
 $ged["chat_send"]="Submit";
 ?>

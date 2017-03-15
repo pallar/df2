@@ -1,13 +1,11 @@
 <?php
-/*
-DF_2: reports/f_ccw1.php
+/* DF_2: reports/f_ccw1.php
 report: cow card 2-mol ([c]ard of [c]o[w][1]:Ukraine)
-created: 15.09.2009
-modified: 12.09.2014
-*/
+c: 15.09.2009
+m: 13.03.2017 */
 
-$cow_id=$_GET[cow_id];
-$ret0=$_GET[ret0];//link to return to previous page
+$cow_id=$_GET["cow_id"];
+$ret0=$_GET["ret0"];//link to return to previous page
 //TEMPORARY ALL URSs POINT TO PART1
 $idx_a=array( "0", "1", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2" );
 //$idx_a=array( "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" );

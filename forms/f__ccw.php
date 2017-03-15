@@ -25,10 +25,10 @@ if ( $rfid_readonly==1 ) $rfid_locked="onkeypress='return false'"; else $rfid_lo
 $default_breed_id=49;
 $random_key=$_GET["random_key"]*1;
 $cow_id=$_GET["cow_id"]*1;
-$cw_c=$_13_cwcard_cap;
+$cw_c=$_13_cwcard_;
 
 $sself="../".$hFrm["0520"];
-MainMenu( $cw_c."&nbsp;-&nbsp;". $php_mm['_com_app_cap'], "cards", "" );
+MainMenu( $cw_c."&nbsp;-&nbsp;". $php_mm['_com_app_'], "cards", "" );
 
 $chart_h=159; include_once( "../".$hDir['reps']."fgraph.php" );
 
@@ -119,7 +119,7 @@ $cwc_cancel=$_GET["cwc_cancel"]; $cwc_prep=$_GET["cwc_prep"];
 
 //discard changes & close card
 if ( $cwc_cancel!="" ) {
-	Res_Draw( 3, $ret_url, "", $cw_c.":&nbsp;".$_13_card_no_changes_done_cap, $php_mm_tip[0] );
+	Res_Draw( 3, $ret_url, "", $cw_c.":&nbsp;".$_13_card_no_changes_done_, $php_mm_tip[0] );
 
 //save changes & close card
 } else if ( $cwc_prep!="" & $userCoo!=9 ) {
@@ -155,20 +155,20 @@ if ( $cwc_cancel!="" ) {
 		$errmsg1=""; $prev_id1="";
 		$res=mysql_query( "SELECT $cows.id FROM $cows WHERE $cows.cow_num='$cow_num'", $db );
 		$row=mysql_fetch_row( $res ); mysql_free_result( $res ); $prev_id1=$row[0];
-		if ( trim( $prev_id1 )!="" ) $errmsg1=$_13_cw_such_num_busy_cap;
+		if ( trim( $prev_id1 )!="" ) $errmsg1=$_13_cw_such_num_busy_;
 		$errmsg2=""; $prev_id2="";
 		if ( strlen( $rfid_num )!=0 ) {
 			$res=mysql_query( "SELECT $cows.id FROM $cows WHERE $cows.rfid_num='$rfid_num'", $db );
 			$row=mysql_fetch_row( $res ); mysql_free_result( $res ); $prev_id2=$row[0];
 		}
-		if ( trim( $prev_id2 )!="" ) $errmsg2=$_13_cw_such_rfid_busy_cap;
+		if ( trim( $prev_id2 )!="" ) $errmsg2=$_13_cw_such_rfid_busy_;
 		if ( trim( $prev_id1 )!="" ) {
 			$userdata_invalid=1;
-			Res_Draw( 5, $sself."?cow_id=$prev_id1&ret0=05", "background:#ff0000", $errmsg1, $_13_pay_attention_cap );
+			Res_Draw( 5, $sself."?cow_id=$prev_id1&ret0=05", "background:#ff0000", $errmsg1, $_13_pay_attention_ );
 			return;
 		} else if ( trim( $prev_id2 )!="" ) {
 			$userdata_invalid=1;
-			Res_Draw( 5, $sself."?cow_id=$prev_id2&ret0=05", "background:#ff0000", $errmsg2, $_13_pay_attention_cap );
+			Res_Draw( 5, $sself."?cow_id=$prev_id2&ret0=05", "background:#ff0000", $errmsg2, $_13_pay_attention_ );
 			return;
 		}
 	}
@@ -206,9 +206,9 @@ if ( $cwc_cancel!="" ) {
 		 WHERE id='$cow_id'";
 		$upderr=Sql_query( $update_query );
 		if ( $upderr==0 )
-			Res_Draw( 3, $sself."?cow_id=$cow_id&ret0=05", "", $cw_c.":&nbsp;".$_13_card_changes_done_cap, $php_mm_tip[0] );
+			Res_Draw( 3, $sself."?cow_id=$cow_id&ret0=05", "", $cw_c.":&nbsp;".$_13_card_changes_done_, $php_mm_tip[0] );
 		else
-			Res_Draw( 5, $sself."?cow_id=$cow_id&ret0=05", "", $cw_c.":&nbsp;".$_13_card_update_error_cap, $php_mm_tip[0] );
+			Res_Draw( 5, $sself."?cow_id=$cow_id&ret0=05", "", $cw_c.":&nbsp;".$_13_card_update_error_, $php_mm_tip[0] );
 	}
 //for current mom [BEGIN]
 	$last_abrt="0000-00-00";
@@ -434,17 +434,17 @@ function Ccwsect_draw( text, i, j ) {
 			<table>
 			<tr align='center'>
 				<td style='color:#ff0000' width='90%'>";
-	if ( $cow_id==1 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_protected_cap."</b>";
+	if ( $cow_id==1 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_protected_."</b>";
 	else {
-		if ( $userCoo==9 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_anonymous_user_cap."</b>";
-		else echo "<input class='btn gradient_0f0' name='cwc_prep' style='width:100%' type='submit' value='".$php_mm['_com_accept_btn_cap']."'>";
+		if ( $userCoo==9 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_anonymous_user_."</b>";
+		else echo "<input class='btn gradient_0f0' name='cwc_prep' style='width:100%' type='submit' value='".$php_mm['_com_accept_btn_']."'>";
 	}
 	echo "</td>
 				<td width='10%'><input class='btn gradient_f00' name='cwc_cancel' style='width:100%' type='submit' value='X'></td>";
 	if ( $userCoo!=9 ) {
 		srand(( double ) microtime()*1000000 );
 		$rand_key=rand( 1000000, 2000000 );
-		$rand_key="<a href='../".$hFrm['0520']."?cow_id=-2&ret0=05&random_key=$rand_key'><u>".$php_mm["_com_INSE_lnk_cap"]."</u></a>";
+		$rand_key="<a href='../".$hFrm['0520']."?cow_id=-2&ret0=05&random_key=$rand_key'><u>".$php_mm["_com_INSE_lnk_"]."</u></a>";
 	} else {
 		$rand_key="";
 	}
@@ -453,7 +453,7 @@ function Ccwsect_draw( text, i, j ) {
 			</table>
 		</td>
 		<td $cjust width='30%'>
-			<b>".StrCutLen( $nick, 15 )."</b>&nbsp;(".$ged['No.']."&nbsp;<b>".$cow_num."</b>)&nbsp;&nbsp;&nbsp;&nbsp;".$rand_key."
+			<b>".StrCutLen1( $nick, 15, $contentCharset )."</b>&nbsp;(".$ged['No.']."&nbsp;<b>".$cow_num."</b>)&nbsp;&nbsp;&nbsp;&nbsp;".$rand_key."
 		</td>
 	</tr>
 	</table>
@@ -464,7 +464,7 @@ function Ccwsect_draw( text, i, j ) {
 			<tr $view_class>
 				<td width='25%'>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
 				<td width='25%'><input class='txt txt1z' maxlength='30' name='national_descr' type='text' value='$national_descr'></td>
-				<td width='25%'>&#8226;&nbsp;".$_13_card_birthday_date_cap."</td>
+				<td width='25%'>&#8226;&nbsp;".$_13_card_birthday_date_."</td>
 				<td width='25%' $bad_bdate><a onclick='cal_u1( event, 0, 27 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt txt1z' id='date10' name='dates_[0]' value='$b_dmY' onkeypress='return false' onmouseover='style.cursor=\"pointer\"'></a></td>
 			</tr>
 			<tr $view_class>
@@ -474,7 +474,7 @@ function Ccwsect_draw( text, i, j ) {
 				<td><input class='txt txt1z' maxlength='100' name='nick' type='text' value='$nick'></td>
 			</tr>
 			<tr $view_class>
-				<td>&#8226;&nbsp;".$_13_card_birthday_num_cap."</td>
+				<td>&#8226;&nbsp;".$_13_card_birthday_num_."</td>
 				<td><input class='txt txt1z' maxlength='30' name='b_num' type='text' value='$b_num'></td>
 				<td>&#8226;&nbsp;RFID</td>
 				<td><input class='txt txt1z' maxlength='30' name='rfid_num' type='text' value='$rfid_num' $rfid_locked></td>
@@ -603,7 +603,7 @@ function Ccwsect_draw( text, i, j ) {
 	echo "</select></td>
 			</tr>
 			<tr $view_class>
-				<td>&#8226;&nbsp;".$_13_card_diff_owner_cap."</td>
+				<td>&#8226;&nbsp;".$_13_card_diff_owner_."</td>
 				<td><label><input class='z_chk' type='checkbox'></label>
 			</tr>
 			<tr $view_class>
@@ -640,12 +640,12 @@ function Ccwsect_draw( text, i, j ) {
 		<td width='49%'>
 			<table cellspacing='1' class='st3'>
 			<tr $edit_class>
-				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_today_cap."&nbsp;".$_13_cw_kg_cap.":</b></td>
-				<td width='5%'>".$_13_cw_milk_cap.":&nbsp;<b>$minus_kg[0]</b></td>
-				<td width='6%'>".$_13_cw_milk_interval_cap.":&nbsp;<b>$minus_mtime[0]</b></td>
-				<td width='13%'>".$_13_cw_min_intens_cap.":&nbsp;<b>$milkm_min[0]</b></td>
-				<td width='13%'>".$_13_cw_avg_intens_cap.":&nbsp;<b>$milkm_aver[0]</b></td>
-				<td width='13%'>".$_13_cw_max_intens_cap.":&nbsp;<b>$milkm_max[0]</b></td>
+				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_today_."&nbsp;".$_13_cw_kg_.":</b></td>
+				<td width='5%'>".$_13_cw_milk_.":&nbsp;<b>$minus_kg[0]</b></td>
+				<td width='6%'>".$_13_cw_milk_interval_.":&nbsp;<b>$minus_mtime[0]</b></td>
+				<td width='13%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_min[0]</b></td>
+				<td width='13%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_aver[0]</b></td>
+				<td width='13%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_max[0]</b></td>
 			</tr>
 			</table>
 		</td>
@@ -654,12 +654,12 @@ function Ccwsect_draw( text, i, j ) {
 		<td width='49%'>
 			<table cellspacing='1' class='st3'>
 			<tr $edit_class>
-				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_yesterday_cap."&nbsp;".$_13_cw_kg_cap.":</b></td>
-				<td width='5%'>".$_13_cw_milk_cap.":&nbsp;<b>$minus_kg[1]</b></td>
-				<td width='6%'>".$_13_cw_milk_interval_cap.":&nbsp;<b>$minus_mtime[1]</b></td>
-				<td width='13%'>".$_13_cw_min_intens_cap.":&nbsp;<b>$milkm_min[1]</b></td>
-				<td width='13%'>".$_13_cw_avg_intens_cap.":&nbsp;<b>$milkm_aver[1]</b></td>
-				<td width='13%'>".$_13_cw_max_intens_cap.":&nbsp;<b>$milkm_max[1]</b></td>
+				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_yesterday_."&nbsp;".$_13_cw_kg_.":</b></td>
+				<td width='5%'>".$_13_cw_milk_.":&nbsp;<b>$minus_kg[1]</b></td>
+				<td width='6%'>".$_13_cw_milk_interval_.":&nbsp;<b>$minus_mtime[1]</b></td>
+				<td width='13%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_min[1]</b></td>
+				<td width='13%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_aver[1]</b></td>
+				<td width='13%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_max[1]</b></td>
 			</tr>
 			</table>
 		</td>
@@ -668,35 +668,35 @@ function Ccwsect_draw( text, i, j ) {
 	<table id='ccw_table41' style='$ccw4_disp'><tr height='3'><td></td></tr></table>
 	<table cellspacing='1' class='st3' id='ccw_table42' style='$ccw4_disp'>
 	<tr>
-		<td colspan='8'><b>".$_13_cw_week_cap."&nbsp;".$_13_cw_kg_cap.":</b></td>
+		<td colspan='8'><b>".$_13_cw_week_."&nbsp;".$_13_cw_kg_.":</b></td>
 	</tr>
 	<tr $edit_class>
-		<td width='10%'>".$_13_cw_today_cap.":&nbsp;<b>$minus_kg[0]</b></td>
-		<td width='10%'>".$_13_cw_yesterday_cap.":&nbsp;<b>$minus_kg[1]</b></td>
-		<td width='10%'>".$_13_cw_week_3_days_ago_cap.":&nbsp;<b>$minus_kg[2]</b></td>
-		<td width='10%'>".$_13_cw_week_4_days_ago_cap.":&nbsp;<b>$minus_kg[3]</b></td>
-		<td width='10%'>".$_13_cw_week_5_days_ago_cap.":&nbsp;<b>$minus_kg[4]</b></td>
-		<td width='10%'>".$_13_cw_week_6_days_ago_cap.":&nbsp;<b>$minus_kg[5]</b></td>
-		<td width='10%'>".$_13_cw_week_7_days_ago_cap.":&nbsp;<b>$minus_kg[6]</b></td>
-		<td width='10%'>".$_13_cw_week_tot_cap.":&nbsp;<b>$minus_kg[7]</b></td>
+		<td width='10%'>".$_13_cw_today_.":&nbsp;<b>$minus_kg[0]</b></td>
+		<td width='10%'>".$_13_cw_yesterday_.":&nbsp;<b>$minus_kg[1]</b></td>
+		<td width='10%'>".$_13_cw_week_3_days_ago_.":&nbsp;<b>$minus_kg[2]</b></td>
+		<td width='10%'>".$_13_cw_week_4_days_ago_.":&nbsp;<b>$minus_kg[3]</b></td>
+		<td width='10%'>".$_13_cw_week_5_days_ago_.":&nbsp;<b>$minus_kg[4]</b></td>
+		<td width='10%'>".$_13_cw_week_6_days_ago_.":&nbsp;<b>$minus_kg[5]</b></td>
+		<td width='10%'>".$_13_cw_week_7_days_ago_.":&nbsp;<b>$minus_kg[6]</b></td>
+		<td width='10%'>".$_13_cw_week_tot_.":&nbsp;<b>$minus_kg[7]</b></td>
 	</tr>
 	</table>
 	<table id='ccw_table43' style='$ccw4_disp'><tr height='3'><td></td></tr></table>
 	<table cellspacing='1' class='st3'>
 	<tr class='cards_title1'>
-		<td width='10%' title='".$_13_cw_lact_cap."&nbsp;/&nbsp;".$ged['Lact_Days']."'>".$_13_cw_lact_cap."&nbsp;".$_13_cw_days_cap.":&nbsp;<b>$lact_days__</b>&nbsp;/&nbsp;<b>$full_lact_days__</b></td>
-		<td width='10%'>".$_13_cw_lact_tot_milk_cap.":&nbsp;<b>$milk_tot</b></td>
-		<td width='10%'>".$_13_cw_lact_min_milk_cap.":&nbsp;<b>$milk_min</b></td>
-		<td width='10%'>".$_13_cw_lact_avg_milk_cap.":&nbsp;<b>$milk_aver</b></td>
-		<td width='10%'>".$_13_cw_lact_max_milk_cap.":&nbsp;<b>$milk_max</b></td>
-		<td width='10%'>".$_13_cw_min_intens_cap.":&nbsp;<b>$milkm_mina</b></td>
-		<td width='10%'>".$_13_cw_avg_intens_cap.":&nbsp;<b>$milkm_avera</b></td>
-		<td width='10%'>".$_13_cw_max_intens_cap.":&nbsp;<b>$milkm_maxa</b></td>
+		<td width='10%' title='".$_13_cw_lact_."&nbsp;/&nbsp;".$ged['Lact_Days']."'>".$_13_cw_lact_."&nbsp;".$_13_cw_days_.":&nbsp;<b>$lact_days__</b>&nbsp;/&nbsp;<b>$full_lact_days__</b></td>
+		<td width='10%'>".$_13_cw_lact_tot_milk_.":&nbsp;<b>$milk_tot</b></td>
+		<td width='10%'>".$_13_cw_lact_min_milk_.":&nbsp;<b>$milk_min</b></td>
+		<td width='10%'>".$_13_cw_lact_avg_milk_.":&nbsp;<b>$milk_aver</b></td>
+		<td width='10%'>".$_13_cw_lact_max_milk_.":&nbsp;<b>$milk_max</b></td>
+		<td width='10%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_mina</b></td>
+		<td width='10%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_avera</b></td>
+		<td width='10%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_maxa</b></td>
 	</tr>
 	</table>";
 */
 	echo "
-	<div class='mk' id='ccw_table80' style='border-color:#66a000 #66a000 #66a000 #66a000; border-style:solid; border-width:0px; $ccw8_disp font-size:12; height:430px; line-height:16px; margin:0 0 0 0; overflow-x:hidden; overflow-y:auto; text-align:center;' onmouseover='in_menu=true'><br>";
+	<div class='mk' id='ccw_table80' style='border-color:#66a000 #66a000 #66a000 #66a000; border-style:solid; border-width:0; $ccw8_disp font-size:12; height:430px; line-height:16px; margin:0 0 0 0; overflow-x:hidden; overflow-y:auto; text-align:center;' onmouseover='in_menu=true'><br>";
 	$outsele_cowid=$cow_id;
 	$dbt_ext="_o";
 	$outsele_=-1; $outsele_table=-1; $outsele_field=-1;

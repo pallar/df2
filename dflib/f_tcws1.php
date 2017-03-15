@@ -24,10 +24,10 @@ $res=mysql_query( "SELECT
  ORDER BY $cows_order_", $db );
 while ( $row=mysql_fetch_row( $res )) {
 	RepTr();
-	$cownick=$row[2]; $cownick_sh=StrCutLen( $cownick, 13 );
+	$cownick=$row[2]; $cownick_sh=StrCutLen1( $cownick, 13, $contentCharset );
 	if ( $cownick>$cownick_sh ) $cownick_title=" title='\"$cownick\"'";
 	else $cownick_title=" ";
-	$grnick=$row[3]; $grnick_sh=StrCutLen( $grnick, 7 );
+	$grnick=$row[3]; $grnick_sh=StrCutLen1( $grnick, 7, $contentCharset );
 	if ( $grnick>$grnick_sh ) $grnick_title=" title='\"$grnick\"'";
 	else $grnick_title=" ";
 	if ( $cow_id*1==$row[0]*1 ) $hilight="style='background-color:#ffff00'"; else $hilight="";

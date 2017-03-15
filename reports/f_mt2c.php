@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f_mt2c.php
+/* DF_2: reports/f_mt2c.php
 math: extracting by table, total for 7(8) days (AVIDA)
-created: 25.12.2005
-modified: 19.07.2013
-*/
+c: 25.12.2005
+m: 08.07.2015 */
 
 //total by day
 function Total_ByIdAndDate( $r, $m, $mc, $dc ) {
@@ -33,8 +31,8 @@ while ( $yc<=$yl+1 ) {
 	$dbt=Int2StrZ( $yc, 4 ).Int2StrZ( $mc, 2 )."_m";
 	$yc1=$yc*10000; $mc1=$mc*100;
 	if ( $yc1+$mc1<=$yl1+$ml1 ) {
-		include( "f_jselm2.php" );//DONT TOUCH THIS INCLUDE
-		if ( $error==0 ) { while ( $row=mysql_fetch_row( $res )) {//cut errors
+		include( "f_jselm2.php" );//DONT TOUCH THIS!
+		if ( $sqlerr<1 ) { while ( $row=mysql_fetch_row( $res )) {//cut errors
 			$dc=$row[1]*1; $odt=$yc1+$mc1+$dc;//operation's date
 			if ( $odt<$repbeg | $odt>$repend );
 			else {//operation's in period, thats calc
@@ -69,14 +67,12 @@ while ( $yc<=$yl+1 ) {
 						$mrow_beg[$r]=$mdt.", ".$mbeg."..".$mend;
 						$mrow_end[$r]=$mrow_beg[$r];
 					} else $mrow_end[$r]=$mdt.", ".$mbeg."..".$mend;
-//device & conductivity
-					$dev="#".$row[17];
+					$dev="#".$row[17];//device & conductivity
 					if ( $row[21]==0 | $row[21]>=32767 ) $cond=""; else $cond=round( 1000/$row[21], 2 ); $condrow[$r][$idx.$row[20]]=$condrow[$r][$idx.$row[20]]."&nbsp;<br><b>".$cond."</b>&nbsp;/&nbsp;".$dev;
-//
 				}
 			}
-		} mysql_free_result( $res );}
+		} mysql_free_result( $res ); }
 	} else return;
-	if ( $mc<12 ) $mc++; else { $mc=1; $yc++;}
+	if ( $mc<12 ) $mc++; else { $mc=1; $yc++; }
 }
 ?>

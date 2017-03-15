@@ -1,26 +1,24 @@
 <?php
-/*
-DF_2: reports/f_los.php
+/* DF_2: reports/f_los.php
 report: oxes
-created: 05.05.2005
-modified: 23.07.2013
-*/
+c: 05.05.2005
+m: 15.03.2017 */
 
 ob_start();//lock output to set cookies properly!
+$noCSS=$_GET["noCSS"]*1;
+
+$title_=$title=$_GET["title"];
+if ( strlen( $title_ )<=1 ) $title_="";
 
 $dontuse_period=1;
 $outsele_=-1; $outsele_table=-1; $outsele_field=-1;
 
-$title_=$_GET[title];
-if ( strlen( $title_ )<=1 ) $title_="";
-
 include( "f_jfilt.php" );
-include( "fhead.php" );
 
-//Dbase_connect(); Dbase_select();
+include( "frhead.php" );
 
 $nocardsfilt=1; $nocardsctrls=1;//dont show cards filter, ctrls
 include( "../dflib/f_tos.php" );
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

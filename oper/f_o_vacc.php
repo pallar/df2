@@ -75,9 +75,9 @@ if ( $add_oper!="" ) {
 	if ( $div_hide!=1 ) $query.=" ORDER BY gr_id, cow_num*1"; else $query.=" AND $cows.id=$cow_id";
 	$res=mysql_query( $query, $db );
 	if ( $userCoo!=9 ) echo "
-<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_cap"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
+<input class='btn gradient_0f0 btn_h0' id='add_oper' name='add_oper' style='width:200px' type='$add_oper_type' value='".$php_mm["_com_forward_btn_"]."...' title='".$add_oper_tip."&nbsp;(".$opername[$opertype*1].")...'>&nbsp;";
 	if ( $div_hide!=1 ) include_once( "../oper/f_dt.php" );//page's date
-	else if ( $varsession!=1 & $userCoo!=9 ) echo "&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_cap"]."</a>";
+	else if ( $varsession!=1 & $userCoo!=9 ) echo "&nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_"]."</a>";
 	if ( $div_hide!=1 ) echo "
 
 <div style='height:59px; $thead_style'>"; else if ( $nosession==1 ) echo "<br><br>";
@@ -94,7 +94,7 @@ if ( $add_oper!="" ) {
 	} else {
 		$row=mysql_fetch_row( $res );
 		echo "
-		<td $ljust colspan='3'><font color='#0'>".$ged['Group'].":&nbsp;</font><font color='#aaa'>".$row[3]."</font><br><font color='#0'>".$ged['Number'].":&nbsp;</font><font color='#aaa'>".$row[1]."</font><br><font color='#0'>".$ged['Nick'].":&nbsp;</font><font color='#aaa'>".StrCutLen( $row[2], 59 )."</font></td>
+		<td $ljust colspan='3'><font color='#0'>".$ged['Group'].":&nbsp;</font><font color='#aaa'>".$row[3]."</font><br><font color='#0'>".$ged['Number'].":&nbsp;</font><font color='#aaa'>".$row[1]."</font><br><font color='#0'>".$ged['Nick'].":&nbsp;</font><font color='#aaa'>".StrCutLen1( $row[2], 59, $contentCharset )."</font></td>
 	</tr>
 	<tr $cjust class='st_title2' style='height:27px'>";
 		$rowspan_="";
@@ -121,9 +121,9 @@ if ( $add_oper!="" ) {
 			GrTr();
 			if ( $div_hide!=1 ) echo "
 		<td $cjust rowspan='2' width='$td1w'>".$j."</td>
-		<td $cjust height='22px' rowspan='2' title='".StrCutLen( $row[3], 59)."' width='$td2w'>".StrCutLen( $row[3], 7 )."</td>
-		<td $rjust rowspan='2' title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen( $row[1], 9 ).$cownum_div1."</b></td>
-		<td $cjust rowspan='2' title='".StrCutLen( $row[2], 59 ) ."' width='$td4w'>".StrCutLen( $row[2], 11 )."</td>";
+		<td $cjust height='22px' rowspan='2' title='".StrCutLen1( $row[3], 59, $contentCharset )."' width='$td2w'>".StrCutLen1( $row[3], 7, $contentCharset )."</td>
+		<td $rjust rowspan='2' title='".$cownum_div.$row[1].$cownum_div1."' width='$td3w'><b>".$cownum_div.StrCutLen1( $row[1], 9, $contentCharset ).$cownum_div1."</b></td>
+		<td $cjust rowspan='2' title='".StrCutLen1( $row[2], 59, $contentCharset ) ."' width='$td4w'>".StrCutLen1( $row[2], 11, $contentCharset )."</td>";
 			if ( $varsession!=1 ) echo "
 		<td width='$td5w'><input style='$rr_style; height:18px' type='text' value='$vc_name' onkeypress='return false'></td>
 		<td width='$tddw'><input style='$rr_style; height:18px' type='text' value='$co' onkeypress='return false'></td>

@@ -1,8 +1,8 @@
 <?php
-/* DF_2: locales/en/f_devs._en
+/* DF: locales/en/f_devs._en
 devices english locale
 c: 25.12.2005
-m: 26.04.2015 */
+m: 14.08.2015 */
 
 $php_m[760]="?";
 $php_m[761]="washing";//s

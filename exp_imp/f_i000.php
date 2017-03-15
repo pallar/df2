@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: exp_imp/f_i000.php
+/* DF_2: exp_imp/f_i000.php
 import: all data from DF_1 '2009.08.01' export format
-created: 14.03.2011
-modified: 05.09.2011
-*/
+c: 14.03.2011
+m: 13.03.2017 */
 
 //import DairyF-1 SQL data from file
 function DairyF1_SQL_Data__Import( $db, $fname, $fcp, $fcp_iconv, $fcp_recode, $ext, $t_errs ) {

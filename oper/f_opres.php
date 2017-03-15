@@ -37,7 +37,7 @@ echo "
 	</td>
 </tr>
 </table><br>
-<input class='btn gradient_0f0 btn_h0' style='width:200px' type='button' value='".$php_mm["_com_forward_btn_cap"]."' onclick='window.location.href=\"$ret_url\"'><br><br>";
+<input class='btn gradient_0f0 btn_h0' style='width:200px' type='button' value='".$php_mm["_com_forward_btn_"]."' onclick='window.location.href=\"$ret_url\"'><br><br>";
 
 $opertype=$_GET["opertype"]*1;
 if ( $opertype>1 ) $db_ext="_o";
@@ -84,10 +84,10 @@ if ( $dbt_ext=="_o" ) include( "../".$hDir['reps']."f_jselo.php" ); else include
 if ( $error==0 ) while ( $row=mysql_fetch_row( $res )) {
 	RepTr();
 	if ( $dbt_ext=="_o" ) $oper_id=$row[18]*1; else $oper_id=1;
-	$nick1=StrCutLen( $row[5], 59 );
+	$nick1=StrCutLen1( $row[5], 59, $contentCharset );
 	if ( $coo!=-1 ) {
 		include( "../".$hDir['reps']."f_odecod.php" );
-		$desc1=StrCutLen( $descr, 110 );
+		$desc1=StrCutLen1( $descr, 110, $contentCharset );
 		echo "
 	<td rowspan='$rowspan_' $cjust>".$row[1].".".$row[2].".".$row[3]."</td>
 	<td $cjust>".Date_FromDb2Scr( $row[21], "." )."<br>".$row[24]."</td>
@@ -98,8 +98,8 @@ if ( $error==0 ) while ( $row=mysql_fetch_row( $res )) {
 		echo "
 	<td colspan='3'>".$descr."</td>";
 		if ( $dbt_ext=="_o" ) {
-			$comm1=StrCutLen( $row[17], 110 );
-//			$comm1=PhraseCarry1( $row[17], "<br>", 50, $content_charset );
+			$comm1=StrCutLen1( $row[17], 110, $contentCharset );
+//			$comm1=PhraseCarry1( $row[17], "<br>", 50, $contentCharset );
 			echo "
 </tr>";
 		RepTr();

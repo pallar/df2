@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: reports/f__jfilt.php
+/* DF_2: reports/f__jfilt.php
 report: set input filter for any report
-created: 24.10.2007
-modified: 02.06.2014
-*/
+c: 24.10.2007
+m: 02.06.2014 */
 
 $j=1;
 for ( $i=1; $i<16; $i++ ) {
@@ -47,8 +45,8 @@ $_noovul=$boolean[$_noovul_restrict].$_onclick[15];
 echo "
 <table width='100%'>
 <tr style='height:25px'>
-	<td>&nbsp;".$php_mm["_11_cap"];
-if ( $btnToPrn ) echo "<input class='btn gradient_0f0' id='refresh' style='width:121px' type='submit' value='".$php_mm["_com_accept_btn_cap"]."' onclick='do_reload()'>";
+	<td>&nbsp;".$php_mm["_11_"];
+if ( $btnToPrn ) echo "<input class='btn gradient_0f0' id='refresh' style='width:121px' type='submit' value='".$php_mm["_com_accept_btn_"]."' onclick='do_reload()'>";
 echo "</td>
 </tr>
 <tr>";
@@ -59,31 +57,19 @@ else echo "
 echo "
 		<table width='100%'>
 		<tr style='height:25px'>
-			<td colspan='3'><font color='#009955'>&nbsp;".$php_mm["_11_gr1_cap"]."</font></td>
+			<td colspan='3'><font color='#009955'>&nbsp;".$php_mm["_11_gr1_"]."</font></td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_10 id='_10'>&nbsp;".$php_mm["_com_s10_cap"]."
-			</td>
-			<td>
-				<input $_11 id='_11'>&nbsp;".$php_mm["_com_s11_cap"]."
-			</td>
+			<td width='50%'><input $_10 id='_10'>&nbsp;".$php_mm["_com_s10_"]."</td>
+			<td><input $_11 id='_11'>&nbsp;".$php_mm["_com_s11_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_20 id='_20'>&nbsp;".$php_mm["_com_s20_cap"]."
-			</td>
-			<td>
-				<input $_21 id='_21'>&nbsp;".$php_mm["_com_s21_cap"]."
-			</td>
+			<td width='50%'><input $_20 id='_20'>&nbsp;".$php_mm["_com_s20_"]."</td>
+			<td><input $_21 id='_21'>&nbsp;".$php_mm["_com_s21_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_30 id='_30'>&nbsp;".$php_mm["_com_s30_cap"]."
-			</td>
-			<td>
-				<input $_31 id='_31'>&nbsp;".$php_mm["_com_s31_cap"]."
-			</td>
+			<td width='50%'><input $_30 id='_30'>&nbsp;".$php_mm["_com_s30_"]."</td>
+			<td><input $_31 id='_31'>&nbsp;".$php_mm["_com_s31_"]."</td>
 		</tr>
 		</table>";
 if ( $f__jfilt__mode==0 ) echo "
@@ -93,22 +79,16 @@ if ( $f__jfilt__mode==0 ) echo "
 echo "
 		<table width='100%'>
 		<tr style='height:25px'>
-			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr2_cap"]."</font></td>
+			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr2_"]."</font></td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='100%'>
-				<input $_knowntag id='_knowntag'>&nbsp;".$php_mm["_com_known_tag_cap"]."
-			</td>
+			<td width='100%'><input $_knowntag id='_knowntag'>&nbsp;".$php_mm["_com_known_tag_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='100%'>
-				<input $_unknowntag id='_unknowntag'>&nbsp;".$php_mm["_com_unknown_tag_cap"]."
-			</td>
+			<td width='100%'><input $_unknowntag id='_unknowntag'>&nbsp;".$php_mm["_com_unknown_tag_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='100%'>
-				<input $_notag id='_notag'>&nbsp;".$php_mm["_com_wo_tag_cap"]."
-			</td>
+			<td width='100%'><input $_notag id='_notag'>&nbsp;".$php_mm["_com_wo_tag_"]."</td>
 		</tr>
 		</table>";
 if ( $f__jfilt__mode==0 ) echo "
@@ -118,31 +98,19 @@ if ( $f__jfilt__mode==0 ) echo "
 echo "
 		<table width='100%'>
 		<tr style='height:25px'>
-			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr3_cap"]."</font></td>
+			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr3_"]."</font></td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_mast id='_mast'>&nbsp;".$php_mm["_com_with_mastitus_cap"]."
-			</td>
-			<td>
-				<input $_nomast id='_nomast'>&nbsp;".$php_mm["_com_wo_mastitus_cap"]."
-			</td>
+			<td width='50%'><input $_mast id='_mast'>&nbsp;".$php_mm["_com_with_mastitus_"]."</td>
+			<td><input $_nomast id='_nomast'>&nbsp;".$php_mm["_com_wo_mastitus_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_trau id='_trau'>&nbsp;".$php_mm["_com_with_trauma_cap"]."
-			</td>
-			<td>
-				<input $_notrau id='_notrau'>&nbsp;".$php_mm["_com_wo_trauma_cap"]."
-			</td>
+			<td width='50%'><input $_trau id='_trau'>&nbsp;".$php_mm["_com_with_trauma_"]."</td>
+			<td><input $_notrau id='_notrau'>&nbsp;".$php_mm["_com_wo_trauma_"]."</td>
 		</tr>
 		<tr style='height:25px'>
-			<td width='50%'>
-				<input $_ovul id='_ovul'>&nbsp;".$php_mm["_com_wanted_ox_cap"]."
-			</td>
-			<td>
-				<input $_noovul id='_noovul'>&nbsp;".$php_mm["_com_not_wanted_ox_cap"]."
-			</td>
+			<td width='50%'><input $_ovul id='_ovul'>&nbsp;".$php_mm["_com_wanted_ox_"]."</td>
+			<td><input $_noovul id='_noovul'>&nbsp;".$php_mm["_com_not_wanted_ox_"]."</td>
 		</tr>
 		</table>";
 if ( $f__jfilt__mode==0 ) echo "
@@ -157,7 +125,7 @@ else echo "
 echo "
 		<table width='100%'>
 		<tr style='height:25px'>
-			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr4_cap"]."</font></td>
+			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr4_"]."</font></td>
 		</tr>
 		<tr style='height:25px'>
 			<td colspan='2'>";
@@ -173,7 +141,7 @@ if ( $f__jfilt__mode!=0 ) echo "
 		<table width='100%'>";
 echo "
 		<tr style='height:25px'>
-			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr5_cap"]."</font></td>
+			<td colspan='2'><font color='#009955'>&nbsp;".$php_mm["_11_gr5_"]."</font></td>
 		</tr>
 		<tr style='height:25px'>
 			<td colspan='2'>

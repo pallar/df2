@@ -30,20 +30,20 @@ $cwl_coo=$_GET["url_mode"];
 $cwl_id=$_GET["url_id"];
 switch( $cwl_coo ) {
 	case 'cw_b':
-		$cwl_c=$_13_brcard_cap; $cwl_t=$breeds;
+		$cwl_c=$_13_brcard_; $cwl_t=$breeds;
 		break;
 	case 'cw_g':
-		$cwl_c=$_13_grcard_cap; $cwl_t=$groups;
+		$cwl_c=$_13_grcard_; $cwl_t=$groups;
 		break;
 	case 'cw_l':
-		$cwl_c=$_13_ltcard_cap; $cwl_t=$lots;
+		$cwl_c=$_13_ltcard_; $cwl_t=$lots;
 		break;
 	case 'cw_s':
-		$cwl_c=$_13_sgcard_cap; $cwl_t=$subgrs;
+		$cwl_c=$_13_sgcard_; $cwl_t=$subgrs;
 		break;
 }
 
-MainMenu( $cwl_c."&nbsp;-&nbsp;".$php_mm["_com_app_cap"], "cards", "" );
+MainMenu( $cwl_c."&nbsp;-&nbsp;".$php_mm["_com_app_"], "cards", "" );
 
 function OldData() {
 	global $ret_url, $cwl_c, $cwl_t, $cwl_id, $prev_nat, $prev_num, $prev_nic, $prev_co_, $prev_cv1, $prev_cv2;
@@ -64,7 +64,7 @@ $cgr_cancel=$_GET["cgr_cancel"]; $cgr_save=$_GET["cgr_save"];
 //discard changes & close
 if ( $cgr_cancel!="" ) {
 	OldData();
-	Res_Draw( 3, $ret_url, "", $cwl_c.":&nbsp;".$_13_card_no_changes_done_cap, $php_mm_tip[0] );
+	Res_Draw( 3, $ret_url, "", $cwl_c.":&nbsp;".$_13_card_no_changes_done_, $php_mm_tip[0] );
 
 //save changes & close
 } else if ( $cgr_save!="" & $userCoo*1!=9 ) {
@@ -98,9 +98,9 @@ if ( $cgr_cancel!="" ) {
 		 modif_date='$modif_Ymd', modif_time='$modif_His'
 		 WHERE id='$cwl_id'";
  		mysql_query( $query, $db );
-		$exit_msg1=$cwl_c.":&nbsp;".$_13_card_changes_done_cap;
+		$exit_msg1=$cwl_c.":&nbsp;".$_13_card_changes_done_;
 	} else
-		$exit_msg1=$cwl_c.":&nbsp;".$_13_card_no_changes_by_user_cap;
+		$exit_msg1=$cwl_c.":&nbsp;".$_13_card_no_changes_by_user_;
 	Res_Draw( 3, $ret_url, "", $exit_msg1, $php_mm_tip[0] );
 
 //init script
@@ -133,12 +133,12 @@ if ( $cgr_cancel!="" ) {
 <form name='df2__$cwl_mode' method='get' action=".$cwl_phpself.">";
 	if ( $cwl_id==1 | ( $cwl_locked*1==5230 & $userCoo*1>2 )) echo "
 <meta content='3;url=$ret_url' http-equiv='refresh'>
-<div class='zag1' style='color:#ff0000'><h3>".$cwl_c.":&nbsp;".$_13_card_protected_cap."</h3></div><div class='zag1'>".$php_mm_tip[0]."</div>";
+<div class='zag1' style='color:#ff0000'><h3>".$cwl_c.":&nbsp;".$_13_card_protected_."</h3></div><div class='zag1'>".$php_mm_tip[0]."</div>";
 	echo "
 <table style='height:70%; width:100%'>
 <tr>
 	<td>
-		<table class='tbl1 tbl1_h0' style='visibility:hidden'>
+		<table class='tbl1 tbl_h0' style='visibility:hidden'>
 		<tr height='5px'>
 			<td rowspan='9' width='5px'></td>
 			<td colspan='3'></td>
@@ -148,41 +148,41 @@ if ( $cgr_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Parent URL</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='pr_url' type='text' value='".$ret_url."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_url' type='text' value='".$ret_url."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Title</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='pr_title' type='text' value='".$cwl_c."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_title' type='text' value='".$cwl_c."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Table</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='9' name='pr_dbt' type='text' value='".$cwl_t."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='9' name='pr_dbt' type='text' value='".$cwl_t."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Id.</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='9' name='pr_id' type='text' value='".$cwl_id."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='9' name='pr_id' type='text' value='".$cwl_id."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='30' name='pr_nat' type='text' value='".$cgr_nat."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='30' name='pr_nat' type='text' value='".$cgr_nat."'></td>
 			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='4' name='pr_num' type='text' value='".$cgr_num."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='4' name='pr_num' type='text' value='".$cgr_num."'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Name"]."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='pr_nic' type='text' value='".$cgr_nic."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_nic' type='text' value='".$cgr_nic."'></td>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='pr_co_' type='text' value='".$cgr_co_."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_co_' type='text' value='".$cgr_co_."'></td>
 		</tr>
 		<tr>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_cap."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt1_h0' maxlength='4' name='pr_c_cv1' type='text' value='".$cgr_cv1."'></td>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_cap."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt1_h0' maxlength='5' name='pr_c_cv2' type='text' value='".$cgr_cv2."'></td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_."</td>
+			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='4' name='pr_c_cv1' type='text' value='".$cgr_cv1."'></td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_."</td>
+			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='5' name='pr_c_cv2' type='text' value='".$cgr_cv2."'></td>
 		</tr>
 		<tr height='5px'>
 			<td></td>
@@ -191,7 +191,7 @@ if ( $cgr_cancel!="" ) {
 			<td colspan='2'></td>
 		</tr>
 		</table>
-		<table class='tbl1 tbl1_h0'>
+		<table class='tbl1 tbl_h0'>
 		<tr>
 			<td rowspan='17' width='5px'></td>
 			<td height='5px'></td>
@@ -203,24 +203,24 @@ if ( $cgr_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt1_h0' maxlength='30' name='nat' type='text' value='".$cgr_nat."'></td>
+			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='30' name='nat' type='text' value='".$cgr_nat."'></td>
 			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt1_h0' maxlength='4' name='num' type='text' value='".$cgr_num."'></td>
+			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='4' name='num' type='text' value='".$cgr_num."'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Name"]."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='nic' type='text' value='".$cgr_nic."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='nic' type='text' value='".$cgr_nic."'></td>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='2'><input class='txt1 txt1_h0' maxlength='100' name='co_' type='text' value='".$cgr_co_."'></td>
+			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='co_' type='text' value='".$cgr_co_."'></td>
 		</tr>
 		<tr><td colspan='9' height='3px'></td></tr>";
 	if ( $cwl_id==1 | ( $cwl_locked*1==5230 & $userCoo*1>2 )) {
 		if ( $cwl_coo=="cw_l" | $cwl_coo=="cw_g" | $cwl_coo=="cw_s" ) echo "
 		<tr>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_cap."</td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_."</td>
 			<td width='10%'>-</td>
 			<td width='15%'></td>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_cap."</td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_."</td>
 			<td width='10%'>-</td>
 			<td width='15%'></td>
 		</tr>
@@ -228,26 +228,26 @@ if ( $cgr_cancel!="" ) {
 	} else {
 		if ( $cwl_coo=="cw_l" | $cwl_coo=="cw_g" | $cwl_coo=="cw_s" ) echo "
 		<tr>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_cap."</td>
-			<td width='10%'><input id='c_cv1' class='txt1 txt1_h0' maxlength='4' name='c_cv1' type='text' value='".$cgr_cv1."' onkeydown='int_keyp( \"c_cv1\", 0, 999, 3 )'></td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_."</td>
+			<td width='10%'><input id='c_cv1' class='txt1 txt_h0' maxlength='4' name='c_cv1' type='text' value='".$cgr_cv1."' onkeydown='int_keyp( \"c_cv1\", 0, 999, 3 )'></td>
 			<td width='15%'></td>
-			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_cap."</td>
-			<td width='10%'><input id='c_cv2' class='txt1 txt1_h0' maxlength='5' name='c_cv2' type='text' value='".$cgr_cv2."' onkeydown='int_keyp( \"c_cv2\", 0, 100, 3 )'></td>
+			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_."</td>
+			<td width='10%'><input id='c_cv2' class='txt1 txt_h0' maxlength='5' name='c_cv2' type='text' value='".$cgr_cv2."' onkeydown='int_keyp( \"c_cv2\", 0, 100, 3 )'></td>
 			<td width='15%'></td>
 		</tr>
 		</table>";
 	}
 	echo "
-		<table class='tbl1 tbl1_h0'>
+		<table class='tbl1 tbl_h0'>
 		<tr height='5px'><td colspan='5'></td></tr>
 		<tr>
 			<td width='5px'></td>";
 	if ( $cwl_id<=1 ) echo "
-			<td style='color:#ff0000; padding-top:2px'><b>".$cwl_c.":&nbsp;".$_13_card_protected_cap."</b></td>";
+			<td style='color:#ff0000; padding-top:2px'><b>".$cwl_c.":&nbsp;".$_13_card_protected_."</b></td>";
 	else if ( $userCoo*1==9 | ( $cwl_locked*1==5230 & $userCoo*1>2 )) echo "
-			<td style='color:#ff0000; padding-top:2px'><b>".$cwl_c.":&nbsp;".$_13_card_anonymous_user_cap."</b></td>";
+			<td style='color:#ff0000; padding-top:2px'><b>".$cwl_c.":&nbsp;".$_13_card_anonymous_user_."</b></td>";
 	else echo "
-			<td><input class='btn gradient_0f0 btn_h0' name='cgr_save' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_cap"]."'></td>";
+			<td><input class='btn gradient_0f0 btn_h0' name='cgr_save' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>";
 	echo "
 			<td width='3px'></td>
 			<td width='25%'><input class='btn gradient_f00 btn_h0' name='cgr_cancel' style='width:100%' type='submit' value='X'></td>";

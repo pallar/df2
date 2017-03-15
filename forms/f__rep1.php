@@ -1,12 +1,10 @@
 <?php
-/*
-DF_2: forms/f__rep.php
+/* DF_2: forms/f__rep.php
 form: all reports report ([REP]ort)
-created: 23.08.2013
-modified: 07.10.2013
-*/
+c: 23.08.2013
+m: 07.10.2013 */
 
-ob_start();//lock output to set cookies properly!
+ob_start();//lock output to set cookies!
 
 include( "../f_vars.php" );
 include( "../dflib/f_func.php" );
@@ -19,8 +17,8 @@ $graph=0;
 
 $f__jfilt__mode=0;
 
-$title_=$_GET[title];
-$rep_url_=$_GET[rep_url];
+$title_=$_GET["title"];
+$rep_url_=$_GET["rep_url"];
 
 $btnToPrn=1;
 
@@ -36,9 +34,9 @@ if( $guest_from_wan==1 & ( $userCoo<=0 | $userCoo==9 )) {
 echo "
 <div class='b_h'>";
 	echo "
-	&nbsp;<a href='$rep_url_?title=$title&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_cap"]."</b></a>
+	&nbsp;<a href='$rep_url_?title=$title&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_"]."</b></a>
 </div>
-<div class='mk' style='border-width:0px; height:50%; margin:0px; overflow-x:hidden; overflow-y:auto'>
+<div class='mk' style='border-width:0; height:50%; margin:0; overflow-x:hidden; overflow-y:auto'>
 <table height='100%' width='100%'>
 <tr>
 	<td width='2%'></td>

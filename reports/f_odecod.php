@@ -2,7 +2,7 @@
 /* DF_2: reports/f_odecod.php
 report: operations decoding
 c: 25.12.2005
-m: 29.09.2015 */
+m: 15.03.2017 */
 				switch ( $oper_id ) {
 				case 1: $url_="mlk";
 					$x="";
@@ -35,7 +35,7 @@ m: 29.09.2015 */
 					$albp=$ged['albumen,%']."&nbsp;<b>".$row[11]."</b>";
 					$descr=$ged['milk_params'].":&nbsp;".$somop.",&nbsp;".$somo1.",&nbsp;".$fatp.",&nbsp;".$albp;
 					$modif_time=$row[24];
-					$params="row17=$row[17]&row7=$row[7]&row8=$row[8]&row9=$row[9]&row10=$row[10]&row11=$row[11]&row12=$row[12]&row13=$row[13]&row14=$row[14]";
+					$params="row17=".$row[17]."&row7=".$row[7]."&row8=".$row[8]."&row9=".$row[9]."&row10=".$row[10]."&row11=".$row[11]."&row12=".$row[12]."&row13=".$row[13]."&row14=".$row[14];
 					break;
 				case 4: $url_="meas";
 					$r[1]=$ged["height,mm"].":&nbsp;<b>".$row[10]."</b>;&nbsp;";
@@ -47,7 +47,7 @@ m: 29.09.2015 */
 						$descr=$r[$k]."&nbsp;".$descr;
 					}
 					$modif_time=$row[24];
-					$params="row17=$row[17]&row7=$row[7]&row8=$row[8]&row9=$row[9]&row10=$row[10]&row11=$row[11]&row12=$row[12]&row13=$row[13]&row14=$row[14]";
+					$params="row17=".$row[17]."&row7=".$row[7]."&row8=".$row[8]."&row9=".$row[9]."&row10=".$row[10]."&row11=".$row[11]."&row12=".$row[12]."&row13=".$row[13]."&row14=".$row[14];
 					break;
 				case 8: $url_="care";
 					$v1_4=split( "@", $row[15] );

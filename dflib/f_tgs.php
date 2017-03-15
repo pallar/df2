@@ -11,10 +11,10 @@ function CardsMode_GroupsSubmode_Tabs( $l_c, $g_c, $s_c, $t_c ) {
 		<tr>
 			<td>
 				<div class='b_h'>
-					<a href='../".$hFrm['0500']."?cards_groups_tab=bs' class='$t_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_bs_lnk_cap"]."&nbsp;&nbsp;</a>
-					<a href='../".$hFrm['0500']."?cards_groups_tab=ss' class='$s_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ss_lnk_cap"]."&nbsp;&nbsp;</a>
-					<a href='../".$hFrm['0500']."?cards_groups_tab=gs' class='$g_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_gs_lnk_cap"]."&nbsp;&nbsp;</a>
-					<a href='../".$hFrm['0500']."?cards_groups_tab=ls' class='$l_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ls_lnk_cap"]."&nbsp;&nbsp;</a>
+					<a href='../".$hFrm['0500']."?cards_groups_tab=bs' class='$t_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_bs_lnk_"]."&nbsp;&nbsp;</a>
+					<a href='../".$hFrm['0500']."?cards_groups_tab=ss' class='$s_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ss_lnk_"]."&nbsp;&nbsp;</a>
+					<a href='../".$hFrm['0500']."?cards_groups_tab=gs' class='$g_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_gs_lnk_"]."&nbsp;&nbsp;</a>
+					<a href='../".$hFrm['0500']."?cards_groups_tab=ls' class='$l_c'><div class='p_100'></div>&nbsp;&nbsp;".$php_mm["_05_ls_lnk_"]."&nbsp;&nbsp;</a>
 				</div>
 			</td>
 		</tr>
@@ -39,11 +39,11 @@ function CardsGroupsHead( $js_group_type, $i, $ii, $all_checked ) {
 function CardsGroupsModifyCtrls( $group_type, $jj ) {
 	global $php_mm;
 /*	echo "
-	<a href='"."$PHP_SELF?$group_type"."_find=$jj'><u>".$php_mm["_com_LOCA_lnk_cap"]."</u></a>
-	<a href='"."$PHP_SELF?$group_type"."_edit=$jj'><u>".$php_mm["_com_UPDA_lnk_cap"]."</u></a>
-	<a href='"."$PHP_SELF?$group_type"."_del=$jj'><u>".$php_mm["_com_DELE_lnk_cap"]."</u></a>";*/
+	<a href='"."$PHP_SELF?$group_type"."_find=$jj'><u>".$php_mm["_com_LOCA_lnk_"]."</u></a>
+	<a href='"."$PHP_SELF?$group_type"."_edit=$jj'><u>".$php_mm["_com_UPDA_lnk_"]."</u></a>
+	<a href='"."$PHP_SELF?$group_type"."_del=$jj'><u>".$php_mm["_com_DELE_lnk_"]."</u></a>";*/
 	echo "
-	<a href='"."$PHP_SELF?$group_type"."_add=$jj'><u>".$php_mm["_com_INSE_lnk_cap"]."</u></a>";
+	<a href='"."$PHP_SELF?$group_type"."_add=$jj'><u>".$php_mm["_com_INSE_lnk_"]."</u></a>";
 }
 
 function CardsGroupsList( $i, $groups_db, $group_type, $cb_array ) {
@@ -165,11 +165,11 @@ if ( $cards_tab_==0 ) {
 			<td style='height:39px; padding:5px'>";
 	if ( $userCoo*1!=9 ) {
 /*		echo "
-	<a href='"."$PHP_SELF?$onegroup_name"."_find=$jj'><u>".$php_mm["_com_LOCA_lnk_cap"]."</u></a>
-	<a href='"."$PHP_SELF?$onegroup_name"."_edit=$jj'><u>".$php_mm["_com_UPDA_lnk_cap"]."</u></a>
-	<a href='"."$PHP_SELF?$onegroup_name"."_del=$jj'><u>".$php_mm["_com_DELE_lnk_cap"]."</u></a>";*/
+	<a href='"."$PHP_SELF?$onegroup_name"."_find=$jj'><u>".$php_mm["_com_LOCA_lnk_"]."</u></a>
+	<a href='"."$PHP_SELF?$onegroup_name"."_edit=$jj'><u>".$php_mm["_com_UPDA_lnk_"]."</u></a>
+	<a href='"."$PHP_SELF?$onegroup_name"."_del=$jj'><u>".$php_mm["_com_DELE_lnk_"]."</u></a>";*/
 		echo "
-	<a href='"."$PHP_SELF?$onegroup_name"."_add=$jj'><u>".$php_mm["_com_INSE_lnk_cap"]."</u></a>";
+	<a href='"."$PHP_SELF?$onegroup_name"."_add=$jj'><u>".$php_mm["_com_INSE_lnk_"]."</u></a>";
 	}
 	echo "
 			</td>
@@ -194,7 +194,7 @@ if ( $cards_tab_==0 ) {
 	else include( "f_tos.php" );
 	echo "
 <input id='reload_' style='visibility:hidden' type='submit' value='refresh'>";
-}
 echo "
 </form>";
+}
 ?>

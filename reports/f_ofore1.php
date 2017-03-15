@@ -2,19 +2,19 @@
 /* DF_2: reports/f_o.php
 report: operations other than extracting
 c: 10.05.2005
-m: 04.05.2015 */
+m: 14.03.2017 */
 
 $dbt_ext="_o";
 
 ob_start();//lock output to set cookies properly!
 
-$_GET[title]; $title_=$title;
+$title_=$title=$_GET["title"];
 
 $dontuse_period=1;//ONLY IN THIS REPORT
-$repfilt__hide = 1;//hide filters
+$repfilt__hide=1;//hide filters
 
 include( "f_jfilt.php" );
-include( "fhead.php" );
+include( "frhead.php" );
 include( "../locales/$lang/f_rrm._$lang" );
 include( "../locales/$lang/f_rroerr._$lang" );
 
@@ -77,9 +77,7 @@ while ( $row=mysql_fetch_array( $res )) {
 	}
 }
 echo "
-</table>
+</table><br>";
 
-<br>";
-
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

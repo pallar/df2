@@ -24,14 +24,14 @@ $skip_clichk=1;
 $skip_W3C_DOCTYPE=1;
 
 //DONT TOUCH NEXT! CRITICAL FOR EXPORT!
-$connection_charset1="cp1251";
+$connectionCharset1="cp1251";
 
 ob_start();//lock output to set cookies properly!
 
 $outsele_=-1; $outsele_table=-1; $outsele_field=-1;
 
 $title_=$_GET[title];
-if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab1_cap"];
+if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab1_"];
 
 include( "../reports/f_jfilt.php" );//$hDir['reps'] IS NOT READY FOR THIS SCRIPT!
 

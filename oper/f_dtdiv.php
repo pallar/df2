@@ -85,7 +85,7 @@ echo "<center><br>
 Date_MonthsList( "<select class='sel sel_h0' id='m11' style='width:170px' onchange='Date_DaysList( \"d11\", \"m11\", \"y11\" )'>" );
 Date_YearsList( "<select class='sel sel_h0' id='y11' style='width:60px' onchange='Date_DaysList( \"d11\", \"m11\", \"y11\" )'>" );
 echo "<br><br>
-<input class='btn gradient_0f0 btn_h0' style='width:151px' type='button' value='".$php_mm["_com_accept_btn_cap"]."' onclick='cal_hide1(); in_forms( sender_ )'>
+<input class='btn gradient_0f0 btn_h0' style='width:151px' type='button' value='".$php_mm["_com_accept_btn_"]."' onclick='cal_hide1(); in_forms( sender_ )'>
 <input class='btn gradient_f00 btn_h0' style='width:35px' type='button' value='X' onclick='cal_hide1()'><br><br>
 </center>
 

@@ -11,7 +11,7 @@ ob_start();//lock output to set cookies properly!
 $title_=$title="DEBUG";
 
 include( "f_jfilt.php" );
-include( "fhead.php" );
+include( "frhead.php" );
 include( "../locales/$lang/f_rrm._$lang" );
 include( "../dflib/f_filt1.php" );
 
@@ -47,11 +47,11 @@ $res=mysql_query( $query, $db );
 if ( mysql_errno()<1 ) { while ( $row=mysql_fetch_row( $res )) {
 	echo "
 <tr $cjust>
-	<td>".$row[0]."</td>
-	<td>".$row[1]."</td>
-	<td>".$row[2]."</td>
-	<td>".$row[3]."</td>
-	<td $ljust>&nbsp;".$row[4]."</td>
+	<td><b>".$row[0]."</b></td>
+	<td><b>".$row[1]."</b></td>
+	<td><b>".$row[2]."</b></td>
+	<td><b>".$row[3]."</b></td>
+	<td $ljust><b>&nbsp;".$row[4]."</b></td>
 </tr>";
 }}
 

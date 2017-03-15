@@ -8,8 +8,8 @@ m: 13.01.2017 */
 $app_rel="[2015:1122]"; $dbstruc_rel="[2009:0820]";
 $log_me=0;
 
-$content_charset="utf-8";//windows-1251
-$connection_charset="utf8";//cp1251
+$contentCharset="utf-8";//windows-1251
+$connectionCharset="utf8";//cp1251
 $deny_from_wan=0;
 $grs_colors=1;
 

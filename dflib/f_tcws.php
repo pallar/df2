@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tcws.php
 cows list
 c: 10.12.2005
-m: 11.11.2015 */
+m: 15.03.2017 */
 ?>
 
 <script type='text/javascript' src='../dflib/f_tcws_u.js'></script>
@@ -132,28 +132,28 @@ if ( $send_buf!="" ) {
 <table width='100%'>
 <tr>
 	<td $ljust>";
-		if ( $filts9_1=="" ) echo "*".$ged['filts9_1~']."&nbsp;";
-		if ( $filts9_2=="" ) echo "*".$ged['filts9_2~']."&nbsp;";
-		if ( $filts9_3=="" ) echo "*".$ged['filts9_3~']."&nbsp;";
-		if ( $filts9_4=="" ) echo "*".$ged['filts9_4~']."&nbsp;";
-		if ( $filts9_5=="" ) echo "*".$ged['filts9_5~']."&nbsp;";
-		if ( $filts9_6=="" ) echo "*".$ged['filts9_6~']."&nbsp;";
-		if ( $filts0_1=="" ) echo "*".$ged['filts0_1~']."&nbsp;";
-		if ( $filts0_2=="" ) echo "*".$ged['filts0_2~']."&nbsp;";
-		if ( $filts0_3=="" ) echo "*".$ged['filts0_3~']."&nbsp;";
-		if ( $filts0_4=="" ) echo "*".$ged['filts0_4~']."&nbsp;";
-		if ( $filts0_5=="" ) echo "*".$ged['filts0_5~']."&nbsp;";
-		if ( $filts0_6=="" ) echo "*".$ged['filts0_6~']."&nbsp;";
+		if ( $filts9_1=="" ) echo "*".$ged["filts9_1~"]."&nbsp;";
+		if ( $filts9_2=="" ) echo "*".$ged["filts9_2~"]."&nbsp;";
+		if ( $filts9_3=="" ) echo "*".$ged["filts9_3~"]."&nbsp;";
+		if ( $filts9_4=="" ) echo "*".$ged["filts9_4~"]."&nbsp;";
+		if ( $filts9_5=="" ) echo "*".$ged["filts9_5~"]."&nbsp;";
+		if ( $filts9_6=="" ) echo "*".$ged["filts9_6~"]."&nbsp;";
+		if ( $filts0_1=="" ) echo "*".$ged["filts0_1~"]."&nbsp;";
+		if ( $filts0_2=="" ) echo "*".$ged["filts0_2~"]."&nbsp;";
+		if ( $filts0_3=="" ) echo "*".$ged["filts0_3~"]."&nbsp;";
+		if ( $filts0_4=="" ) echo "*".$ged["filts0_4~"]."&nbsp;";
+		if ( $filts0_5=="" ) echo "*".$ged["filts0_5~"]."&nbsp;";
+		if ( $filts0_6=="" ) echo "*".$ged["filts0_6~"]."&nbsp;";
 		echo "
 	</td>
 </tr>
 </table>";
 	}
 	$i=0;//generate next cow index
-	$res=mysql_query( "SELECT sessions FROM $globals", $db ) or die( mysql_error());
+	$res=mysql_query( "SELECT sessions FROM $globals", $db );
 	$row=mysql_fetch_row( $res ); $sesss=$row[0]*1;
-	$res=mysql_query( "SELECT id FROM $cows", $db ) or die( mysql_error());
-	while ( $row=mysql_fetch_row( $res )) $i=$i+1; mysql_free_result( $res );
+	$res=mysql_query( "SELECT id FROM $cows", $db );
+	while ( $row=mysql_fetch_row( $res )) $i++; mysql_free_result( $res );
 	if ( $nocardsfilt!=1 ) {//dont show when in reports mode
 		echo "
 <table width='100%'>
@@ -163,11 +163,11 @@ if ( $send_buf!="" ) {
 			srand(( double ) microtime()*1000000 );
 			$random_key=rand( 1000000, 2000000 );
 			echo "
-		<a href='../".$hFrm['0520']."?cow_id=-2&ret0=05&random_key=$random_key'><u>".$php_mm["_com_INSE_lnk_cap"]."</u></a>";
+		<a href='../".$hFrm['0520']."?cow_id=-2&ret0=05&random_key=$random_key'><u>".$php_mm["_com_INSE_lnk_"]."</u></a>";
 		}
 		echo "
 	</td>
-	<td rowspan='2'><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_cap"]."'></td>
+	<td rowspan='2'><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
 	<td rowspan='2'></td>
 	<td rowspan='2' width='111px'>";
 		$_filtsXmode="c";
@@ -175,64 +175,68 @@ if ( $send_buf!="" ) {
 		echo "
 	</td>
 	<td rowspan='2' width='7px'></td>
-	<td width='31px' title='".$ged['filts9_1']."'><label><input class='z_chk' type='checkbox' $filts9_1 id='e1' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'/>".$ged['filts9_1~']."</label></td>
-	<td width='31px' title='".$ged['filts9_2']."'><label><input class='z_chk' type='checkbox' $filts9_2 id='e2' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged['filts9_2~']."</label></td>
-	<td width='31px' title='".$ged['filts9_3']."'><label><input class='z_chk' type='checkbox' $filts9_3 id='e3' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged['filts9_3~']."</label></td>
-	<td width='31px' title='".$ged['filts0_1']."'><label><input class='z_chk' type='checkbox' $filts0_1 id='f1' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_1~']."</label></td>
-	<td width='31px' title='".$ged['filts0_2']."'><label><input class='z_chk' type='checkbox' $filts0_2 id='f2' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_2~']."</label></td>
-	<td width='31px' title='".$ged['filts0_3']."'><label><input class='z_chk' type='checkbox' $filts0_3 id='f3' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_3~']."</label></td>
+	<td width='31px' title='".$ged["filts9_1"]."'><label><input class='z_chk' type='checkbox' $filts9_1 id='e1' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_1~"]."</label></td>
+	<td width='31px' title='".$ged["filts9_2"]."'><label><input class='z_chk' type='checkbox' $filts9_2 id='e2' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_2~"]."</label></td>
+	<td width='31px' title='".$ged["filts9_3"]."'><label><input class='z_chk' type='checkbox' $filts9_3 id='e3' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_3~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_1"]."'><label><input class='z_chk' type='checkbox' $filts0_1 id='f1' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_1~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_2"]."'><label><input class='z_chk' type='checkbox' $filts0_2 id='f2' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_2~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_3"]."'><label><input class='z_chk' type='checkbox' $filts0_3 id='f3' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_3~"]."</label></td>
 </tr>
 <tr height='20px'>
-	<td width='31px' title='".$ged['filts9_4']."'><label><input class='z_chk' type='checkbox' $filts9_4 id='e4' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged['filts9_4~']."</label></td>
-	<td width='31px' title='".$ged['filts9_5']."'><label><input class='z_chk' type='checkbox' $filts9_5 id='e5' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged['filts9_5~']."</label></td>
-	<td width='31px' title='".$ged['filts9_6']."'><label><input class='z_chk' type='checkbox' $filts9_6 id='e6' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged['filts9_6~']."</label></td>
-	<td width='31px' title='".$ged['filts0_4']."'><label><input class='z_chk' type='checkbox' $filts0_4 id='f4' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_4~']."</label></td>
-	<td width='31px' title='".$ged['filts0_5']."'><label><input class='z_chk' type='checkbox' $filts0_5 id='f5' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_5~']."</label></td>
-	<td width='31px' title='".$ged['filts0_6']."'><label><input class='z_chk' type='checkbox' $filts0_6 id='f6' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged['filts0_6~']."</label></td>
+	<td width='31px' title='".$ged["filts9_4"]."'><label><input class='z_chk' type='checkbox' $filts9_4 id='e4' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_4~"]."</label></td>
+	<td width='31px' title='".$ged["filts9_5"]."'><label><input class='z_chk' type='checkbox' $filts9_5 id='e5' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_5~"]."</label></td>
+	<td width='31px' title='".$ged["filts9_6"]."'><label><input class='z_chk' type='checkbox' $filts9_6 id='e6' onclick='Checkboxes_ToCoo( \"_filts9\", \"e\", 1, 6 )'>".$ged["filts9_6~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_4"]."'><label><input class='z_chk' type='checkbox' $filts0_4 id='f4' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_4~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_5"]."'><label><input class='z_chk' type='checkbox' $filts0_5 id='f5' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_5~"]."</label></td>
+	<td width='31px' title='".$ged["filts0_6"]."'><label><input class='z_chk' type='checkbox' $filts0_6 id='f6' onclick='Checkboxes_ToCoo( \"_filts0\", \"f\", 1, 6 )'>".$ged["filts0_6~"]."</label></td>
 </tr>";
 		echo "
 </tr>
 </table>";
 	}
 	$now_dmY=date( "d.m.Y" ); $now_His=date( "H:i:s" );
-	$cow_find=$_GET[cow_find];
-	$cow_edit=$_GET[cow_edit];
-	$cow_del=$_GET[cow_del];
-	$cow_add=$_GET[cow_add];
+	$cow_add=$_GET["cow_add"];
+	$cow_del=$_GET["cow_del"];
+	$cow_edit=$_GET["cow_edit"];
+	$cow_find=$_GET["cow_find"];
 	$j_jagg=0; $j_du=0; $j=0;
 	$t_h_w=$disp_res[0]-29;
 	$t_w=$disp_res[0]-10;
 	if ( $nocardsfilt!=1 ) echo "
 <div style='height:38px; width:100%; overflow-y:scroll'>";
 	echo "
-<table class='st2' style='width:100%'>
-<tr $cjust class='st_title2' style='height:28px'>
-	<td title='".$ged['To_Jagg_tip']."' width='20px'>".$ged['To_Jagg']."</td>
-	<td title='".$_05_TOM_tip."' width='64px'>".$_05_TOM_cap."</td>
-	<td title='".$ged['To_Restrict_tip']."' width='180px'>".$ged['To_Restrict']."</td>";
+<table width='100%'>
+<thead id='rep_thead'>
+<tr $cjust style='height:28px'>
+	<th title='".$ged["To_Jagg_tip"]."' width='20px'>".$ged["To_Jagg"]."</th>
+	<th title='".$_05_TOM_tip."' width='64px'>".$_05_TOM_."</th>
+	<th title='".$ged["To_Restrict_tip"]."' width='180px'>".$ged["To_Restrict"]."</th>";
 	if ( $nocardsfilt!=1 ) echo "
-	<td title='".$ged['No.__ANIMALS_ORDER_BY_tip']."' width='60px'><a href='../".$hFrm['0500']."'>".$ged['Number'].$num_order."</td>
-	<td title='".$ged['Nick__ANIMALS_ORDER_BY_tip']."' width='101px'><a href='../".$hFrm['0500']."?cows_order=binary(".$cows.".nick)'>".$ged['Nick'].$nick_order."</td>";
+	<th title='".$ged["No.__ANIMALS_ORDER_BY_tip"]."' width='60px'><a href='../".$hFrm["0500"]."'>".$ged["Number"].$num_order."</th>
+	<th title='".$ged["Nick__ANIMALS_ORDER_BY_tip"]."' width='101px'><a href='../".$hFrm["0500"]."?cows_order=binary(".$cows.".nick)'>".$ged["Nick"].$nick_order."</th>";
 	else echo "
-	<td width='60px'>".$ged['Number'].$num_order."</td>
-	<td width='101px'>".$ged['Nick'].$nick_order."</td>";
+	<th width='60px'>".$ged["Number"].$num_order."</th>
+	<th width='101px'>".$ged["Nick"].$nick_order."</th>";
 	echo "
-	<td width='50px'>".$ged['Lot']."</td>
-	<td width='50px'>".$ged['Group']."</td>
-	<td width='65px'>".$ged['Birthday']."</td>";
+	<th width='50px'>".$ged["Lot"]."</th>
+	<th width='50px'>".$ged["Group"]."</th>
+	<th width='65px'>".$ged["Birthday"]."</th>";
 	if ( $nocardsfilt!=1 ) echo "
-	<td width='50px'><a href='../".$hFrm['0500']."?cows_order=rfid_native'>".$ged['TAG'].$tag_order."</td>
-	<td width='30px'><a href='../".$hFrm['0500']."?cows_order=comments'>!".$comm_order."</td>";
+	<th width='50px'><a href='../".$hFrm["0500"]."?cows_order=rfid_native'>".$ged["TAG"].$tag_order."</th>
+	<th width='30px'><a href='../".$hFrm["0500"]."?cows_order=comments'>!".$comm_order."</th>";
 	else echo "
-	<td>".$ged['TAG'].$tag_order."</td>
-	<td>".$ged['Comment.'].$comm_order."</td>";
+	<th>".$ged["TAG"].$tag_order."</th>
+	<th>".$ged["Comment."].$comm_order."</th>";
 	echo "
-</tr>";
+</tr>
+</thead>";
 	if ( $nocardsfilt!=1 ) echo "
 </table>
 </div>
 <div style='height:60%; width:100%; overflow-y:scroll'>
-<table class='st2' style='width:100%'>";
+<table width='100%'>";
+	else echo "
+<tbody id='rep_tbody'>";
 	$res=mysql_query( "SELECT descr FROM $operstyp WHERE id=8192", $db );
 	$row=mysql_fetch_row( $res );
 	$op8192=$row[0];
@@ -296,7 +300,7 @@ if ( $send_buf!="" ) {
 		$birthday=substr( $row[4], 8, 2 ).".".substr( $row[4], 5, 2 ).".".substr( $row[4], 0, 4 );
 		$days=DaysBetween( $birthday, $now_dmY );
 		$zapl_dates=strlen( $row[17] ); $otel_dates=strlen( $row[19] );
-		if ( strlen( $sele_byState_ )<=1 ) {
+		if ( strlen( $sele_byState )<=1 ) {
 			if ( $sele_byAge_from==0 & $sele_byAge_to==0 ) $cowrow_vis1=1;//select all cows
 			else if ( $sele_byAge_from>=0 & $sele_byAge_to>0 )//select cows which age in []
 				if ( $days>=$sele_byAge_from & $days<=$sele_byAge_to ) $cowrow_vis1=1;
@@ -308,7 +312,7 @@ if ( $send_buf!="" ) {
 			else if ( $otel_dates<8 & $days>$not_abort1st_days0 ) $ss='A0q';
 			else $ss='A**';
 			if ( $otel_dates>=8 & $days>=$not_abort1st_days0 ) $ss='A0';
-			if ( $sele_byState_==$ss ) $cowrow_vis1=1;
+			if ( $sele_byState==$ss ) $cowrow_vis1=1;
 		}
 		if ( $sele_byState=="" & $sele_byAge=="" ) $cowrow_vis=1;
 		$bdleds=$row[36]*1;
@@ -380,11 +384,11 @@ if ( $send_buf!="" ) {
 				$row35_=$row35;
 			}
 			if (( $du1_!="+" & $filts0_2=="checked" ) | ( $du1_=="+" & $filts0_5=="checked" )) {
-				RepTr();
 				if ( $ja1_=="+" | $aj1_=="+" ) $j_jagg++;
 				if ( $du1_=="+" ) $j_du++;
 				if ( $userCoo!=9 & $nocardsctrls!=1 ) {
 					echo "
+<tr>
 	<td $cjust height='28px' width='20px'><label><input class='y_chk' $jagg1 id='c0_$row[32]' $deff type='checkbox' onclick='CowDontuse_ToCoo( $row[32], $sesss )'>$aj1_</label></td>";
 					echo "
 	<td $cjust width='64px'>
@@ -392,39 +396,38 @@ if ( $send_buf!="" ) {
 		<label><input class='y_chk' $ao1c id='co_$row[32]' type='checkbox' onclick='CowDontuse_ToCoo( $row[32], $sesss )'></label>
 		<label><input class='y_chk' $am1c id='cm_$row[32]' type='checkbox' onclick='CowDontuse_ToCoo( $row[32], $sesss )'></label>
 	</td>
-	<td $cjust title='".$ged['s1']."&nbsp;".$ged['s2']."&nbsp;".$ged['s3']."&nbsp;".$ged['s1']."&nbsp;".$ged['s2']."&nbsp;".$ged['s3']."&nbsp;"."' width='180px'>$row35_</td>";
+	<td $cjust title='".$ged["s1"]."&nbsp;".$ged["s2"]."&nbsp;".$ged["s3"]."&nbsp;".$ged["s1"]."&nbsp;".$ged["s2"]."&nbsp;".$ged["s3"]."&nbsp;"."' width='180px'>$row35_</td>";
 				} else {
 					if ( strlen( $aj1_ )>strlen( $ja1_ )) $ja1_=$aj1_;
 					echo "
-	<td $cjust width='20px'>$ja1_</td>
-	<td $cjust width='64px'>
-		$at1_ $ao1_ $am1_
-	</td>
-	<td $cjust title='".$ged['s1']."&nbsp;".$ged['s2']."&nbsp;".$ged['s3']."&nbsp;".$ged['s1']."&nbsp;".$ged['s2']."&nbsp;".$ged['s3']."&nbsp;"."' width='180px'>$row35_</td>";
-				}
+<tr>
+	<td $cjust width='20px'>&nbsp;$ja1_</td>
+	<td $cjust width='64px'>&nbsp;$at1_ $ao1_ $am1_</td>
+	<td $cjust title='".$ged["s1"]."&nbsp;".$ged["s2"]."&nbsp;".$ged["s3"]."&nbsp;".$ged["s1"]."&nbsp;".$ged["s2"]."&nbsp;".$ged["s3"]."&nbsp;"."' width='180px'>$row35_&nbsp;</td>";				}
 				for ( $row_i=8; $row_i<=10; $row_i++ ) {
-					$orow[$row_i]=StrCutLen1( $row[$row_i], 6, $content_charset );
+echo "1111";
+					$orow[$row_i]=StrCutLen1( $row[$row_i], 6, $contentCharset );
 					if ( strlen( $row[$row_i] )<=6 ) $row[$row_i]="";
 				}
 				if ( $birthday=="31.12.1991" ) $birthday_color="#cccccc"; else $birthday_color="#000000";
 				echo "
-	<td $rjust id='hilight_$row[32]' title='".$ged['Nick__OPEN_CARD_tip']."' width='60px' onmouseover='style.cursor=\"pointer\"'><a href='../".$hFrm['0520']."?cow_id=".$row[32]."&ret0=05'><b>".$cownum."</b></td>";
+	<td $rjust id='hilight_$row[32]' title='".$ged['Nick__OPEN_CARD_tip']."' width='60px' onmouseover='style.cursor=\"pointer\"'><a href='../".$hFrm['0520']."?cow_id=".$row[32]."&ret0=05'><b>".$cownum."</b>&nbsp;</td>";
 //	<a href='../".$hRep['ccw1']."?cow_id=".$row[32]."&ret0=05'>
 	if ( strlen( $row[37] )>0 ) $birthday_color="red'";
 	if ( $nocardsfilt!=1 ) echo "
-	<td title='$row[1] ".$ged['Nat._Id.'].":"."$row[2]' width='101px'><input readonly style='border:0px; font-size:12; height:100%; width:99%' type='text' value='$row[1]'/></td>";
+	<td title='$row[1] ".$ged['Nat._Id.'].":"."$row[2]' width='101px'><input readonly style='border:0; font-size:12; height:100%; width:99%' type='text' value='$row[1]'/></td>";
 	else echo "
 	<td width='101px'>&nbsp;$row[1]</td>";
 	echo "
 	<td title='$row[10]' width='50px'>&nbsp;$orow[10]</td>
 	<td title='$row[8]' width='50px'>&nbsp;$orow[8]</td>
-	<td $cjust style='color:$birthday_color' width='65px'>$birthday</td>";
+	<td $cjust style='color:$birthday_color' width='65px'>&nbsp;$birthday</td>";
 				if ( $nocardsfilt!=1 ) echo "
-	<td width='50px'><input readonly style='border:0px; font-size:11; height:100%; width:99%' type='text' value='$row[12]'/></td>
-	<td width='30px'><input readonly style='border:0px; font-size:11; height:100%; width:99%' type='text' value='$row[16]'/></td>";
+	<td width='50px'><input readonly style='border:0; font-size:11; height:100%; width:99%' type='text' value='$row[12]'/></td>
+	<td width='30px'><input readonly style='border:0; font-size:11; height:100%; width:99%' type='text' value='$row[16]'/></td>";
 				else echo "
-	<td>$row[12]</td>
-	<td>$row[16]</td>";
+	<td>&nbsp;$row[12]</td>
+	<td>&nbsp;$row[16]</td>";
 				echo "
 </tr>";
 				$j++;
@@ -432,27 +435,30 @@ if ( $send_buf!="" ) {
 		}
 	}
 	echo "
-<tr $cjust class='st_title2' style='height:28px'>
-	<td $rjust width='20px'>".$j_jagg."&nbsp;</td>
-	<td $rjust width='64px'>&nbsp;</td>
-	<td $rjust width='180px'>".$j_du."&nbsp;</td>
-	<td $rjust width='60px'>".$j."&nbsp;</td>";
+</tbody>
+<tfoot id='rep_tfoot'>
+<tr $rjust style='height:28px'>
+	<td>".$j_jagg."&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>".$j_du."&nbsp;</td>
+	<td>".$j."&nbsp;</td>";
 	if ( $nocardsfilt!=1 ) echo "
-	<td width='101px'>&nbsp;</td>";
+	<td>&nbsp;</td>";
 	else echo "
-	<td width='101px'>&nbsp;</td>";
+	<td>&nbsp;</td>";
 	echo "
-	<td width='50px'>&nbsp;</td>
-	<td width='50px'>&nbsp;</td>
-	<td width='65px'>&nbsp;</td>";
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>";
 	if ( $nocardsfilt!=1 ) echo "
-	<td width='50px'>&nbsp;</td>
-	<td width='30px'>&nbsp;</td>";
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>";
 	else echo "
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>";
 	echo "
 </tr>
+</tfoot>
 </table>";
 	if ( $nocardsfilt!=1 ) echo "
 </div>";

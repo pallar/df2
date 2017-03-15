@@ -1,28 +1,25 @@
 <?php
-/*
-DF_2: reports/f_ofore4.php
+/* DF_2: reports/f_ofore4.php
 report: extracting
-created: 16.05.2011
-modified: 20.09.2013
-*/
+c: 16.05.2011
+m: 14.03.2017 */
 
 $skip_clichk=1;
 
 ob_start();//lock output to set cookies properly!
 
-$graph=$_GET[graph]*1;
-$title_=$_GET[title];
-if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab1_cap"];
+$graph=$_GET["graph"]*1; $title_=$title=$_GET["title"];
+if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab1_"];
 
-$restrict_by_field=$_GET[restrict_by_field]*1;
-$restrict_field=$_GET[restrict_field];
-$restrict_id=$_GET[restrict_id]*1;
+$restrict_by_field=$_GET["restrict_by_field"]*1;
+$restrict_field=$_GET["restrict_field"];
+$restrict_id=$_GET["restrict_id"]*1;
 
 $dontuse_period=3;
 $dontuse_filt=1;//ONLY IN THIS REPORT
 
 include( "f_jfilt.php" );
-include( "fhead.php" );
+include( "frhead.php" );
 include( "../locales/$lang/f_rrm._$lang" );
 include( "../locales/$lang/f_cows._$lang" );
 include( "../locales/$lang/f_rroerr._$lang" );
@@ -44,7 +41,7 @@ if ( $restrict_id==0 ) {
 $rows_cnt=0; $vl=0;
 $dots_cnt=0;
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo "
 <table cellspacing='1' class='st2' style='width:100%'>
 <tr $cjust class='st_title2' style='height:28px'>
@@ -191,7 +188,7 @@ while ( $yc*100+$mc<=$yl*100+$ml ) {
 
 $total_m=round( $total_m, 1 );
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo "
 <tr class='st_title2' style='height:28px'>
 	<td $cjust><b>".$ged['TOTAL'].":</b></td>
@@ -208,7 +205,7 @@ if ( $graph==0 ) {
 </tr>
 </table><br>";
 
-} else if ( $graph==1 ) {
+} else {
 	$dots_set=$dots[0];
 	if ( $dots_cnt>300 ) $dots_cnt=300;//no more than 300 dots for JpGraph!
 	for ( $i=1; $i<=$dots_cnt; $i++ ) $dots_set=$dots_set.";".$dots[$i];
@@ -221,5 +218,5 @@ if ( $graph==0 ) {
 	} else;
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

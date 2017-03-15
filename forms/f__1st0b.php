@@ -14,10 +14,10 @@ $_RESULT="
 	<td $ljust colspan=11 title='$powermode_title'>&nbsp;".$powermode."</td>
 </tr>
 <tr $cjust class='st_title2'>
-	<td width='20px'>&nbsp;".$php_mm["_00_devnum_column_cap"]."&nbsp;</td>
-	<td width='130px'>".$php_mm["_00_devstat_column_cap"]."</td>
-	<td>".$php_mm["_00_cow_column_cap"]."</td>
-	<td colspan=2>".$php_mm["_00_milkvol_column_cap"]."</td>
+	<td width='20px'>&nbsp;".$php_mm["_00_devnum_column_"]."&nbsp;</td>
+	<td width='130px'>".$php_mm["_00_devstat_column_"]."</td>
+	<td>".$php_mm["_00_cow_column_"]."</td>
+	<td colspan=2>".$php_mm["_00_milkvol_column_"]."</td>
 	<td colspan=3 title='".$ged["Start_manual"]." ".$ged["Start_retr."]." ".$ged["Break_done"]."'>".$ged["Start_manual~"].",&nbsp;".$ged["Start_retr.~"].",&nbsp;".$ged["Break_done~"]."</td>
 	<td width='70px'>".$ged["M.~"]."</td>
 	<td colspan=2 width='40px'>".$ged["T.~"].",&nbsp;".$ged["O.~"]."</td>
@@ -57,7 +57,7 @@ while ( $row=mysql_fetch_row( $res )) {
 		$cow_inf=$cow_num.", ".$cow_rfid.", ".$cow_nick;
 		if ( strlen( $cow_inf )>35 ) {
 			$cow_inf_0=$cow_inf;
-			$cow_inf=mb_substr( $cow_inf, 0, 35, $content_charset )."...";
+			$cow_inf=mb_substr( $cow_inf, 0, 35, $contentCharset )."...";
 		}
 //---------------------- ERROR! SEARCH MUST BE DONE ON $cow_num, NOT $cow_rfid
 		if ( $cow_rfid!="" ) {
@@ -132,8 +132,8 @@ while ( $row=mysql_fetch_row( $res )) {
 
 $_RESULT=$_RESULT."
 <tr class='st_title2' style='height:28px'>
-	<td colspan=3>&nbsp;".$php_mm["_00_devs_cap"].":".$devs_ok."/".$devs."&nbsp;</td>
-	<td $rjust colspan=8>".$php_mm["_00_transact_cap"].":".$trans."&nbsp;</td>
+	<td colspan=3>&nbsp;".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."&nbsp;</td>
+	<td $rjust colspan=8>".$php_mm["_00_transact_"].":".$trans."&nbsp;</td>
 </tr>";
 
 $res=mysql_query( "SELECT milk_kg FROM $parlor WHERE bd_num='A1'" );
@@ -148,7 +148,7 @@ $m=split( ":", $mXX );
 for ( $j=0; $j<4; $j++ ) {
 	$_RESULT=$_RESULT."
 <tr bgcolor='".GrTrCol( $rownum )."'>";
-	$i=($j+1)*10; $i="_00_tot_".$i."_cap";
+	$i=($j+1)*10; $i="_00_tot_".$i."_";
 	$_RESULT=$_RESULT."
 	<td colspan='3'>&nbsp;$php_mm[$i]:</td>
 	<td $rjust>$m[$j]&nbsp;</td>

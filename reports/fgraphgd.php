@@ -2,7 +2,7 @@
 /* DF_2: reports/fgraphgd.php
 diagram/chart report init for GD
 c: 07.08.2007
-m: 29.06.2011 */
+m: 14.03.2017 */
 
 $dots=split( "[;]", $dots_set );
 
@@ -17,14 +17,14 @@ $expdot_color="blue";
 
 echo "
 <style>
-.lineplot_all {background-color:".$bg_color."; height:".$lineplot_h."px; margin:0 auto; overflow:hidden; padding:0;}
-.lineplot_axis {border-bottom:1px solid; border-left:1px solid; height:".$axis_h."px; margin:0 0 0 0;}
-.lineplot_bar {height:100%; float:left; margin:0 auto; position:relative; margin:0 2px; width:6px;}
-.lineplot_cont {bottom:0; margin:0 auto; position:absolute; width:6px;}
+.lineplot_all {background-color:".$bg_color."; height:".$lineplot_h."px; margin:0 auto; overflow:hidden; padding:0; }
+.lineplot_axis {border-bottom:1px solid; border-left:1px solid; height:".$axis_h."px; margin:0 0 0 0; }
+.lineplot_bar {height:100%; float:left; margin:0 2px; position:relative; width:6px; }
+.lineplot_cont {bottom:0; margin:0 auto; position:absolute; width:6px; }
 .lineplot_val {}
-.lineplot_dot {background-color:".$maindot_color."; height:4px; width:4px;}
-.lineplot_dot1 {background-color:".$expdot_color."; height:4px; width:4px;}
-.lineplot_dot2 {background-color:".$bg_color."; height:4px; width:4px;}
+.lineplot_dot {background-color:".$maindot_color."; height:4px; width:4px; }
+.lineplot_dot1 {background-color:".$expdot_color."; height:4px; width:4px; }
+.lineplot_dot2 {background-color:".$bg_color."; height:4px; width:4px; }
 .lineplot_col {}
 </style>";
 

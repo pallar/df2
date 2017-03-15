@@ -31,26 +31,26 @@ $_RESULT="
 <table cellspacing='0' class='st'>
 <tr $cjust style='background-color:#cccccc; height:30px'>
 	<td $ljust colspan='12' title='$powermode_title'>&nbsp;".$powermode."</td>
-	<td $rjust colspan='3' width='171px'>".$php_mm["_00_transact_cap"].":".$trans."&nbsp;&nbsp;".$php_mm["_00_devs_cap"].":".$devs_ok."/".$devs."&nbsp;</td>
+	<td $rjust colspan='3' width='171px'>".$php_mm["_00_transact_"].":".$trans."&nbsp;&nbsp;".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."&nbsp;</td>
 </tr>
 <tr $cjust class='st_title2' style='height:21px'>
 	<td width='1px' style='background-color:#cccccc'></td>
-	<td width='21px'>&nbsp;".$php_mm["_00_devnum_column_cap"]."</td>
+	<td width='21px'>&nbsp;".$php_mm["_00_devnum_column_"]."</td>
 	<td width='20px'>";
 if ( $userCoo==2 ) $_RESULT=$_RESULT."<input type='checkbox' onclick='CookieSet( \"r_mults\", \"1\" )'>";
 $_RESULT=$_RESULT."
 	</td>
-	<td>&nbsp;".$php_mm["_00_devstat_column_cap"]."</td>
+	<td>&nbsp;".$php_mm["_00_devstat_column_"]."</td>
 	<td width='45px'>&nbsp;".$_00_R."</td>
 	<td width='85px'>&nbsp;".$_00_R_mult."</td>
 	<td width='85px'>&nbsp;".$_00_R_res."</td>
 	<td width='1px' style='background-color:#cccccc'></td>
-	<td width='21px'>&nbsp;".$php_mm["_00_devnum_column_cap"]."</td>
+	<td width='21px'>&nbsp;".$php_mm["_00_devnum_column_"]."</td>
 	<td width='20px'>";
 if ( $userCoo==2 ) $_RESULT=$_RESULT."<input type='checkbox' onclick='CookieSet( \"r_mults\", \"1\" )'>";
 $_RESULT=$_RESULT."
 	</td>
-	<td>&nbsp;".$php_mm["_00_devstat_column_cap"]."&nbsp;</td>
+	<td>&nbsp;".$php_mm["_00_devstat_column_"]."&nbsp;</td>
 	<td width='45px'>&nbsp;".$_00_R."&nbsp;</td>
 	<td width='85px'>&nbsp;".$_00_R_mult."&nbsp;</td>
 	<td width='85px'>&nbsp;".$_00_R_res."&nbsp;</td>

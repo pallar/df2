@@ -1,6 +1,6 @@
-//CFS_2: reports/fmcontxt.php
-//created: 20.03.2006
-//modified: 15.07.2011
+//DF_2: reports/fmcontxt.php
+//c: 20.03.2006
+//m: 13.03.2017
 
 function context_menu(params,event) {
 	el=document.getElementById("cm");

@@ -64,7 +64,7 @@ if ( $submit1!="" ) {
 	$opertype=$_POST[opertype]*1;
 	$fo_scnt=count( $cows_checkboxes );//checked cows quantity
 	if ( $fo_scnt<=0 )
-		Res_Draw( 3, $PHP_SELF."?opertype=$opertype", "", $php_mm["_com_no_selected_animals_cap"], $php_mm_tip[0] );
+		Res_Draw( 3, $PHP_SELF."?opertype=$opertype", "", $php_mm["_com_no_selected_animals_"], $php_mm_tip[0] );
 	else {
 		$sess_str="";
 		session_start(); $sess_id=session_id();
@@ -148,7 +148,7 @@ if ( $submit1!="" ) {
 		<td $cjust rowspan='2' width='1%' $vtjust></td>
 		<td $ljust rowspan='2' width='12%' $vtjust>";
 	if ( $userCoo!=9 ) echo "
-			<input class='btn btn_h0 gradient_f00' style='width:71px' type='submit' name='submit1' value='".$php_mm["_com_forward_btn_cap"]."...'>";
+			<input class='btn btn_h0 gradient_f00' style='width:71px' type='submit' name='submit1' value='".$php_mm["_com_forward_btn_"]."...'>";
 	echo "
 		</td>
 		<td $cjust rowspan='2' width='2%' $vtjust></td>
@@ -187,7 +187,7 @@ if ( $submit1!="" ) {
 		<td $ljust $vtjust title='".$ged["Group"]." \"$grnick\"'>
 			<input class='btn btn_h0 gradient_0f0' style='cursor:pointer; width:35px' type='button' onclick='visibility_chg( \"group\", $i )' value='+/-'>&nbsp;&nbsp;<br>".$ged["Group"]." \"<b>$grnick</b>\"
 		</td>
-		<td $cjust title='".$php_mm["_com_select_all_in_group_cap"]." \"$grnick\""."' $vtjust>";
+		<td $cjust title='".$php_mm["_com_select_all_in_group_"]." \"$grnick\""."' $vtjust>";
 	if ( $userCoo>0 & $userCoo!=9 ) echo "
 			<input class='y_chk' id='gr_cb".$iii."0' type='checkbox' onclick='gr_set0( \"$iii\", 0, \"cw_cb\" )'>";
 	echo "
@@ -219,7 +219,7 @@ if ( $submit1!="" ) {
 		echo "
 			<td $rjust width='7%'>".$kk."</td>
 			<td $rjust width='60px' style='color:$z_col'><b>".$cownum_div.$row[1].$cownum_div1."</b></td>
-			<td title='".$row[2]."' width='80%'>".StrCutLen( $row[2], 47 )."&nbsp;</td>
+			<td title='".$row[2]."' width='80%'>".StrCutLen1( $row[2], 47, $contentCharset )."&nbsp;</td>
 		</tr>";
 		$k++;
 	}

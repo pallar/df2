@@ -1,20 +1,28 @@
 <?php
-/*
-DF_2: dflib/f_zap.php
+/* DF_2: dflib/f_zap.php
 zap prev data (date & sessions)
-created: 30.03.2007
-modified: 22.02.2012
-*/
+c: 30.03.2007
+m: 15.06.2015 */
 
 ob_start();//lock output to set cookies properly!
 
-$_now=date( "Y-m-d" );
+$query="SELECT var_name FROM $vars WHERE var_valuetype<>'session'";
+$res=mysql_query( $query ); $sqlerr=mysql_errno();
+if ( $sqlerr==0 ) {
+	while ( $row=mysql_fetch_row( $res )) {
+		$v_name=$row[0];
+		if ( strlen( $v_name )<30 )
+			mysql_query( "DELETE FROM $vars WHERE var_name='$v_name'" );
+	}
+	mysql_free_result( $res );
+}
+
 $query="SELECT var_name, var_value, var_uid, modif_date FROM $vars WHERE var_valuetype='session'";
-$res=mysql_query( $query, $db ); $sqlerr=mysql_errno();
+$res=mysql_query( $query ); $sqlerr=mysql_errno();
 if ( $sqlerr==0 ) {
 	while ( $row=mysql_fetch_row( $res )) {
 		$v_name=$row[0]; $_sid=$row[1]; $_smodif=$row[3];
-		if ( $_smodif<$_now ) {
+		if ( $_smodif<$now_Ymd ) {
 			$_sname="sess_".$_sid;
 			mysql_query( "DELETE FROM $vars WHERE var_name='$v_name'", $db );
 			$_sdbt=trim( "tmp_m".$_sid ); mysql_query( "DROP TABLE IF EXISTS $_sdbt" );
@@ -29,7 +37,7 @@ if ( $sqlerr==0 ) {
 }
 
 $query="SELECT var_name, var_value, var_uid, modif_date FROM $vars WHERE var_valuetype='date' AND var_value='--'";
-$res=mysql_query( $query, $db ); $sqlerr=mysql_errno();
+$res=mysql_query( $query ); $sqlerr=mysql_errno();
 if ( $sqlerr==0 ) {
 	while ( $row=mysql_fetch_row( $res )) {
 		$v_name=$row[0];
@@ -56,5 +64,5 @@ if ( $sqlerr==0 ) {
 	mysql_free_result( $res );
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

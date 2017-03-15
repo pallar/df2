@@ -30,7 +30,7 @@ function Arr_s_Unpack( $s ) {
 	return $z;
 }
 
-function CtrlZapusk_Draw( $content_charset, $just, $userCoo, $php_mm, $_06_every_second_day_cap, $view_class, $edit_class, $rw_sty_0, $idx, $z ) {
+function CtrlZapusk_Draw( $contentCharset, $just, $userCoo, $php_mm, $_06_every_second_day_, $view_class, $edit_class, $rw_sty_0, $idx, $z ) {
 	$idx_=$idx+1;
 	for ( $i=1; $i<=3; $i++ ) { $checked[$i]=""; $ch[$i]=chr( $i+64 ); $checked_text[$i]="-";}
 	$days=substr( $z, 0, 2 )*1;
@@ -44,15 +44,15 @@ function CtrlZapusk_Draw( $content_charset, $just, $userCoo, $php_mm, $_06_every
 	echo "</td>
 	<td>";
 	if ( $userCoo>0 & $userCoo!=9 ) echo "
-		<input ".$checked[1]." name='arr_s".$idx_."10' title='".$php_mm["_com_s10_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset )."
-		<input ".$checked[2]." name='arr_s".$idx_."20' title='".$php_mm["_com_s20_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset )."
-		<input ".$checked[3]." name='arr_s".$idx_."30' title='".$php_mm["_com_s30_cap"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset )."
-		<input ".$checked[4]." name='arr_s".$idx_."99' title='$_06_every_second_day_cap' type='checkbox'>";
+		<input ".$checked[1]." name='arr_s".$idx_."10' title='".$php_mm["_com_s10_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset )."
+		<input ".$checked[2]." name='arr_s".$idx_."20' title='".$php_mm["_com_s20_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset )."
+		<input ".$checked[3]." name='arr_s".$idx_."30' title='".$php_mm["_com_s30_"]."' type='checkbox'>".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset )."
+		<input ".$checked[4]." name='arr_s".$idx_."99' title='$_06_every_second_day_' type='checkbox'>";
 	else echo "
-		&nbsp;".mb_substr( $php_mm["_com_s10_cap"], 0, 1, $content_charset ).":&nbsp;<b>".$checked_text[1]."</b>
-		&nbsp;".mb_substr( $php_mm["_com_s20_cap"], 0, 1, $content_charset ).":&nbsp;<b>".$checked_text[2]."</b>
-		&nbsp;".mb_substr( $php_mm["_com_s30_cap"], 0, 1, $content_charset ).":&nbsp;<b>".$checked_text[3]."</b>
-		&nbsp;".mb_substr( $php_mm["_com_s40_cap"], 0, 1, $content_charset ).":&nbsp;<b>".$checked_text[4]."</b>";
+		&nbsp;".mb_substr( $php_mm["_com_s10_"], 0, 1, $contentCharset ).":&nbsp;<b>".$checked_text[1]."</b>
+		&nbsp;".mb_substr( $php_mm["_com_s20_"], 0, 1, $contentCharset ).":&nbsp;<b>".$checked_text[2]."</b>
+		&nbsp;".mb_substr( $php_mm["_com_s30_"], 0, 1, $contentCharset ).":&nbsp;<b>".$checked_text[3]."</b>
+		&nbsp;".mb_substr( $php_mm["_com_s40_"], 0, 1, $contentCharset ).":&nbsp;<b>".$checked_text[4]."</b>";
 	echo "
 	</td>";
 }
@@ -120,7 +120,7 @@ include( "../locales/$lang/f_php._$lang" );
 include( "../locales/$lang/f_sel._$lang" );
 include( "../locales/$lang/f_07._$lang" );
 
-MainMenu( $_07_."&nbsp;-&nbsp;".$php_mm["_com_app_cap"], "conf", "" );
+MainMenu( $_07_."&nbsp;-&nbsp;".$php_mm["_com_app_"], "conf", "" );
 ?>
 
 <script language='JavaScript' src='../dflib/sessvars.js'></script>
@@ -1004,7 +1004,7 @@ if ( $userCoo==1 ) {
 		else echo "<b>$auto_prep_zapusk_text</b>";
 		echo "</td>";
 		for ( $i=0; $i<=4; $i++ )
-			CtrlZapusk_Draw( $content_charset, $rjust, $userCoo, $php_mm, $_06_every_second_day_cap, $view_class, $edit_class, $rw_sty_0, $i, $z[$i] );
+			CtrlZapusk_Draw( $contentCharset, $rjust, $userCoo, $php_mm, $_06_every_second_day_, $view_class, $edit_class, $rw_sty_0, $i, $z[$i] );
 		$ao1c=''; $ao1_='-';
 		$at1c=''; $at1_='-';
 		$am1c=''; $am1_='-';
@@ -1048,7 +1048,7 @@ if (( $userCoo!=1 && $btn_cancel=="" && $btn_ok=="" ) || $userCoo==1 ) {
 	if ( $userCoo*1==9 || $userCoo*1==0 ) echo "
 	<td $cjust style='color:#ff0000' width='90%'><b>".$_07_readonly."</b></td>";
 	else echo "
-	<td width='90%'><input class='btn gradient_0f0 btn_h0' name='".$btn_ok_name."' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_cap"]."'></td>";
+	<td width='90%'><input class='btn gradient_0f0 btn_h0' name='".$btn_ok_name."' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>";
 	echo "
 	<td width='10%'><input class='btn gradient_f00 btn_h0' name='btn_cancel' style='width:100%' type='submit' value='X'></td>
 </tr>

@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: forms/f__parl.php
+/* DF_2: forms/f__parl.php
 form: parlor report ([PARL]or report)
-created: 25.12.2005
-modified: 26.09.2013
-*/
+c: 25.12.2005
+m: 26.09.2013 */
 
 ob_start();//lock output to set cookies properly!
 
@@ -26,7 +24,7 @@ $graph=0;
 
 $f__jfilt__mode=0;
 
-$tabs_t=array( $php_mm["_01_tab1_cap"], $php_mm["_01_tab3_cap"] );
+$tabs_t=array( $php_mm["_01_tab1_"], $php_mm["_01_tab3_"] );
 $tabs=array( "RCG", "RCG", "RCG" );
 
 if ( $parlrep_tab_==2 ) {
@@ -47,7 +45,7 @@ $stop_f_jfilt_include=1;//IMPORTANT! BEFORE "...f_jfilt.php"
 include( "../".$hDir['reps']."f_jfilt.php" );
 $stop_f_jfilt=1;//IMPORTANT! AFTER "...f_jfilt.php"
 
-MainMenu( $php_mm["_01_cap"].": ".$title, "parl", "" );
+MainMenu( $php_mm["_01_"].": ".$title, "parl", "" );
 if( $guest_from_wan==1 & ( $userCoo<=0 | $userCoo==9 )) {
 	echo $php_mm["ACCESS_DENIED"]; return;
 }
@@ -57,13 +55,13 @@ echo "
 	for ( $j=count( $tabs_t )-1; $j>=0; $j-- ) echo "
 	<a href='../".$hFrm['0100']."?parlrep_tab=$j' class='$tabs[$j]'><div class='p_100'></div>&nbsp;&nbsp;$tabs_t[$j]&nbsp;&nbsp;</a>";
 	echo "
-	&nbsp;<a href='$rep_url_?title=$title&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_cap"]."</b></a>
+	&nbsp;<a href='$rep_url_?title=$title&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_"]."</b></a>
 </div>
 <table><tr><td height='5px'></td></tr></table>";
 include( "f__jfilt.php" );
 echo "
 <table><tr><td height='5px'></td></tr></table>
-<div class='mk' style='border-width:0px; height:50%; margin:0px; overflow-x:hidden; overflow-y:auto'>
+<div class='mk' style='border-width:0; height:50%; margin:0; overflow-x:hidden; overflow-y:auto'>
 <table height='100%' width='100%'>
 <tr>
 	<td width='2%'></td>

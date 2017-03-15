@@ -1,21 +1,18 @@
 <?php
-/*
-DF_2: reports/f_mcws0.php
+/* DF_2: reports/f_mcws0.php
 report: extracting by cows & days
-created: 25.12.2005
-modified: 12.09.2014
-*/
+c: 25.12.2005
+m: 15.03.2017 */
 
 ob_start();//lock output to set cookies properly!
 
-$graph=$_GET[graph]*1;
-$title_=$_GET[title];
-if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab3_cap"];
+$graph=$_GET["graph"]*1; $title_=$title=$_GET["title"];
+if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab3_"];
 
 $outsele_=-1; $outsele_table=-1; $outsele_field=-1;
 
 include( "f_jfilt.php" );
-include( "fhead.php" );
+include( "frhead.php" );
 
 $res=mysql_query( "SELECT sessions FROM $globals", $db );
 $row=mysql_fetch_row( $res );
@@ -25,7 +22,7 @@ mysql_free_result( $res );
 $i=0; $mtotal=0; $mtotal_mast=0; $cows_cnt=0; $t_sec=0;
 $dots_cnt=0;
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo "
 <table cellspacing='1' class='st2'>
 <tr $cjust class='st_title2' style='height:28px'>
@@ -52,7 +49,7 @@ while ( $yc<=$yl+1 ) {
 	$yc1=$yc*10000; $mc1=$mc*100;
 	if ( $yc1+$mc1<=$yl1+$ml1 ) {
 		include( "f_jselm.php" );//DONT TOUCH THIS INCLUDE
-		if ( $error==0 ) { while ( $row=mysql_fetch_row( $res )) {
+		if ( $sqlerr<1 ) { while ( $row=mysql_fetch_row( $res )) {
 			$dc=$row[1]*1; $odt=$yc1+$mc1+$dc;
 			if ( $odt>$yl1+$ml1+$dl );
 			else if ( $odt<$yf1+$mf1+$df );
@@ -88,11 +85,10 @@ while ( $yc<=$yl+1 ) {
 					} else $milk_end[$r]=$milk_dt.", ".$mbeg."..".$mend;
 				}
 			}
-		} mysql_free_result( $res );}
+		} mysql_free_result( $res ); }
 	} else {
-		$res1=mysql_query( "SELECT id, cow_num, nick FROM $cows ORDER BY cow_num*1", $db );
-		$error=mysql_errno();
-		if ( $error==0 ) { while ( $row=mysql_fetch_row( $res1 )) {
+		$res1=mysql_query( "SELECT id, cow_num, nick FROM $cows ORDER BY cow_num*1", $db ); $sqlerr=mysql_errno();
+		if ( $sqlerr<1 ) { while ( $row=mysql_fetch_row( $res1 )) {
 			$r=$row[0]*1;
 			$m=$milk_[$r];
 			$m_mast=$milk_mast[$r]; if ( $m_mast==0 ) $m_mast="";
@@ -100,7 +96,7 @@ while ( $yc<=$yl+1 ) {
 			$m0cnt=$milk0_cnt[$r]; if ( $m0cnt==0 ) $m0cnt="";
 			if ( $m<>0 ) {
 				$rnum=$cownum_div.$row[1].$cownum_div1; $rnick=$row[2];
-				$rnick_=StrCutLen( $rnick, 41 );
+				$rnick_=StrCutLen1( $rnick, 41, $contentCharset );
 				$mbeg=$milk_beg[$r]; $mend=$milk_end[$r];
 				$t_sec=$milk_time[$r]; $t_hh=floor( $t_sec/3600 );
 				$t_sec=$t_sec-$t_hh*3600; $t_mm=floor( $t_sec/60 );
@@ -125,7 +121,7 @@ while ( $yc<=$yl+1 ) {
 				$mtotal_[30]=$mtotal_[30]+$m_sess[30];
 				$mtotal_[31]=$mtotal_[31]+$m_sess[31];
 
-				if ( $graph==0 ) {
+				if ( $graph<1 ) {
 					RepTr( $rownum );
 					echo "
 	<td $rjust onmouseover='style.cursor=\"pointer\"'><a href='../".$hFrm['0520']."?cow_id=".$row[0]."&ret0=-1' target='w1'>$rnum</td>
@@ -147,13 +143,13 @@ while ( $yc<=$yl+1 ) {
 </tr>";
 				}
 			}
-		} mysql_free_result( $res1 );}
+		} mysql_free_result( $res1 ); }
 		break;
 	}
-	if ( $mc<12 ) $mc++; else { $mc=1; $yc++;}
+	if ( $mc<12 ) $mc++; else { $mc=1; $yc++; }
 }
 
-if ( $graph==0 ) {
+if ( $graph<1 ) {
 	echo "
 <tr $rjust class='st_title2'>
 	<td $cjust class='st_title2'><b>".$ged['TOTAL'].":</td>
@@ -176,7 +172,7 @@ if ( $graph==0 ) {
 </tr>
 </table><br>";
 
-} else if ( $graph==1 ) {
+} else {
 	$dots_set=$dots[0];
 	if ( $dots_cnt>300 ) $dots_cnt=300;//no more than 300 dots for JpGraph!
 	for ( $i=1; $i<=$dots_cnt; $i++ ) $dots_set=$dots_set.";".$dots[$i];
@@ -186,5 +182,5 @@ if ( $graph==0 ) {
 	} else;
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

@@ -1,8 +1,8 @@
 <?php
 /* DF_2: reports/f_diary.php
 report: todo_diary
-created: 22.11.2007
-modified: 30.04.2015 */
+c: 22.11.2007
+m: 28.07.2015 */
 ?>
 
 <script language='JavaScript'>
@@ -115,22 +115,22 @@ for ( $i=10; $i<=20; $i++ ) {
 }
 //detailed mode [END]
 
-$_GET[order_by]; $cows_order_=$order_by;
+$cows_order_=$order_by=$_GET["order_by"];
 if ( $cows_order_=="" ) $cows_order_="$cows.cow_num*1";
 
 include( "f_tdprep.php" );
 include( "../locales/$lang/f_02._$lang" );
 include( "../locales/$lang/f_13._$lang" );
 
-if ( $_GET['hide_menu']*1==0 ) echo "
-<div class='mk' id='rep_div' style='border-width:1px; height:61%; line-height:1px; margin-bottom:0px; margin-left:0px; margin-right:0px; margin-top:0px; overflow-x:hidden; overflow-y:scroll'>";
+if ( $_GET["hide_menu"]*1==0 ) echo "
+<div class='mk' id='rep_div' style='border-width:1px; height:61%; line-height:1px; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; overflow-x:hidden; overflow-y:scroll'>";
 
-for ( $op=10; $op<=20; $op++) {
+for ( $op=10; $op<=20; $op++ ) {
 	echo "
 <table cellspacing='1' class='st2' style='width:100%'>
 <tr class='st_title'>
-	<td width='90%'><b>".$_02_h_cap[$op]."</b></td>
-	<td $cjust><input $cb__[$op]>".$_02_cb_cap."</td>
+	<td width='90%'><b>".$_02_h_[$op]."</b></td>
+	<td $cjust><input $cb__[$op]>".$_02_cb_."</td>
 </tr>
 </table>";
 	include( "f_tdiary.php" );

@@ -11,7 +11,7 @@ m: 10.11.2015 */
 			}
 		}
 		if ( $co*1==523041 ) {
-			$co1="<font color=red size=7>".$php_mm["_06_oper_deleted_cap"]."!</font>";
+			$co1="<font color=red size=7>".$php_mm["_06_oper_deleted_"]."!</font>";
 			$coo=-1;
 		} else $co1=$co;
 ?>

@@ -23,11 +23,11 @@ if ( $cb_[$op]==0 ) {
 	<td width='4%'><b>".PhraseCarry( $ged['Lact._sched.'], " ", 1 )."</b></td>
 -->
 	<td width='4%'><b>".$ged['Lact.']."</b></td>
-	<td width='7%'><b>".PhraseCarry( $_13_cw_lact_tot_milk_cap.",".$_13_cw_kg_cap, ",", 1)."</b></td>
-	<td width='7%'><b>".PhraseCarry( $_13_cw_lact_max_milk_cap.",".$_13_cw_kg_cap, ",", 1)."</b></td>
-	<td width='7%'><b>".PhraseCarry( $_13_cw_min_intens_cap.",".$_13_cw_kg_cap, ",", 1)."</b></td>
-	<td width='7%'><b>".PhraseCarry( $_13_cw_avg_intens_cap.",".$_13_cw_kg_cap, ",", 1)."</b></td>
-	<td width='7%'><b>".PhraseCarry( $_13_cw_max_intens_cap.",".$_13_cw_kg_cap, ",", 1)."</b></td>
+	<td width='7%'><b>".PhraseCarry( $_13_cw_lact_tot_milk_.",".$_13_cw_kg_, ",", 1)."</b></td>
+	<td width='7%'><b>".PhraseCarry( $_13_cw_lact_max_milk_.",".$_13_cw_kg_, ",", 1)."</b></td>
+	<td width='7%'><b>".PhraseCarry( $_13_cw_min_intens_.",".$_13_cw_kg_, ",", 1)."</b></td>
+	<td width='7%'><b>".PhraseCarry( $_13_cw_avg_intens_.",".$_13_cw_kg_, ",", 1)."</b></td>
+	<td width='7%'><b>".PhraseCarry( $_13_cw_max_intens_.",".$_13_cw_kg_, ",", 1)."</b></td>
 </tr>";
 } else {
 	echo "

@@ -40,7 +40,7 @@ m: 10.11.2015 */
 		}
 		if ( $co*1==523041 ) {
 			$opdate=split( "-", $old_dmY ); $d1=$opdate[0]; $m1=$opdate[1]; $y1=$opdate[2];
-			$co="<center><font size=4>".$php_mm["_06_oper_deleted_cap"]."!</font></center>";
+			$co="<center><font size=4>".$php_mm["_06_oper_deleted_"]."!</font></center>";
 			$coo=-1;
 		}
 		if ( $cow_id>1 ) {

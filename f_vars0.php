@@ -134,14 +134,14 @@ function Dbase_disconnect() {
 }
 
 function Dbase_select() {
-	global $db, $db_name, $db_utf8, $connection_charset, $connection_charset1;
-	if ( $connection_charset!="cp1251" ) $connection_charset="utf8";
+	global $db, $db_name, $db_utf8, $connectionCharset, $connectionCharset1;
+	if ( $connectionCharset!="cp1251" ) $connectionCharset="utf8";
 //DONT TOUCH NEXT! CRITICAL FOR EXPORT!
-	if ( $connection_charset1=="cp1251" ) $connection_charset="cp1251";
+	if ( $connectionCharset1=="cp1251" ) $connectionCharset="cp1251";
 	mysql_select_db( $db_name, $db );
 	if ( $db_utf8==1 ) {
-		mysql_query( "SET CHARACTER SET ".$connection_charset, $db );
-		mysql_query( "SET NAMES ".$connection_charset, $db );
+		mysql_query( "SET CHARACTER SET ".$connectionCharset, $db );
+		mysql_query( "SET NAMES ".$connectionCharset, $db );
 	}
 }
 
@@ -174,7 +174,7 @@ if ( $skip_W3C_DOCTYPE!=1 ) {
 	echo "
 <html>
 <head>
-<meta content='text/html;charset=".$content_charset."' http-equiv='content-type'>
+<meta content='text/html;charset=".$contentCharset."' http-equiv='content-type'>
 <meta name='generator' content='Dairy_Farm:php'>
 <meta name='author' content='PALLAR LTD., 2008-2015'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>

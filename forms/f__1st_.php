@@ -14,7 +14,7 @@ include( "../dflib/f_func.php" );
 include( "../dflib/f_librep.php" );
 
 require_once "../dflib/ajax/jshttprq.php";
-$JsHttpRequest=&new JsHttpRequest( $content_charset );
+$JsHttpRequest=&new JsHttpRequest( $contentCharset );
 
 $devs_ok=0;
 $res=mysql_query( "SELECT SUM( modif_uid ) FROM $parlor WHERE
@@ -28,13 +28,13 @@ $res=mysql_query( "SELECT totaldevs, halt_timeout, transact FROM $globals" );
 $row=mysql_fetch_row( $res );
 $devs=$row[0]*1; CookieSet( "devs", "$devs" ); $powermode=$row[1]*1; $trans=$row[2];
 if ( $powermode<=-2 ) {
-	$powermode=$php_mm["_00_power_ctrloff_cap"];
+	$powermode=$php_mm["_00_power_ctrloff_"];
 	$powermode_title=$php_mm["_00_power_ctrloff_tip"];
 } else if ( $powermode==-1 ) {
-	$powermode=$php_mm["_00_power_ok_cap"];
+	$powermode=$php_mm["_00_power_ok_"];
 	$powermode_title=$php_mm["_00_power_ok_tip"];
 } else if ( $powermode>=0 ) {
-	$powermode="<font color='#aa0000'>".$php_mm["_00_power_absent_cap"]."&nbsp;".$powermode."</font>";
+	$powermode="<font color='#aa0000'>".$php_mm["_00_power_absent_"]."&nbsp;".$powermode."</font>";
 	$powermode_title=$php_mm["_00_power_absent_tip"];
 }
 ?>
