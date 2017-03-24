@@ -31,17 +31,6 @@ $_notrau=$boolean[$_notrau_restrict].$_onclick[13];
 $_ovul=$boolean[$_ovul_restrict].$_onclick[14];
 $_noovul=$boolean[$_noovul_restrict].$_onclick[15];
 
-//if ( $bd_first>$bd_last ) {
-//	$bd_tmp=$bd_first;
-//	$bd_first=$bd_last;
-//	$bd_last=$bd_tmp;
-//}
-//if ( $bd_last-$bd_first==$bd_last ) {
-//	$bd_first=$bd_last;
-//}
-//CookieSet( "_filts_devf", $bd_first );
-//CookieSet( "_filts_devl", $bd_last );
-
 echo "
 <table width='100%'>
 <tr style='height:25px'>

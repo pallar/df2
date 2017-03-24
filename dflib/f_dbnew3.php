@@ -1,17 +1,15 @@
 <?php
-/*
-DF_2: dflib/f_dbne3.php
+/* DF_2: dflib/f_dbnew3.php
 setup: database dynamic tables structures
-created: 02.10.2007
-modified: 11.09.2012
-*/
+c: 02.10.2007
+m: 01.07.2015 */
 
 if ( $db_utf8==1 ) {
 	$table_utf8="DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-	$db_charset="utf8";
+	$dbCharset="utf8";
 } else {
 	$table_utf8="";
-	$db_charset="";
+	$dbCharset="";
 }
 
 $now_Ymd=date( "Y-m-d" );

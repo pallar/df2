@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: dflib/f_tfunc.php
+/* DF_2: dflib/f_tfunc.php
 cards mode, common functions
-created: 18.07.2007
-modified: 11.09.2012
-*/
+c: 18.07.2007
+m: 17.07.2015 */
 
 //load checkboxes from db
 function Cbs_FromDb( $group_type ) {
@@ -58,14 +56,14 @@ function Cb_ToDb( $group_type, $group_id, $group_state ) {
 		 VALUES (
 		 '$value_', 'mediumint', '_$value_name',
 		 '$userCoo', '$userCoo',
-		 '$modif_date', '$modif_time', '$modif_date', '$modif_time' )" ) or die( mysql_error());
+		 '$modif_date', '$modif_time', '$modif_date', '$modif_time' )", $db );
 	}
 }
 
 //save checkboxes to db
 function Cbs_ToDb( $groups_db, $group_type, $group_state ) {
 	global $db, $userCoo;
-	$res=mysql_query( "SELECT id FROM $groups_db", $db ) or die( mysql_error());
+	$res=mysql_query( "SELECT id FROM $groups_db", $db );
 	while ( $row=mysql_fetch_row( $res )) {
 		$group_id=$row[0];
 		Cb_ToDb( $group_type, $group_id, $group_state );
@@ -73,6 +71,4 @@ function Cbs_ToDb( $groups_db, $group_type, $group_state ) {
 	mysql_free_result( $res );
 	return $group_state;
 }
-
-$now_dmY=date( "d.m.Y" ); $now_His=date( "H:i:s" );
 ?>

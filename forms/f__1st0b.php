@@ -2,25 +2,32 @@
 /* DF_2: forms/f__1st0b.php
 f__1st0.php's ajax back
 c: 25.12.2005
-m: 14.11.2015 */
+m: 23.03.2017 */
 
 include( "../forms/f__1st_.php" );
+$width=CookieGet( "_width" )*1; if ( $width==0 ) $width=801;
+if ( $width>800 ) { $fcs0=3; $fcs1=8; } else { $fcs0=2; $fcs1=7; }
+$hcs=$fcs0+$fcs1;
 if ( $devs<$devs_onmnemo ) $devs_onpage=$devs-1; else $devs_onpage=$devs_onmnemo-1;
 $dev_last=$dev_1st+$devs_onpage;
 
 $_RESULT="
 <table cellspacing='1' class='st'>
 <tr $cjust class='st_title' style='height:28px'>
-	<td $ljust colspan=11 title='$powermode_title'>&nbsp;".$powermode."</td>
+	<td $ljust colspan='".$hcs."' title='".$powermode_title."'>&nbsp;".$powermode."</td>
 </tr>
 <tr $cjust class='st_title2'>
 	<td width='20px'>&nbsp;".$php_mm["_00_devnum_column_"]."&nbsp;</td>
-	<td width='130px'>".$php_mm["_00_devstat_column_"]."</td>
-	<td>".$php_mm["_00_cow_column_"]."</td>
-	<td colspan=2>".$php_mm["_00_milkvol_column_"]."</td>
-	<td colspan=3 title='".$ged["Start_manual"]." ".$ged["Start_retr."]." ".$ged["Break_done"]."'>".$ged["Start_manual~"].",&nbsp;".$ged["Start_retr.~"].",&nbsp;".$ged["Break_done~"]."</td>
+	<td width='130px'>".$php_mm["_00_devstat_column_"]."</td>";
+if ( $width>800 ) $_RESULT.="
+	<td>".$php_mm["_00_cow_column_"]."</td>";
+$_RESULT.="
+	<td colspan='2'>".$php_mm["_00_milkvol_column_"]."</td>
+	<td colspan='3' title='".$ged["Start_manual"]." ".$ged["Start_retr."]." ".$ged["Break_done"]."'>".$ged["Start_manual~"].",&nbsp;".$ged["Start_retr.~"].",&nbsp;".$ged["Break_done~"]."</td>";
+if ( $width>800 ) $_RESULT.="
 	<td width='70px'>".$ged["M.~"]."</td>
-	<td colspan=2 width='40px'>".$ged["T.~"].",&nbsp;".$ged["O.~"]."</td>
+	<td colspan='2' width='40px'>".$ged["T.~"].",&nbsp;".$ged["O.~"]."</td>";
+echo "
 </tr>";
 
 $res=mysql_query( "SELECT
@@ -87,7 +94,7 @@ while ( $row=mysql_fetch_row( $res )) {
 	elseif ( $bd_state==$php_m[766] )//intDB overflow
 		$dev_color='#ea0000';
 	elseif ( $bd_state==$php_m[765] )//error
-		$dev_color='#ea0000';
+			$dev_color='#ea0000';
 	elseif ( $bd_state==$php_m[764] )//report ready
 		$dev_color='#00a000';
 	elseif ( $bd_state==$php_m[763] )//milking
@@ -96,7 +103,7 @@ while ( $row=mysql_fetch_row( $res )) {
 		$dev_color='#00af00';//'#1f1f1f'
 	elseif ( $bd_state==$php_m[761] )//device washing
 		$dev_color='#00aaff';
-	else//?
+	else
 		$dev_color='#aa0000';
 	$dev_style='color:'.$dev_color;
 	if ( $dev_bgcolor!='#0' ) $dev_style='background:'.$dev_bgcolor.'; '.$dev_style;
@@ -113,27 +120,31 @@ while ( $row=mysql_fetch_row( $res )) {
 	$connected=$dev_status."<br>".$row[19]."&nbsp;".$rep_time;
 	if ( $row[14]=='+' ) $m_color='#ff0000'; else $m_color='#000000';
 	$dev_style="style='".$dev_style."'";
-	if ( $trans!=1 ) $phase=$bd_state; else { $phase=$connected; $dev_style="";}
+	if ( $trans!=1 ) $phase=$bd_state; else { $phase=$connected; $dev_style=""; }
 	$_RESULT=$_RESULT."
 <tr $cjust bgcolor='".GrTrCol( $rownum )."'>
 	<td $cjust style='height:32px'>$bd_num</td>
-	<td $dev_style'>$phase</td>
-	<td $cow_style title='$cow_inf_0'>&nbsp;$cow_inf</td>
+	<td $dev_style'>$phase</td>";
+	if ( $width>800 ) $_RESULT.="
+	<td $cow_style title='$cow_inf_0'>&nbsp;$cow_inf</td>";
+	$_RESULT.="
 	<td $rjust style='color:$m_color' width='45px'>$m&nbsp;</td>
-	<td $rjust style='color:$m_color' width='51px'>$row[10]&nbsp;</td>
-	<td width='20px'>$row[11]</td>
+	<td $rjust style='color:$m_color' width='51px'>".$row[10]."&nbsp;</td>
+	<td width='20px'>".$row[11]."</td>
 	<td width='30px'>$retries</td>
-	<td width='20px'>$row[13]</td>
-	<td>$row[15]&nbsp;$row[16]</td>
-	<td width='20px'>$row[17]</td>
-	<td width='20px'>$row[18]</td>
+	<td width='20px'>".$row[13]."</td>";
+	if ( $width>800 ) $_RESULT.="
+	<td>".$row[15]."&nbsp;".$row[16]."</td>
+	<td width='20px'>".$row[17]."</td>
+	<td width='20px'>".$row[18]."</td>";
+	echo "
 </tr>";
 }
 
 $_RESULT=$_RESULT."
 <tr class='st_title2' style='height:28px'>
-	<td colspan=3>&nbsp;".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."&nbsp;</td>
-	<td $rjust colspan=8>".$php_mm["_00_transact_"].":".$trans."&nbsp;</td>
+	<td colspan='".$fcs0."'>&nbsp;".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."&nbsp;</td>
+	<td $rjust colspan=".$fcs1.">".$php_mm["_00_transact_"].":".$trans."&nbsp;</td>
 </tr>";
 
 $res=mysql_query( "SELECT milk_kg FROM $parlor WHERE bd_num='A1'" );
@@ -150,15 +161,17 @@ for ( $j=0; $j<4; $j++ ) {
 <tr bgcolor='".GrTrCol( $rownum )."'>";
 	$i=($j+1)*10; $i="_00_tot_".$i."_";
 	$_RESULT=$_RESULT."
-	<td colspan='3'>&nbsp;$php_mm[$i]:</td>
-	<td $rjust>$m[$j]&nbsp;</td>
+	<td colspan='".$fcs0."'>&nbsp;".$php_mm[$i].":</td>
+	<td $rjust>".$m[$j]."&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
+	<td>&nbsp;</td>";
+	if ( $width>800 ) $_RESULT.="
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
+	<td>&nbsp;</td>";
+	echo "
 </tr>";
 	}
 

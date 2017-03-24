@@ -2,9 +2,9 @@
 /* DF_2: forms/f__rep.php
 form: all reports report ([REP]ort)
 c: 23.08.2013
-m: 26.09.2013 */
+m: 19.06.2015 */
 
-ob_start();//lock output to set cookies properly!
+ob_start();
 
 include( "../f_vars.php" );
 include( "../dflib/f_func.php" );
@@ -17,8 +17,8 @@ $graph=0;
 
 $f__jfilt__mode=0;
 
-$title_=$_GET["title"];
-$rep_url_=$_GET["rep_url"];
+$title=$_GET[title];
+$rep_url=$_GET[rep_url];
 
 $btnToPrn=1;
 
@@ -34,7 +34,7 @@ if( $guest_from_wan==1 & ( $userCoo<=0 | $userCoo==9 )) {
 echo "
 <div class='b_h'>";
 	echo "
-	&nbsp;<a href='$rep_url_?title=$title&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_"]."</b></a>
+	&nbsp;<a href='".$rep_url."?title=".$title."&noCSS=1' target='w1'><b>".$php_mm["_com_ver_for_prn_lnk_"]."</b></a>
 </div>
 <table><tr><td height='5px'></td></tr></table>";
 include( "f__jfilt.php" );
@@ -45,7 +45,7 @@ echo "
 <tr>
 	<td width='2%'></td>
 	<td>";
-include( $rep_url_ );
+include( $rep_url );
 echo "
 	</td>
 	<td width='2%'></td>

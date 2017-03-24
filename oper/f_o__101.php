@@ -1,11 +1,8 @@
 <?php
-/*
-DF_2: oper/f_o_mlk.php
+/* DF_2: oper/f_o_mlk.php
 INSERT oper ----1 (101) [milking]
-created: 09.01.2006
-modified: 06.08.2014
-*/
-
+c: 09.01.2006
+m: 23.03.2017 */
 	include_once( "../f_o__000.php" );
 
 	$dbt_ext="_m";
@@ -92,7 +89,7 @@ modified: 06.08.2014
 				 '$arr_beg[$i]', '$arr_end[$i]',
 				 '00',
 				 '$cows_arr[$i]',
-				 '$userCoo', '$modif_Ymd', '$modif_His' )", $db ) or die( mysql_error());
+				 '$userCoo', '$modif_Ymd', '$modif_His' )", $db );
 		}
 	}
 ?>

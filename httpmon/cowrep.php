@@ -203,9 +203,9 @@ if ( $milk_kg < 100 & $row1[0] > 0 ) {//if test ($milk_kg>100 ) or wrong calibra
 if ( $kbdstrt*1 == 1 ) $kbdstrt = '+'; else $kbdstrt = '';
 if ( $kbdstop*1 == 1 ) $kbdstop = '+'; else $kbdstop = '';
 if ( $exh_*1 == 1 ) $exh_ = '+'; else $exh_ = '';
-if ( $ovu_*1 == 1 ) { $ovu_ = '+'; $cow_bdleds = $cow_bdleds+2;} else $ovu_ = '';
-if ( $tra_*1 == 1 ) { $tra_ = '+'; $cow_bdleds = $cow_bdleds+4;} else $tra_ = '';
-if ( $mas_*1 == 1 ) { $mas_ = '+'; $cow_bdleds = $cow_bdleds+8;} else { $mas_ = ''; $ma4_ = '';}
+if ( $ovu_*1 == 1 ) { $ovu_ = '+'; $cow_bdleds = $cow_bdleds+2; } else $ovu_ = '';
+if ( $tra_*1 == 1 ) { $tra_ = '+'; $cow_bdleds = $cow_bdleds+4; } else $tra_ = '';
+if ( $mas_*1 == 1 ) { $mas_ = '+'; $cow_bdleds = $cow_bdleds+8; } else { $mas_ = ''; $ma4_ = ''; }
 
 //CRITICAL! THIS MUST BE DONE AFTER INSERT OPER!
 $cow_gr = $cow_gr*1;

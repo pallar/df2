@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_func.php
 common functions
 c: 01.02.2006
-m: 14.11.2015 */
+m: 24.03.2017 */
 
 include( "f_dbnew3.php" );
 
@@ -60,10 +60,10 @@ function StrCh2Ch( $s, $c_in, $c_out ) {
 }
 
 function StrCutLen1( $s, $s_len, $contentCharset ) {
-	if ( strlen( $s )==0 ) $res='&nbsp;';
+	$s=trim( $s ); if ( strlen( $s )==0 ) $res='&nbsp;';
 	else {
 		$res=mb_substr( $s, 0, $s_len, $contentCharset );
-		if ( $res!=$s ) $res=$res.'...';
+		if ( $res!=$s ) $res=$res."...";
 	}
 	return $res;
 }
@@ -88,9 +88,8 @@ function Conv10_75( $var10, $var75len ) {
 function Conv74_10( $var74 ) {
 }
 
-function Bit_on( $var, $bit ) {
-	$bit_on=( $var & bit ) / bit;
-	return $bit_on;
+function Is_BitOn( $var, $bit ) {
+	return (( $var & bit ) / bit);
 }
 
 //mysql_query with error reporting
@@ -160,16 +159,10 @@ function T_addvalue( $uid, $persontable, $table, $varname_column, $varname_value
 	return $error;
 }
 
-//create operations table
 function Toper_create( $dbt ) {
 	global $journ_o_struc;
 	mysql_query( "SELECT 0 FROM $dbt" );
 	$error=mysql_errno();
-//RESERVED, BECAUSE ONLY ONE TABLE USED
-//	$def_year=substr( $dbt, 0, 4 );
-//	$def_month=substr( $dbt, 4, 2 );
-//	$arr=split( '_', $dbt );
-//	$s1=substr( $arr[0], 0, 4 ); $s2=substr( $arr[0], 4, 2 );
 	$def_year=1991;
 	$def_month=12;
 	$s1="0000"; $s2="00";
@@ -179,7 +172,6 @@ function Toper_create( $dbt ) {
 	if ( $error!=0 ) T_create( "CREATE TABLE", $dbt, $journ_o_struc );
 }
 
-//create milking table
 function Tmilk_create( $dbt ) {
 	global $journ_m_struc;
 	mysql_query( "SELECT 0 FROM $dbt" );
@@ -195,22 +187,19 @@ function Tmilk_create( $dbt ) {
 }
 
 //valid journal date
-function IsThisDateValid( $datestr ) {
-	global $php_m;
-	$res=0;
-	$datestr=trim( $datestr );
-	if ( strlen( $datestr )==10 ) {
-		list( $year, $month, $day )=split( '[/.-]', $datestr );
-		if ( checkdate( $month, $day, $year )) {
-			if (( $year>1991 ) and ( $year<2037 )) $res=1;
+function Is_YmdValid( $Ymd ) {
+	$res=1;
+	$$Ymd=trim( $Ymd );
+	if ( strlen( $Ymd )==10 ) {
+		list( $Y, $m, $d )=split( '[/.-]', $Ymd );
+		if ( checkdate( $m, $d, $Y )) {
+			if (( $Y>1991 ) and ( $Y<=2037 )) $res=1;
 			else {
-				if ( $year<=1991 ) $res="ERROR! YEAR OF DATE '$datestr' LESS THAN 1992.<br>";
-				else $res="ERROR! YEAR OF DATE '$datestr' MORE THAN 2037.<br>";
+				if ( $Y<=1991 ) $res="ERROR! YEAR OF DATE '$Ymd' LESS THAN 1992.<br>";
+				else $res="ERROR! YEAR OF DATE '$Ymd' MORE THAN 2037.<br>";
 			}
-		} else $res="ERROR! DATE '$datestr' NOT VALID IN GREGORIAN CALENDAR.<br>";
-	} else $res="ERROR! '$datestr' IS NOT VALID DATE.<br>";
-//echo "$datestr $day-$month-$year<br>";
-//echo "$res<br>";
+		} else $res="ERROR! DATE '$Ymd' IS NOT VALID IN GREGORIAN CALENDAR.<br>";
+	} else $res="ERROR! DATE '$Ymd' IS NOT VALID.<br>";
 	return $res;
 }
 
@@ -235,21 +224,19 @@ function File_StrTo( $fname, $s, $mode, $mode_msg ) {
 	} else echo "ERROR! FILE '$fname' IS NOT WRITABLE.<br>";
 }
 
-//write string to file
 function File_StrWriteTo( $fname, $s ) {
-	File_StrTo( $fname, $s, 'w', 'write' );
+	File_StrTo( $fname, $s, "w", "write" );
 }
 
-//append string to file
 function File_StrAppendTo( $fname, $s ) {
-	File_StrTo( $fname, $s, 'a', 'append' );
+	File_StrTo( $fname, $s, "a", "append" );
 }
 
 //read value from file
 function File_ValueReadFrom( $fname, $s, $idx, $v_default ) {
 	if ( file_exists( $fname )) {
 		$row=file( $fname );
-		list( $content, $res )=split( '=', trim( $row[$idx] ));
+		list( $content, $res )=split( "=", trim( $row[$idx] ));
 		if ( $content==$s ) {
 		} else $res="NO_VALUE";
 	} else {
@@ -260,19 +247,17 @@ function File_ValueReadFrom( $fname, $s, $idx, $v_default ) {
 	return $res;
 }
 
-//write value to file
 function File_ValueWriteTo( $filename, $var, $var_value ) {
 	File_StrWriteTo( $filename, "$var=$var_value" );
 }
 
-//append value to file
 function File_ValueAppendTo( $filename, $var, $var_value ) {
 	File_StrAppendTo( $filename, "$var=$var_value" );
 }
 
 //sort dates in dates string
 function DatesStr_Sort( $dates_str ) {
-	$dates_arr=split( ';', $dates_str );
+	$dates_arr=split( ";", $dates_str );
 	sort( $dates_arr );
 	reset( $dates_arr );
 	while ( list( $key, $res )=each( $dates_arr )) {
@@ -284,43 +269,35 @@ function DatesStr_Sort( $dates_str ) {
 
 //date in words
 function DateDdMmmYyyy( $dmY ) {
-	list( $day_, $month_, $year_ )=split( '[/.-]', $dmY );
-	$day_=$day_*1; $month_=$month_*1; $year_=$year_*1;
-	if ( $month_==1 ) $month_="Jan";
-	else if ( $month_==2 ) $month_="Feb";
-	else if ( $month_==3 ) $month_="Mar";
-	else if ( $month_==4 ) $month_="Apr";
-	else if ( $month_==5 ) $month_="May";
-	else if ( $month_==6 ) $month_="Jun";
-	else if ( $month_==7 ) $month_="Jul";
-	else if ( $month_==8 ) $month_="Aug";
-	else if ( $month_==9 ) $month_="Sep";
-	else if ( $month_==10 ) $month_="Oct";
-	else if ( $month_==11 ) $month_="Nov";
-	else if ( $month_==12 ) $month_="Dec";
-//NEXT ONE DOES NOT WORK WHEN FIRST AND SECOND DATE ARE IN ONE MONTH
-	$dmYgmt=$day_." ".$month_." ".$year_." 00:00:00 GMT";
-	return $dmYgmt;
+	list( $d_, $m_, $Y_ )=split( '[/.-]', $dmY );
+	$d_=$d_*1; $m_=$m_*1; $Y_=$Y_*1;
+	if ( $m_==1 ) $m_="Jan";
+	else if ( $m_==2 ) $m_="Feb";
+	else if ( $m_==3 ) $m_="Mar";
+	else if ( $m_==4 ) $m_="Apr";
+	else if ( $m_==5 ) $m_="May";
+	else if ( $m_==6 ) $m_="Jun";
+	else if ( $m_==7 ) $m_="Jul";
+	else if ( $m_==8 ) $m_="Aug";
+	else if ( $m_==9 ) $m_="Sep";
+	else if ( $m_==10 ) $m_="Oct";
+	else if ( $m_==11 ) $m_="Nov";
+	else if ( $m_==12 ) $m_="Dec";
+//NEXT ONE DOES NOT WORK WHEN FIRST AND SECOND DATE ARE IN ONE MONTH!
+	$res=$d_." ".$m_." ".$Y_." 00:00:00 GMT";
+	return $res;
 }
 
-//days between
 function DaysBetween( $dmY1, $dmY2 ) {
 	$dmY1=trim( $dmY1 ); $dmY2=trim( $dmY2 );
 	$dmY1gmt=DateDdMmmYyyy( $dmY1 ); $dmY2gmt=DateDdMmmYyyy( $dmY2 );
 	$date1int=strtotime( $dmY1gmt ); $date2int=strtotime( $dmY2gmt );
 	$days=( $date2int-$date1int )/86400;
-//echo "
-//---<br>
-//$dmY1=$dmY1gmt=$dateint1<br>
-//$dmY2=$dmY2gmt=$dateint2<br>
-//$days<br>
-//---<br>";
+//echo "DaysBetween() | $dmY1=$dmY1gmt=$dateint1 | $dmY2=$dmY2gmt=$dateint2 | $days |<br>
 	return $days;
 }
 
-function Var_ToDb( $v_type, $v_name, $v_value, $uid ) {
-	global $vars;
-	$uid=$uid*1;
+function Var_ToDb( $uid, $vars, $v_type, $v_name, $v_value ) {
 	$modif_date=date( "Y-m-d" ); $modif_time=date( "H:i:s", time());
 	$query="SELECT var_uid FROM $vars WHERE var_name='$v_name'";
 	if ( $uid>0 ) $query=$query." AND var_uid='$uid'";
@@ -351,60 +328,65 @@ function Var_ToDb( $v_type, $v_name, $v_value, $uid ) {
 	}
 }
 
-function Date_ToDb( $v_name, $v_value, $uid ) {
-	Var_ToDb( 'date', $v_name, $v_value, $uid );
+function Date_ToDb( $uid, $vars, $v_name, $v_value ) {
+//echo "Date_ToDb() | $uid | $vars | $v_name | $v_value |<br>";
+	Var_ToDb( $uid, $vars, "date", $v_name, $v_value );
 }
 
-function Var_FromDb( $v_name, $v_default ) {
-	global $vars, $userCoo;
-	$error=0;
-	$query="SELECT var_name, var_value, var_uid FROM $vars WHERE var_name='$v_name' AND var_uid='$userCoo'";
-	$res=mysql_query( $query );
-	$error=mysql_errno();
-	if ( $error!=0 ) {
-		$error=$error.": ".mysql_error();
-		echo "<h3>$query<br>MySQL ERROR $error.</h3>";
-		$res1=$v_default;//fix possible problem
-	} else {
-		while ( $row=mysql_fetch_row( $res )) $res1=$row[1];
+function Var_FromDb( $uid, $vars, $v_name, $v_default ) {
+//echo "Var_FromDb() | $uid | $vars | $v_name | $v_default |<br>";
+	$sqlerr=0;
+	$query="SELECT var_name, var_value, var_uid FROM $vars WHERE var_name='$v_name' AND var_uid='$uid'";
+	$res=mysql_query( $query ); $sqlerr=mysql_errno();
+	if ( $sqlerr!=0 ) {
+		$sqlerr=$sqlerr.": ".mysql_error();
+		echo "<h3>$query<br>MySQL ERROR $sqlerr.</h3>";
 		mysql_free_result( $res );
-		if ( strlen( $res1 )<strlen( $v_default )) $res1=$v_default;//fix possible problem
+		$res1=$v_default;
+	} else {
+		$row=mysql_fetch_row( $res ); $res1=$row[1];
+		mysql_free_result( $res );
+//echo "Var_FromDb() | $query | $res1 |<br>";
+		if ( strlen( $res1 )<strlen( $v_default )) $res1=$v_default;
 	}
 	return $res1;
 }
 
-function Date_FromDb( $v_name ) {
-	global $userCoo;
+function Date_FromDb( $uid, $vars, $v_name ) {
 	$v_default=date( "Y-m-d" );
-	$res1=Var_FromDb( $v_name, $v_default );
-	$res2=IsThisDateValid( $res1 );
+//echo "Date_FromDb() | $uid | $vars | $v_name | $v_default |<br>";
+	$res1=Var_FromDb( $uid, $vars, $v_name, $v_default );
+	$res2=Is_YmdValid( $res1 );
 	if ( $res2!=1 ) {
 		$res1=$v_default;
-		Date_ToDb( $v_name, $res1, $userCoo );
+		Date_ToDb( $uid, $vars, $v_name, $res1 );
 	}
 	return $res1;
 }
 
-function PeriodBeg_FromDb() {
+function PeriodBeg_FromDb( $uid, $vars ) {
+//echo "PeriodBeg_FromDb() | $uid | $vars |<br>";
 	$local_id=CookieGet( "_id" );
-	$res1=Date_FromDb( $local_id.".rep__.fdate" );
+	$res1=Date_FromDb( $uid, $vars, $local_id.".rep__.fdate" );
 	return $res1;
 }
 
-function PeriodEnd_FromDb() {
+function PeriodEnd_FromDb( $uid, $vars ) {
+//echo "PeriodEnd_FromDb() | $uid | $vars |<br>";
 	$local_id=CookieGet( "_id" );
-	$res1=Date_FromDb( $local_id.".rep__.ldate" );
+	$res1=Date_FromDb( $uid, $vars, $local_id.".rep__.ldate" );
 	return $res1;
 }
 
-function Period_FromDb() {
-	global $userCoo;
-	$dt1_old=PeriodBeg_FromDb(); $dt2_old=PeriodEnd_FromDb();
-	if ( $dt1_old>$dt2_old ) {
-		$dt1_old=$dt2_old;
-		Period_ToDb( "rep__.fdate", "$dt1_old", $userCoo );
+function Period_FromDb( $uid, $vars ) {
+//echo "Period_FromDb() | $uid | $vars |<br>";
+	$local_id=CookieGet( "_id" );
+	$dt1_db=PeriodBeg_FromDb( $uid, $vars ); $dt2_db=PeriodEnd_FromDb( $uid, $vars );
+	if ( $dt1_db>$dt2_db ) {
+		$dt1_db=$dt2_db;
+		Date_ToDb( $uid, $vars, $local_id.".rep__.fdate", $dt2_db );
 	}
-	CookieSet( "_dt1", "$dt1_old" ); CookieSet( "_dt2", "$dt2_old" );
+	CookieSet( "_dt1", "$dt1_db" ); CookieSet( "_dt2", "$dt2_db" );
 }
 
 function Int2StrZ( $s, $length ) {
@@ -413,13 +395,13 @@ function Int2StrZ( $s, $length ) {
 	return $res;
 }
 
-function PhraseCarry1( $s, $ch, $len, $contentCharset ) {
+function PhraseCarry1( $s, $ch, $len, $charset ) {
 	$s=trim( $s ); $s_res="";
 	if ( strlen( $s )>$len ) {
 		while ( strlen( $s )>0 ) {
-			$s1=mb_substr( $s, 0, $len, $contentCharset );
+			$s1=mb_substr( $s, 0, $len, $charset );
 			if ( strlen( $s_res )>0 ) $s_res=$s_res.$ch.$s1; else $s_res=$s1;
-			$s=mb_substr( $s, $len, strlen( $s )-$len, $contentCharset );
+			$s=mb_substr( $s, $len, strlen( $s )-$len, $charset );
 		}
 	} else $s_res=$s;
 	$s_arr[0]=$s; $s_arr[1]=$s_res;
@@ -438,16 +420,8 @@ function PhraseCarry( $s, $ch, $pos ) {
 	return $s1;
 }
 
-//repair broken tables and relations
-function RepairCows() {
-}
-
-function CookieSet( $cname, $cvalue ) {
-	setcookie( "$cname", $cvalue, 0, "/" );
-}
-
 function CookieSetSs( $cname, $cvalue, $ss ) {
-	setcookie( "$cname", $cvalue, time()+$ss, "/" );
+	setcookie( $cname, $cvalue, time()+$ss, "/" );
 }
 
 function ArrMenu( $arr_menu ) {
@@ -464,26 +438,15 @@ function ArrMenu( $arr_menu ) {
 }
 
 function MainMenu( $pg_title_, $menu_tab_, $body_tag_ ) {
-	global $userCoo, $php_mm, $app_rel, $OnLoad_Temp_Func, $hDir, $hFrm, $logindiv__onload_show, $admin_blocked, $lang, $menuDropped;
+	global $userCoo, $php_mm, $app_rel, $hDir, $hFrm, $lang, $menuSub, $nav1, $nav2, $nav1_top, $vars;
 	$userCoo=$userCoo*1;
-	$menuDropped=0;
-	if ( $userCoo<=0 ) return;
-	if ( $userCoo!=0 ) {
-		if ( $menu_tab_!="conf" ) include( "../dflib/f_perset.php" );
-	}
-	if ( $OnLoad_Temp_Func!="" ) $OnLoad_Temp_Func="; ".$OnLoad_Temp_Func;
-	if ( $logindiv__onload_show>0 ) {
-		$OnLoad_Temp_Func="; Login_Show()".$OnLoad_Temp_Func;
-	}
-	$onload_func='App_Login(); App_OnStart(); Is_Cookie()';
-	if ( $PerOnStart_Func!="" ) $onload_func=$onload_func.$PerOnStart_Func;
-	if ( $OnLoad_Temp_Func!="" ) $onload_func=$onload_func.$OnLoad_Temp_Func;
-	$efc_0="class='user_login'";
-	$efc_0_active="class='active user_login'";
-	$efc_last="class='last'";
-	$efc_all_active="class='active'";
-	$efc_last_active="class='active last'";
-	for ( $i=0; $i<=12; $i++ ) $efc[$i]="";
+	$onload_func="Is_CookiesOn(); App_Login(); App_OnStart();";
+	$efc_0=" class='user_login'";
+	$efc_0_active=" class='active user_login'";
+	$efc_last=" class='last'";
+	$efc_all_active=" class='active'";
+	$efc_last_active=" class='active last'";
+	for ( $i=0; $i<=9; $i++ ) $efc[$i]="";
 	$efc[0]=$efc_0;
 	$efc[9]=$efc_last;
 	if ( $menu_tab_=="login" ) $efc[0]=$efc_0_active;//...__login.php
@@ -500,15 +463,14 @@ function MainMenu( $pg_title_, $menu_tab_, $body_tag_ ) {
 	echo "
 </head>
 
-<script language='JavaScript' src='../".$hDir['forms']."f__first.js'></script>
+<script language='JavaScript' src='../".$hDir["forms"]."f__first.js'></script>
 <script language='JavaScript' type='text/javascript'>
-function Is_Cookie() {
+function Is_CookiesOn() {
 	if ( navigator.cookieEnabled==false ) alert( 'SWITCH ON COOKIES!' );";
-	$x='_'.$_SERVER['HTTP_USER_AGENT'];
-	if ( strpos( $x, 'Firefox' )+strpos( $x, 'Chrome' )+strpos( $x, 'Safari' )==0 ) {
-//	if ( strpos( $x, 'Firefox/4' )!=0 ) {
+	$x="_".$_SERVER["HTTP_USER_AGENT"];
+	if ( strpos( $x, "Firefox" )+strpos( $x, "Chrome" )+strpos( $x, "Safari" )==0 ) {
 ?>
-		alert( 'FIREFOX OR GOOGLE CHROME ARE NEEDED!' );
+		alert( 'YOU SHOULD USE FIREFOX OR GOOGLE CHROME!' );
 <?php
 	}
 	echo "
@@ -520,11 +482,9 @@ function do_reload() {
 </script>";
 	if ( strlen( $body_tag_ )>1 ) echo "
 
-$body_tag_";
-	else echo "
+$body_tag_"; else echo "
 
-<body onload='$onload_func' onkeypress='App_HotKeys()' oncontextmenu='return false'>";
-	$OnLoad_Temp_Func="";
+<body onload='".$onload_func."' onkeypress='App_HotKeys();' oncontextmenu='return false'>";
 	include( "f_gldivs.php" );
 	if ( $userCoo!=0 ) {
 		echo "
@@ -534,49 +494,73 @@ $body_tag_";
 <ul>
 	<li class='client_rtc'><span id='rtc_div'></span></li>
 	<li style='min-width:120px;'><a style='color:#33ffff;' onclick='Login_Show(); return false;'><span id='uname_div'>&nbsp;</span></a></li>
-	<li ".$efc[1]."><a href='../index.php'><span>".
+	<li".$efc[1]."><a href='../index.php'><span>".
 		$php_mm["_00_mnemo_btn_"]."</span></a></li>
-	<li ".$efc[2]."><a href='../".$hFrm['0100']."'><span>".
+	<li".$efc[2]."><a href='../".$hFrm['0100']."'><span>".
 		$php_mm["_00_detrep_btn_"]."</span></a></li>
-	<li ".$efc[4]."><a href='../".$hFrm['0300']."'><span>".
+	<li".$efc[4]."><a href='../".$hFrm['0300']."'><span>".
 		$php_mm["_00_reps_btn_"]."</span></a></li>
-	<li ".$efc[5]."><a href='../".$hFrm['0500']."'><span>".
+	<li".$efc[5]."><a href='../".$hFrm['0500']."'><span>".
 		$php_mm["_00_cards_btn_"]."</span></a></li>";
 		if ( $userCoo>0 ) echo "
-	<li ".$efc[6]."><a href='../".$hFrm['0600']."'><span>".
+	<li".$efc[6]."><a href='../".$hFrm['0600']."'><span>".
 		$php_mm["_00_opers_btn_"]."</span></a></li>";
 		if ( $userCoo==2 ) echo "
-	<li ".$efc[7]."><a href='../".$hFrm['99']."'><span>".
+	<li".$efc[7]."><a href='../".$hFrm['9900']."'><span>".
 		$php_mm["_00_conf_btn_"]."</span></a></li>";
 		else if ( $userCoo>0 ) echo "
-	<li ".$efc[7]."><a href='../".$hFrm['0700']."'><span>".
+	<li".$efc[7]."><a href='../".$hFrm['0700']."'><span>".
 		$php_mm["_00_conf_btn_"]."</span></a></li>";
 		echo "
-	<li ".$efc[8]."><a href='../man/?lang=".$lang."' target='w1'><span>".
+	<li".$efc[8]."><a href='../man/?lang=".$lang."' target='w1'><span>".
 		$php_mm["_00_man_btn_"]."</span></a></li>
-	<li ".$efc[9]."><a onclick='Per_FromCoo(); Period_Show(); return false'><span>".
+	<li".$efc[9]."><a onclick='Per_FromCoo(); Period_Show(); return false'><span>".
 		$php_mm["_00_per_btn_"]."</span></a></li>";
 	echo "
 </ul>
 </div>
-</nav>
-
+</nav>";
+	if ( $menuSub>0 ) echo "
+$nav1";
+	if ( $menuSub>1 ) echo "
+$nav2";
+	echo "
 <script>
-var nav=document.getElementsByTagName( 'nav' );
+var nav=document.getElementsByTagName( 'nav' );";
+	if ( $menuSub>0 ) echo "
+var nav1=document.getElementsByTagName( 'nav1' );";
+	if ( $menuSub>1 ) echo "
+var nav2=document.getElementsByTagName( 'nav2' );";
+	echo "
 do_nav();
 
 function do_nav() {
 	var width=window.innerWidth || document.documentElement.clientWidth;
-//	alert( width );
+	var height=window.innerHeight;
+	window.document.cookie='_width='+width+';path=/';
+	window.document.cookie='_height='+height+';path=/';
 	if ( width<=800 ) {
-		childs=nav[0].children[0].children[0].childElementCount;
+		childs=nav[0].children[0].children[0].childElementCount;";
+	if ( $menuSub>0 ) echo "
+		childs1=nav1[0].children[0].children[0].childElementCount;";
+	if ( $menuSub>1 ) echo "
+		childs2=nav2[0].children[0].children[0].childElementCount;";
+	echo "
 		nav[0].onclick=function( event ) {
 			event=event || window.event;
 			var t=event.target || event.srcElement;
-			if (t!=this) return true;
-			for ( var i=0; i<childs; i++ ) {
-				nav[0].children[0].children[0].children[i].style.display=nav[0].children[0].children[0].children[i].style.display==='none'?'block':'none';
-			}
+//			if (t!=this) return true;
+			for ( var i=0; i<childs; i++ ) nav[0].children[0].children[0].children[i].style.display=nav[0].children[0].children[0].children[i].style.display==='none'?'block':'none';";
+	if ( $menuSub>0 ) {
+		if ( !empty( $nav1_top )) echo "
+			nav1.style.top='".$nav1_top."';";
+		echo "
+			for ( var i=0; i<childs1; i++ ) nav1[0].children[0].children[0].children[i].style.display=nav1[0].children[0].children[0].children[i].style.display==='none'?'block':'none';";
+	} elseif ( $menuSub>1 ) {
+		echo "
+			for ( var i=0; i<childs2; i++ ) nav2[0].children[0].children[0].children[i].style.display=nav2[0].children[0].children[0].children[i].style.display==='none'?'block':'none';";
+	}
+	echo "
 		}
 	}
 }
@@ -584,12 +568,19 @@ function do_nav() {
 window.onresize=function() {
 	do_nav();
 	var width=window.innerWidth || document.documentElement.clientWidth;
-//	alert( width );
-	childs=nav[0].children[0].children[0].childElementCount;
+	childs=nav[0].children[0].children[0].childElementCount;";
+	if ( $menuSub>0 ) echo "
+	childs1=nav1[0].children[0].children[0].childElementCount;";
+	if ( $menuSub>1 ) echo "
+	childs2=nav2[0].children[0].children[0].childElementCount;";
+	echo "
 	if ( width>800 ) menu_li_style='inline-block'; else menu_li_style='none';
-	for ( var i=0; i<childs; i++ ) {
-		nav[0].children[0].children[0].children[i].style.display=menu_li_style;
-	}
+	for ( var i=0; i<childs; i++ ) nav[0].children[0].children[0].children[i].style.display=menu_li_style;";
+	if ( $menuSub>0 ) echo "
+	for ( var i=0; i<childs1; i++ ) nav1[0].children[0].children[0].children[i].style.display=menu_li_style;";
+	if ( $menuSub>1 ) echo "
+	for ( var i=0; i<childs2; i++ ) nav2[0].children[0].children[0].children[i].style.display=menu_li_style;";
+	echo "
 }
 </script>";
 	}
@@ -625,7 +616,7 @@ if ( $uuid>0 ) {
 	$row=mysql_fetch_row( $res ); mysql_free_result( $res );
 	$uid=$row[0]*1; $upassw=trim( $row[1] ); $unick=trim( $row[2] );
 	if ( $uid==9 | ( $upassw==trim( $uupass ) & $uid==$uuid )) {
-		$userCoo=$uid; Period_FromDb();//TO SET PERIOD
+		$userCoo=$uid; Period_FromDb( $uid, $vars );//TO SET PERIOD
 		CookieSet( "userCoo", $uid );
 		CookieSet( "unickCoo", $unick );
 		$logindiv__onload_show=0;
@@ -635,6 +626,8 @@ if ( $uuid>0 ) {
 } else {
 	$logindiv__onload_show=0;
 }
+$_width=CookieGet( "_width" )*1;
+$_height=CookieGet( "_height" )*1;
 $userCoo=CookieGet( "userCoo" );
 $guest_from_wan=( CookieGet( "_intranet" )!="1" ) & $deny_from_wan;
 ?>

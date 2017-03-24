@@ -2,7 +2,7 @@
 /* DF: forms/f__conf.php
 form: config (Dairy Farm [CONF]igurator)
 c: 13.06.2006
-m: 15.11.2015 */
+m: 23.03.2017 */
 
 ob_start();//lock output to set cookies!
 
@@ -32,10 +32,10 @@ function Arr_s_Unpack( $s ) {
 
 function CtrlZapusk_Draw( $contentCharset, $just, $userCoo, $php_mm, $_06_every_second_day_, $view_class, $edit_class, $rw_sty_0, $idx, $z ) {
 	$idx_=$idx+1;
-	for ( $i=1; $i<=3; $i++ ) { $checked[$i]=""; $ch[$i]=chr( $i+64 ); $checked_text[$i]="-";}
+	for ( $i=1; $i<=3; $i++ ) { $checked[$i]=""; $ch[$i]=chr( $i+64 ); $checked_text[$i]="-"; }
 	$days=substr( $z, 0, 2 )*1;
 	$ch[4]="O";
-	for ( $i=1; $i<=4; $i++ ) if ( strpos( $z, $ch[$i] )) { $checked[$i]="checked"; $checked_text[$i]="+";}
+	for ( $i=1; $i<=4; $i++ ) if ( strpos( $z, $ch[$i] )) { $checked[$i]="checked"; $checked_text[$i]="+"; }
 	$onkeydown="int_keyp( \"s".$idx_."\", 0, 70, 2 )";
 	echo "
 	<td $just width='30px'>";
@@ -59,7 +59,7 @@ function CtrlZapusk_Draw( $contentCharset, $just, $userCoo, $php_mm, $_06_every_
 
 function Is_Checked( $_name ) {
 	$res=0;
-	if ( isset( $_REQUEST[$_name] )) { if ( $_REQUEST[$_name]=='on' ) $res=1; else $res=0;}
+	if ( isset( $_REQUEST[$_name] )) { if ( $_REQUEST[$_name]=='on' ) $res=1; else $res=0; }
 	return $res;
 }
 
@@ -75,11 +75,11 @@ function ErrInSectOrg() {
 	global $errnum, $_07_err1, $err_fnt,
 	 $state, $region, $org, $farm, $addr,
 	 $_07_fnt_state, $_07_fnt_regions, $_07_fnt_org, $_07_fnt_farm, $_07_fnt_addr;
-	if ( $state=='' ) { SectE_Chk( 1 ); $_07_fnt_state=$err_fnt;}
-	if ( $region=='' ) { SectE_Chk( 2 ); $_07_fnt_regions=$err_fnt;}
-	if ( $org=='' ) { SectE_Chk( 8 ); $_07_fnt_org=$err_fnt;}
-	if ( $farm=='' ) { SectE_Chk( 128 ); $_07_fnt_farm=$err_fnt;}
-	if ( $addr=='' ) { SectE_Chk( 256 ); $_07_fnt_addr=$err_fnt;}
+	if ( $state=='' ) { SectE_Chk( 1 ); $_07_fnt_state=$err_fnt; }
+	if ( $region=='' ) { SectE_Chk( 2 ); $_07_fnt_regions=$err_fnt; }
+	if ( $org=='' ) { SectE_Chk( 8 ); $_07_fnt_org=$err_fnt; }
+	if ( $farm=='' ) { SectE_Chk( 128 ); $_07_fnt_farm=$err_fnt; }
+	if ( $addr=='' ) { SectE_Chk( 256 ); $_07_fnt_addr=$err_fnt; }
 }
 
 function ErrInSectSched() {
@@ -199,7 +199,7 @@ function devsTotal() {
 	var _devsByPit=document.getElementById( 'devsByPit' );
 	var _pits=document.getElementById( 'pits' );
 	devs=Number( _devsByPit.value )*Number( _pits.value );
-	if ( devs>96 ) { devs=0; err=1;}
+	if ( devs>96 ) { devs=0; err=1; }
 	var _devs=document.getElementById( 'devsQ' ); _devs.value=devs;
 //	if ( err>0 ) _devs.backgroundColor='#ff0000';
 }
@@ -214,9 +214,9 @@ function devsTotalUdm() {
 			devs=devs+Number( _devsAtCsR.value );
 		}
 	}
-	if ( devs>96 ) { devs=0; err=1;}
+	if ( devs>96 ) { devs=0; err=1; }
 	var _devs=document.getElementById( 'devsQ' ); _devs.value=devs;
-	if ( err>0 ) { _devs.style.backgroundColor='ff0000'; _devs.style.color='#ff0000';}
+	if ( err>0 ) { _devs.style.backgroundColor='ff0000'; _devs.style.color='#ff0000'; }
 }
 </script>
 
@@ -396,7 +396,7 @@ else if ( $do_js!="" ) {
 		if ( $dataWiresByPit<$dataWiresByPit_MIN || $dataWiresByPit>$dataWiresByPit_MAX || ( $dataWiresByPit>$devsByPit/2 && $devsByPit!=0 )) {
 			$errnum=+2048;
 			$_07_fnt_dataWiresByPit=$err_fnt;
-			if ( $dataWiresByPit==1 && $devsByPit<=1 ) { $errnum=-2048; $_07_fnt_dataWiresByPit="";}
+			if ( $dataWiresByPit==1 && $devsByPit<=1 ) { $errnum=-2048; $_07_fnt_dataWiresByPit=""; }
 		}
 //$jaggs and $jprts must be 0 if local rfid readers are used
 		if ( $rfidMode==1 || $rfidMode==3 && ( $jaggs>0 || $jprts>0 )) {
@@ -602,7 +602,7 @@ $lang=trim( $r[11] );
 if ( strlen( $state )==0 ) $state=$state_ukr; if ( $state=="Ukraine" ) $state=$state_ukr;
 $rfidMode=$r[16]*1;
 for ( $i=1; $i<=$rfidModes; $i++ ) $rfidModes_sel[$i]=""; $rfidModes_sel[$rfidMode]="selected";
-for ( $i=1; $i<=$langs; $i++ ) { $j=$langs_val[$i]; $langs_sel[$j]=$langs_dis[$j];} $langs_sel[$lang]=$langs_sel[$lang]." selected";
+for ( $i=1; $i<=$langs; $i++ ) { $j=$langs_val[$i]; $langs_sel[$j]=$langs_dis[$j]; } $langs_sel[$lang]=$langs_sel[$lang]." selected";
 $os=trim( $r[12] );
 $suex_dir=trim( $r[13] ); $suex_ver=trim( $r[14] ); $suex_passw=trim( $r[15] );
 //parlor from db
@@ -618,16 +618,16 @@ $res=mysql_query( "SELECT
  FROM $hardw", $db );
 $r=mysql_fetch_row( $res ); mysql_free_result( $res );
 $pits=$r[0]*1;
-if ( $pits<1 ) { $pits=1; Sql_query( "UPDATE $hardw SET pits='$pits'" );}
+if ( $pits<1 ) { $pits=1; Sql_query( "UPDATE $hardw SET pits='$pits'" ); }
 $drmdsByPit=$r[1]*1;
 for ( $i=1; $i<=6; $i++ ) $drmdsByPit_sel[$i]=""; $drmdsByPit_sel[$drmdsByPit]="selected";
 $drmdBdsMode=$r[2]*1;
 for ( $i=1; $i<=2; $i++ ) $drmdBdsMode_sel[$i]=""; $drmdBdsMode_sel[$drmdBdsMode]="selected";
 $devsByPit=$r[3]*1;
 $dataWiresByPit=$r[4]*1;
-if ( $dataWiresByPit>$devsByPit/2 || $dataWiresByPit<1 ) { $dataWiresByPit=1; Sql_query( "UPDATE $hardw SET data_wires_by_pit='$dataWiresByPit'" );}
+if ( $dataWiresByPit>$devsByPit/2 || $dataWiresByPit<1 ) { $dataWiresByPit=1; Sql_query( "UPDATE $hardw SET data_wires_by_pit='$dataWiresByPit'" ); }
 $waitBetwDevs=$r[5]*1;
-if ( $waitBetwDevs<50 ) { $waitBetwDevs=50; Sql_query( "UPDATE $hardw SET waitstate_between_devs='$waitBetwDevs'" );}
+if ( $waitBetwDevs<50 ) { $waitBetwDevs=50; Sql_query( "UPDATE $hardw SET waitstate_between_devs='$waitBetwDevs'" ); }
 $prts=$r[6]*1;
 $prtsTyp=trim( $r[7] );
 $prtsTyp_sel[COM]=""; $prtsTyp_sel[USB]=""; $prtsTyp_sel[USBCOM]=""; $prtsTyp_sel[$prtsTyp]="selected";
@@ -648,7 +648,7 @@ $jprtsTyp_sel[COM]=""; $jprtsTyp_sel[USB]=""; $jprtsTyp_sel[USBCOM]=""; $jprtsTy
 $jprt1=$r[3]*1;
 for ( $i=$jprt_MIN; $i<=$jprt_MAX; $i++ ) $jprt_sel[$i]=""; $jprt_sel[$jprt1]="selected";
 $jcmdT=$r[6]*1;
-if ( $jcmdT<$jcmdT_MIN ) { $jcmdT=$jcmdT_MIN; Sql_query( "UPDATE $hardwj SET cmd_timeout='$jcmdT'" );}
+if ( $jcmdT<$jcmdT_MIN ) { $jcmdT=$jcmdT_MIN; Sql_query( "UPDATE $hardwj SET cmd_timeout='$jcmdT'" ); }
 $jignSimilar=$r[7]*1;
 if ( $jignSimilar==1 ) $jignSimilar_checked="checked";
 //$jaggs and $jprts must be 0 if local rfid readers are used
@@ -672,7 +672,7 @@ if ( $rfidMode==3 ) {
 			$r[1]=$cowSheds; $r[2]=$dataWires;
 		}
 		$k=$r[1]*10+$r[2]; if ( $k<100 ) $k="0".$k;
-		if ( $r[4]*1==0 ) { $r[3]=""; $r[4]="";}
+		if ( $r[4]*1==0 ) { $r[3]=""; $r[4]=""; }
 		$cow_shed["$k"]["dev_min"]=$r[3];
 		$cow_shed["$k"]["dev_max"]=$r[4];
 		$cow_shed["$k"]["stall_min"]=$r[5];
@@ -1010,9 +1010,9 @@ if ( $userCoo==1 ) {
 		$am1c=''; $am1_='-';
 		if ( $jagg_attrs>0 ) {
 			$bdleds=$jagg_attrs;
-			if (( $bdleds & 2 )*1==2 ) { $ao1c='checked'; $ao1_='+';}
-			if (( $bdleds & 4 )*1==4 ) { $at1c='checked'; $at1_='+';}
-			if (( $bdleds & 8 )*1==8 ) { $am1c='checked'; $am1_='+';}
+			if (( $bdleds & 2 )*1==2 ) { $ao1c='checked'; $ao1_='+'; }
+			if (( $bdleds & 4 )*1==4 ) { $at1c='checked'; $at1_='+'; }
+			if (( $bdleds & 8 )*1==8 ) { $am1c='checked'; $am1_='+'; }
 		}
 		echo "
 </tr>

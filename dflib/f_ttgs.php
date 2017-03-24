@@ -2,7 +2,9 @@
 /* DF_2: dflib/f_ttgs.php
 tags list
 c: 30.12.2011
-m: 15.03.2017 */
+m: 23.03.2017 */
+
+$_list_height=$_height-200;
 
 echo "
 <script language='JavaScript' src='../dflib/f_input.js'></script>
@@ -123,7 +125,7 @@ if ( $send_buf!="" ) {
 	if ( $nocardsfilt!=1 ) echo "
 </table>
 </div>
-<div style='height:60%; width:100%; overflow-y:scroll'>
+<div style='height:".$_list_height."px; width:100%; overflow-y:scroll'>
 <table width='100%'>";
 	echo "
 <tbody id='rep_tbody'>";

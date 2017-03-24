@@ -1,8 +1,8 @@
-, $contentCharset<?php
+<?php
 /* DF_2: oper/f_o_mlk.php
 oper ----1 (101) [milking]
 c: 09.01.2006
-m: 11.11.2015 */
+m: 23.03.2017 */
 
 $t0=$_GET["opertype"]; $t1=$_GET["sess_id"]; $t2=$_GET["row_date"]; $key=$_GET["key"];
 if ( empty( $t0 ) & empty( $t1 ) & empty( $t2 ) & empty( $key )) return;
@@ -114,7 +114,7 @@ function milksess_keyp( i_ ) {
 	else if ( $varsession!=1 & $userCoo!=9 ) echo "
 &nbsp;<a onclick='sele_to_dele( \"co10\", \"".$php_mm["_06_forward_delete_btn_tip"]."\" ); return false' href=''>".$php_mm["_com_DELE_lnk_"]."</a>";
 	$query="SELECT $cows.id, $cows.cow_num, $cows.nick, $groups.nick FROM $cows, $groups WHERE $groups.id=$cows.gr_id";
-	if ( $varsession!=1 ) { $query.=" ORDER BY gr_id, cow_num*1";} else $query.=" AND $cows.id=$cow_id";
+	if ( $varsession!=1 ) { $query.=" ORDER BY gr_id, cow_num*1"; } else $query.=" AND $cows.id=$cow_id";
 	$res=mysql_query( $query, $db );
 	if ( $div_hide!=1 ) echo "
 <div style='height:59px; $thead_style'>";

@@ -1,22 +1,20 @@
 <?php
-/*
-DF_2: exp_imp/f_e001.php
+/* DF_2: exp_imp/f_e001.php
 export: milk data in DF_1 '2005.02.10' export format
-created: 21.03.2011
-modified: 08.08.2013
-*/
+c: 21.03.2011
+m: 23.03.2017 */
 
 function Iconv_1251_866( $x ) {
-	$x=str_replace( chr( 178 ), 'hex:B2:(UK)', $x );
-	$x=str_replace( chr( 179 ), 'hex:B3:(UK)', $x );
-	if ( !@extension_loaded( 'iconv' )) {
-		$recoding_engine[iconv]='-';
+	$x=str_replace( chr( 178 ), "hex:B2:(UK)", $x );
+	$x=str_replace( chr( 179 ), "hex:B3:(UK)", $x );
+	if ( !@extension_loaded( "iconv" )) {
+		$recoding_engine["iconv"]="-";
 		$y=$x;
 	} else {
 		$y=iconv( "CP1251", "CP866", $x );
 	}
-	$y=str_replace( 'hex:B2:(UK)', chr( 246 ), $y );
-	$y=str_replace( 'hex:B3:(UK)', chr( 247 ), $y );
+	$y=str_replace( "hex:B2:(UK)", chr( 246 ), $y );
+	$y=str_replace( "hex:B3:(UK)", chr( 247 ), $y );
 	return $y;
 }
 
@@ -30,12 +28,12 @@ ob_start();//lock output to set cookies properly!
 
 $outsele_=-1; $outsele_table=-1; $outsele_field=-1;
 
-$title_=$_GET[title];
+$title_=$title=$_GET["title"];
 if ( strlen( $title_ )<=1 ) $title_=$php_mm["_01_tab1_"];
 
 include( "../reports/f_jfilt.php" );//$hDir['reps'] IS NOT READY FOR THIS SCRIPT!
 
-$_GET[yesterday];
+$yesterday=$_GET["yesterday"];
 if ( $yesterday=="yesterday" ) {
 	$now_dmY=date( "d.m.Y" ); $now_His=date( "H:i:s" );
 	$today=strtotime( DateDdMmmYyyy( $now_dmY ));
@@ -61,28 +59,19 @@ if ( $mf<10 ) $mf="0".$mf; if ( $df<10 ) $df="0".$df;
 if ( $ml<10 ) $ml="0".$ml; if ( $dl<10 ) $dl="0".$dl;
 
 $query="SELECT
- id,
- nick
+ id, nick
  FROM $lots";
-$res=mysql_query( $query, $db );
-$error=mysql_errno();
-while ( $row=mysql_fetch_row( $res )) {
-	$lotnick_prv[$row[0]]=$row[1];
-}
+$res=mysql_query( $query, $db ); $sqlerr=mysql_errno();
+while ( $row=mysql_fetch_row( $res )) $lotnick_prv[$row[0]]=$row[1];
 $query="SELECT
- id,
- nick
+ id, nick
  FROM $groups";
-$res=mysql_query( $query, $db );
-$error=mysql_errno();
-while ( $row=mysql_fetch_row( $res )) {
-	$grnick_prv[$row[0]]=$row[1];
-}
+$res=mysql_query( $query, $db ); $sqlerr=mysql_errno();
+while ( $row=mysql_fetch_row( $res )) $grnick_prv[$row[0]]=$row[1];
 
 $f_head="Dat_d;Ninv;Klichka;Nferm;Ndz;Ud;Time_d;Spid_30;Spid_60;Spid_90;Mastit;Travma;Oxota;Time_end;Fors;Section;Exhaust";
 echo $f_head."<br>";
-if ( DaysBetween( $date1, $date2 )>7 )
-	echo "";
+if ( DaysBetween( $date1, $date2 )>7 ) echo "";
 else while ( $yc<=$yl+1 ) {
 	$dbt=Int2StrZ( $yc, 4 ).Int2StrZ( $mc, 2 )."_m";
 	$yc1=$yc*10000; $mc1=$mc*100;
@@ -113,9 +102,8 @@ else while ( $yc<=$yl+1 ) {
 		 FROM $dbt d, $cows c, $lots, $groups
 		 WHERE c.id=d.cow_id AND $lots.id=d.lot_id AND $groups.id=d.gr_id AND d.milk_sess=$sess
 		 ORDER BY d.code";
-		$res=mysql_query( $query, $db );
-		$error=mysql_errno();
-		if ( $error==0 ) { while ( $row=mysql_fetch_row( $res )) {
+		$res=mysql_query( $query, $db ); $sqlerr=mysql_errno();
+		if ( $sqlerr==0 ) { while ( $row=mysql_fetch_row( $res )) {
 			$dc=$row[1]*1; $odt=$yc1+$mc1+$dc;
 			if ( $odt>$yl1+$ml1+$dl );
 			else if ( $odt<$yf1+$mf1+$df );
@@ -162,16 +150,16 @@ else while ( $yc<=$yl+1 ) {
 				$x=explode( ".", $m1 ); if ( $x[1]."."=="." ) $m1=$m1."."."0";
 				$x=explode( ".", $m2 ); if ( $x[1]."."=="." ) $m2=$m2."."."0";
 				$x=explode( ".", $m3 ); if ( $x[1]."."=="." ) $m3=$m3."."."0";
-				$x="$dd.$mm.$yyyy;$cownick;$row[18];2;4;".str_replace( ".", ",", $m ).";".str_replace( ":", ",", $mtime ).";".str_replace( ".", ",", $m1 ).";".str_replace( ".", ",", $m2 ).";".str_replace( ".", ",", $m3 ).";$mastit;$tr;$ov;$mend;$manual;$lotnick:$grnick;$exhaust";
+				$x="$dd.$mm.$yyyy;$cownick;".$row[18].";2;4;".str_replace( ".", ",", $m ).";".str_replace( ":", ",", $mtime ).";".str_replace( ".", ",", $m1 ).";".str_replace( ".", ",", $m2 ).";".str_replace( ".", ",", $m3 ).";$mastit;$tr;$ov;$mend;$manual;$lotnick:$grnick;$exhaust";
 				echo $x."<br>";
 				if ( $date1==$date2 ) fputs( $f, Iconv_1251_866( $x ).chr( 10 ));
 			}
-		} mysql_free_result( $res );}
+		} mysql_free_result( $res ); }
 	}
 	if ( $date1==$date2 ) fclose( $f );
 	}
-	if ( $mc<12 ) $mc++; else { $mc=1; $yc++;}
+	if ( $mc<12 ) $mc++; else { $mc=1; $yc++; }
 }
 
-ob_end_flush();//unlock output to set cookies properly!
+ob_end_flush();
 ?>

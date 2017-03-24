@@ -57,11 +57,12 @@ a:hover {color:#1685a9; text-decoration:none;}
 /* button onkeypress */
 .btn:active {box-shadow:0 0 5px #ffffff;}
 .txt {border-bottom:1px solid #f2f1d3; border-left:0; border-right:0; border-top:1px solid #f2f1d3;}
-.txt1z {height:19px; width:100%;}
 .sel {border-bottom:1px solid #f2f1d3; border-left:0; border-right:0; border-top:1px solid #f2f1d3;}
-.sel1y {height:19px; width:99%;}
 .y_chk {cursor:pointer; margin-left:0; margin-right:0; vertical-align:middle;}
 .z_chk {cursor:pointer; margin-left:0; margin-right:1px; vertical-align:middle;}
+.chk- {color:#cccccc; cursor:pointer;}
+.chk0 {color:#000000; cursor:pointer;}
+.chk1 {color:#003366; cursor:pointer;}
 
 .h2 {background:url('dfimg/img/6_1.gif') repeat-x; width:100%;}
 

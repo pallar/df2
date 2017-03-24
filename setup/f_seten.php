@@ -9,7 +9,7 @@
 //DON'T TOUCH THIS SCRIPT! IT'S NOT FOR MODIFICATION!
 //IF THIS SCRIPT WILL BE MODIFIED, YOU CAN BREAK DATABASE!
 
-$passw=$_GET[20095230]; if ( $passw!=="20095230" ) { echo "ACCESS DENIED!"; return;}
+$passw=$_GET["20095230"]; if ( $passw!=="20095230" ) { echo "ACCESS DENIED!"; return; }
 
 echo "<h3>ENGLISH LOCALE...</h3>";
 

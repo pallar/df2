@@ -12,7 +12,7 @@ include( "../f_vars.php" );
 include( "../dflib/f_func.php" );
 
 mysql_query( "DROP DATABASE IF EXISTS $db_name" );
-$error=mysql_errno();
+$sqlerr=$error=mysql_errno();
 if ( $error==0 ) echo "<h4>*** DATABASE \"$db_name\" IS DROPPED.</h4>";
 else {
 	echo "<br><hr><b>*** ERROR ***</b>"; return;
@@ -22,7 +22,7 @@ $query="CREATE DATABASE $db_name";
 if ( $db_utf8==1 ) $query=$query." DEFAULT CHARACTER SET utf8";
 mysql_query( $query ) or die( mysql_error());
 echo "<h4>*** DATABASE \"$db_name\" IS CREATED.</h4>";
-$error=mysql_errno();
+$sqlerr=$error=mysql_errno();
 
 mysql_select_db( $db_name, $db );
 

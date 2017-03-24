@@ -1,7 +1,7 @@
 <?php
-/* DF_2: forms/f__mnem0.php
+/* DF_2 | DF_ajs: forms/f__mnem0.php | _view/f__mnem0.php
 c: 11.07.2007
-m: 14.11.2015 */
+m: 24.03.2017 */
 
 echo "
 
@@ -16,7 +16,7 @@ else for( $ipc=1; $ipc<=$ipcams[0]; $ipc++ ) echo "
 echo "
 	</div>
 	<div class='col span_180px_right'>
-		<iframe class='mnem_frame' frameborder='0' scrolling='no' src='f__1st0.php' width='100%'></iframe>
+		<iframe class='mnem_frame' frameborder='0' scrolling='no' src='".$hFrm["0010_container"]."' width='100%'></iframe>
 	</div>
 </div>
 </form>";

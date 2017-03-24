@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tos.php
 oxes list
 c: 10.12.2005
-m: 15.03.2017 */
+m: 24.03.2017 */
 
 if ( strlen( $oxes_title_ )<=0 ) $oxes_title_=$php_mm["_05_ostab_lnk_"].":&nbsp;".$php_mm["_05_list_"];
 if ( strlen( $oxes_order_ )<=0 ) $oxes_order_="$oxes.num*1";
@@ -13,12 +13,12 @@ while ( $row=mysql_fetch_row( $res )) {
 	$i++;
 	$iid=$row[0]; $upd=0;
 	$upd_query="UPDATE $oxes SET ";
-	if ( $row[1]*1==0 ) { $upd=1; $upd_query=$upd_query."breed_id='1', ";}
-	if ( $row[2]*1==0 ) { $upd=1; $upd_query=$upd_query."gr_id='1', ";}
-	if ( $row[3]*1==0 ) { $upd=1; $upd_query=$upd_query."lot_id='1', ";}
-	if ( $row[4]*1==0 ) { $upd=1; $upd_query=$upd_query."subgr_id='1', ";}
-	if ( $row[5]*1==0 ) { $upd=1; $upd_query=$upd_query."mth_id='1', ";}
-	if ( $row[6]*1==0 ) { $upd=1; $upd_query=$upd_query."fth_id='1', ";}
+	if ( $row[1]*1==0 ) { $upd=1; $upd_query=$upd_query."breed_id='1', "; }
+	if ( $row[2]*1==0 ) { $upd=1; $upd_query=$upd_query."gr_id='1', "; }
+	if ( $row[3]*1==0 ) { $upd=1; $upd_query=$upd_query."lot_id='1', "; }
+	if ( $row[4]*1==0 ) { $upd=1; $upd_query=$upd_query."subgr_id='1', "; }
+	if ( $row[5]*1==0 ) { $upd=1; $upd_query=$upd_query."mth_id='1', "; }
+	if ( $row[6]*1==0 ) { $upd=1; $upd_query=$upd_query."fth_id='1', "; }
 	$upd_query=trim( $upd_query );
 	if ( $upd!=0 ) {
 		$upd_query=substr( $upd_query, 0, strlen( $upd_query )-1 )." WHERE id='$iid'";
@@ -75,7 +75,7 @@ echo "
 </table>";
 if ( $nocardsfilt!=1 ) echo "
 </div>
-<div style='height:60%; overflow-y:scroll; width:100%'>
+<div style='height:".$_list_height."px; overflow-y:scroll; width:100%'>
 <table width='100%'>";
 $res=mysql_query( "SELECT
  $oxes.id,
@@ -100,24 +100,24 @@ while ( $row=mysql_fetch_row( $res )) {
 	$bdt=substr( $row[5], 8, 2 ).".".substr( $row[5], 5, 2 ).".".substr( $row[5], 0, 4 );
 	if ( $nocardsfilt!=1 ) echo "
 	<td $rjust style='height:28px' width='60px' onmouseover='style.cursor=\"pointer\"'><b><a href='../".$hFrm['0530']."?id=".$row[0]."'>$oxnum</b></td>
-	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[2]'/></td>
-	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[3]'/></td>
+	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[2]."'/></td>
+	<td width='101px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[3]."'/></td>
 	<td $cjust width='65px'>$bdt</td>
-	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[6]'/></td>
-	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[7]'/></td>
-	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[8]'/></td>
-	<td width='90px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[12]'/></td>
-	<td width='60px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='$row[13]'/></td>";
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[6]."'/></td>
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[7]."'/></td>
+	<td width='80px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[8]."'/></td>
+	<td width='90px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[12]."'/></td>
+	<td width='60px'><input readonly style='border:0; height:100%; font-size:12; width:99%' type='text' value='".$row[13]."'/></td>";
 	else echo "
 	<td $rjust style='height:28px' onmouseover='style.cursor=\"pointer\"'><b><a href='../".$hFrm['0530']."?ox_id=".$row[0]."&cards_groups_tab=".$cards_groups_tab_."'>$oxnum</b></td>
-	<td>$row[2]</td>
-	<td>$row[3]</td>
+	<td>".$row[2]."</td>
+	<td>".$row[3]."</td>
 	<td $cjust>$bdt</td>
-	<td>$row[6]</td>
-	<td>$row[7]</td>
-	<td>$row[8]</td>
-	<td>$row[12]</td>
-	<td>$row[13]</td>";
+	<td>".$row[6]."</td>
+	<td>".$row[7]."</td>
+	<td>".$row[8]."</td>
+	<td>".$row[12]."</td>
+	<td>".$row[13]."</td>";
 	echo "
 </tr>";
 }

@@ -2,7 +2,7 @@
 /* DF_2: forms/f__login.php
 form: login ([LOGIN])
 c: 15.05.2006
-m: 13.08.2015 */
+m: 16.03.2017 */
 
 $skip_W3C_DOCTYPE=1;
 
@@ -15,13 +15,13 @@ include( "../dflib/f_func.php" );
 
 require_once "../dflib/ajax/jshttprq.php";
 $JsHttpRequest=& new JsHttpRequest( $contentCharset );
-$event=$_REQUEST['event'];
+$event=$_REQUEST["event"];
 
 ob_start();
 
 switch ( $event ) {
-	case '':
-		$buttn=$_REQUEST['buttn']*1;
+	case "":
+		$buttn=$_REQUEST["buttn"]*1;
 		if ( $buttn==1 ) {
 			ob_end_flush();//unlock output to set cookies properly!
 			echo "
@@ -56,8 +56,8 @@ switch ( $event ) {
 		<tr height='13px'><td colspan='2'></td></tr>
 		<tr>
 			<td colspan='2' style='width:238px'>
-				<input class='btn gradient_0f0 btn_h0' id='login_button' style='width:159px' type='button' value='".$php_mm["_com_reg_btn_"]."' onclick='Login_OnOk();'>
-				<input class='btn gradient_f00 btn_h0' id='cancel_button' style='width:79px' type='button' value='"."X"."' onclick='Login_OnCancel();'>
+				<input class='btn gradient_0f0 btn_h0' id='login_button' style='width:159px' type='button' value='".$php_mm["_com_reg_btn_"]."' onclick='Login_OnOk()'>
+				<input class='btn gradient_f00 btn_h0' id='cancel_button' style='width:79px' type='button' value='"."X"."' onclick='Login_OnCancel()'>
 			</td>
 		</table>
 	</td>
@@ -69,8 +69,8 @@ switch ( $event ) {
 		}
 		$_RESULT=array( "text"=>$row );
 		break;
-	case 'login_checkpassw':
-		$uuid=$_REQUEST['user']*1; $uupass=trim( $_REQUEST['passwd'] );
+	case "login_checkpassw":
+		$uuid=$_REQUEST["user"]*1; $uupass=trim( $_REQUEST["passwd"] );
 		$res=mysql_query( "SELECT id, passw, comments FROM $person WHERE id=$uuid" );
 		$row=mysql_fetch_row( $res ); mysql_free_result( $res );
 		$uid=$row[0]*1; $upassw=trim( $row[1] ); $unick=trim( $row[2] );
@@ -83,7 +83,7 @@ switch ( $event ) {
 			else CookieSet( "_intranet", "0" );
 		}
 		break;
-	case 'login_cancel':
+	case "login_cancel":
 		$uunick=$unickCoo; $uuid=$userCoo;
 		$_RESULT=array( "user"=>$uuid, "usernick"=>$uunick);
 		break;

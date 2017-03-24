@@ -2,7 +2,7 @@
 /* DF_2: f_vars0.php
 init: main vars
 c: 14.10.2008
-m: 23.07.2015 */
+m: 24.03.2017 */
 
 ob_start();
 
@@ -32,6 +32,7 @@ $hDir['cache']="cache/";
 $hDir['forms']="forms/";
 $hDir['locales']="locales/";
 $hDir['man']="help/";
+$hDir['oper']="oper/";
 $hDir['reps']="reports/";
 $hDir['themes']="themes/";
 $hDir['gd']="lib/jpgraph-1.21b/src/";
@@ -53,6 +54,11 @@ $hFrm['0700']=$hDir['forms']."f__conf.php";
 $hFrm['0011']=$hDir['forms']."f__login.php";
 $hFrm['0012']=$hDir['forms']."f__per.php";
 
+$hFrm['0013']=$hDir['forms']."f__dfexp.php";
+$hFrm['0014']=$hDir['forms']."f__dfimp.php";
+
+$hFrm['0610']=$hDir['oper']."f_chcws.php";
+
 $hFrm['0510']=$hDir['forms']."f__ccw_l.php";
 $hFrm['0520']=$hDir['forms']."f__ccw.php";
 $hFrm['0521']=$hDir['forms']."f__ccw11.php";
@@ -68,6 +74,36 @@ $hRep['mcws1']=$hDir['reps']."f_mcws1.php";
 $hRep['mcws1']=$hDir['reps']."f_mcws1.php";
 $hRep['mlact']=$hDir['reps']."f_mlact.php";
 $hRep['o']=$hDir['reps']."f_o.php";
+$hRep['ofore2']=$hDir['reps']."f_ofore2.php";
+$hRep['ofore3']=$hDir['reps']."f_ofore3.php";
+
+$hcss["f_0.css"]="f_0.css";
+$hcss["f_1ff036.css"]="f_1ff036.css";
+$hcss["f_1ie060.css"]="f_1ie060.css";
+$hcss["f_1ch100.css"]="f_1ch100.css";
+$hcss["f_1op110.css"]="f_1op110.css";
+$hcss["f_1ch100.css"]="f_1ch100.css";
+
+if ( $ANGULAR_IS_USED!=0 ) {
+	$hcss["f_0.css"]="../css/".$hcss["f_0.css"];
+	$hcss["f_1ff036.css"]="../css/".$hcss["f_1ff036.css"];
+	$hcss["f_1ie060.css"]="../css/".$hcss["f_1ie060.css"];
+	$hcss["f_1ch100.css"]="../css/".$hcss["f_1ch100.css"];
+	$hcss["f_1op110.css"]="../css/".$hcss["f_1op110.css"];
+	$hDir["forms"]="_view/";
+	$hFrm["0010"]=$hDir["forms"]."f__mnem0.php";
+	$hFrm["0010_container"]="f__1_0.php";
+	$hFrm["9910"]=$hDir["forms"]."f__mne_1.php";
+	$hFrm["0011"]=$hDir["forms"]."f__logi_.php";
+	$hFrm["0012"]=$hDir["forms"]."f__pe_.php";
+} else {
+	$hcss["f_0.css"]="../".$hcss["f_0.css"];
+	$hcss["f_1ff036.css"]="../".$hcss["f_1ff036.css"];
+	$hcss["f_1ie060.css"]="../".$hcss["f_1ie060.css"];
+	$hcss["f_1ch100.css"]="../".$hcss["f_1ch100.css"];
+	$hcss["f_1op110.css"]="../".$hcss["f_1op110.css"];
+	$hFrm["0010_container"]="f__1st0.php";
+}
 
 //database tables
 $sessions="f_sess";
@@ -154,52 +190,59 @@ function CookieGet( $cname ) {
 	return $res;
 }
 
+function CookieSet( $cname, $cvalue ) {
+	setcookie( "$cname", "$cvalue", 0, "/" );
+}
+
 if ( $db_utf8==1 ) {
 	$table_utf8="DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-	$db_charset="utf8";
+	$dbCharset="utf8";
 } else {
 	$table_utf8="";
-	$db_charset="";
+	$dbCharset="";
 }
 
 Dbase_connect(); Dbase_select();
 $connect=new mysqli( $db_host, $db_user, $db_password, $db_name );
-$connect->set_charset( $db_charset );
+$connect->set_charset( $dbCharset );
 //ERROR! WE CANT USE SUCH FUNC!
 //if ( $connect->connect_error ) die( $connect->connect_error );
 
 //CRITICAL! DONT TOUCH THIS!
 if ( $skip_W3C_DOCTYPE!=1 ) {
-//<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+	$HUA="_".$_SERVER["HTTP_USER_AGENT"];
 	echo "
-<html>
+<!DOCTYPE html>";
+	if ( $ANGULAR_IS_USED>0 ) echo "
+$HTML_COMMENT
+$HTML_TAG";
+	else echo "
+<html>";
+	echo "
 <head>
 <meta content='text/html;charset=".$contentCharset."' http-equiv='content-type'>
 <meta name='generator' content='Dairy_Farm:php'>
-<meta name='author' content='PALLAR LTD., 2008-2015'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<link href='../f_0.css' rel='stylesheet' type='text/css'>
+<meta name='author' content='PALLAR LTD., 2008-2017'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+	if ( $skip_CSS!=1 ) echo "
+<link href='".$hcss["f_0.css"]."' rel='stylesheet' type='text/css'>
 <link href='../oper/f_opcss.css' rel='stylesheet' type='text/css'>
 <link href='../_responsive/f_rgcl.css' rel='stylesheet' type='text/css'>
 <link href='../_responsive/f_rg2cls.css' rel='stylesheet' type='text/css'>
+<link href='../_responsive/f_list.css' rel='stylesheet' type='text/css'>
 <link href='../_responsive/f_menu.css' rel='stylesheet' type='text/css'>";
-	$HUA='_'.$_SERVER['HTTP_USER_AGENT'];
-//echo "$HUA<br>";
-	if ( strpos( $HUA, 'Firefox' )!=0 )
-	echo "
-<link href='../f_1ff036.css' rel='stylesheet' type='text/css'>";
-	if ( strpos( $HUA, 'MSIE 6.0' )!=0 )
-	echo "
-<link href='../f_1ie060.css' rel='stylesheet' type='text/css'>";
-	if ( strpos( $HUA, 'Chrome' )!=0 )
-	echo "
-<link href='../f_1ch100.css' rel='stylesheet' type='text/css'>";
-	if ( strpos( $HUA, 'Opera' )!=0 )
-	echo "
-<link href='../f_1op110.css' rel='stylesheet' type='text/css'>";
-	if ( strpos( $HUA, 'Safari' )!=0 )
-	echo "
-<link href='../f_1ch100.css' rel='stylesheet' type='text/css'>";
+	if ( $skip_CSS!=1 ) {
+		if ( strpos( $HUA, "Firefox" )!=0 ) echo "
+<link href='".$hcss["f_1ff036.css"]."' rel='stylesheet' type='text/css'>";
+		else if ( strpos( $HUA, "MSIE 6.0" )!=0 ) echo "
+<link href='".$hcss["f_1ie060.css"]."' rel='stylesheet' type='text/css'>";
+		else if ( strpos( $HUA, "Chrome" )!=0 ) echo "
+<link href='".$hcss["f_1ch100.css"]."' rel='stylesheet' type='text/css'>";
+		else if ( strpos( $HUA, "Opera" )!=0 ) echo "
+<link href='".$hcss["f_1op110.css"]."' rel='stylesheet' type='text/css'>";
+		else if ( strpos( $HUA, "Safari" )!=0 ) echo "
+<link href='".$hcss["f_1ch100.css"]."' rel='stylesheet' type='text/css'>";
+	}
 }
 
 $lang=CookieGet( "_lang" );

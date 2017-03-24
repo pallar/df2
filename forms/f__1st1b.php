@@ -2,7 +2,7 @@
 /* DF_2: forms/f__1st1b.php
 f__1st1.php's ajax back
 c: 25.12.2005
-m: 14.11.2015 */
+m: 24.07.2017 */
 
 include( "../forms/f__1st_.php" );
 
@@ -31,7 +31,6 @@ $_RESULT="
 <table cellspacing='0' class='st'>
 <tr $cjust style='background-color:#cccccc; height:30px'>
 	<td $ljust colspan='12' title='$powermode_title'>&nbsp;".$powermode."</td>
-	<td $rjust colspan='3' width='171px'>".$php_mm["_00_transact_"].":".$trans."&nbsp;&nbsp;".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."&nbsp;</td>
 </tr>
 <tr $cjust class='st_title2' style='height:21px'>
 	<td width='1px' style='background-color:#cccccc'></td>
@@ -147,7 +146,13 @@ for ( $a_i=1; $a_i<=$a_cnt/2; $a_i++ ) {
 }
 
 $_RESULT=$_RESULT."
-<td colspan='15' height='3px'></td>
+<tr>
+	<td width='1px' style='background-color:#cccccc'></td>
+	<td colspan='6'>".$php_mm["_00_devs_"].":".$devs_ok."/".$devs."</td>
+	<td width='1px' style='background-color:#cccccc'></td>
+	<td $rjust colspan='6'>".$php_mm["_00_transact_"].":".$trans."</td>
+	<td width='1px' style='background-color:#cccccc'></td>
+<tr>
 </table>";
 
 Dbase_disconnect();
