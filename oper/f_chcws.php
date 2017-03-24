@@ -2,7 +2,9 @@
 /* DF_2: oper/f_chcws.php
 form: cows operations: get cows from list
 c: 09.01.2006
-m: 23.01.2017 */
+m: 24.03.2017 */
+
+$_list_height=$_height-200;
 
 ob_start();
 ?>
@@ -135,7 +137,7 @@ if ( $submit1!="" ) {
 </table>
 <table><tr><td height='3px'></td></tr></table>
 
-<div class='mk' style='border-width:0; height:48px; margin:0; overflow-x:hidden; overflow-y:scroll'>
+<div class='mk' style='border-width:0; height:54px; margin:0; overflow-x:hidden; overflow-y:scroll'>
 	<table width='100%'>
 	<tr height='10px'>
 		<td width='1%'></td>
@@ -167,7 +169,7 @@ if ( $submit1!="" ) {
 </div>
 <table><tr><td height='3px'></td></tr></table>
 
-<div class='mk' style='border:0; height:70%; margin:0; overflow-x:hidden; overflow-y:scroll'>";
+<div class='mk' style='border:0; height:".$_list_height."px; margin:0; overflow-x:hidden; overflow-y:scroll'>";
 	include( "../dflib/f_setcbs.js" );
 	$groups_arr=split( ',', $sess_str );
 	for ( $i=0; $i<count( $groups_arr )-1; $i++ ) {

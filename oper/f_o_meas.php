@@ -2,7 +2,7 @@
 /* DF_2: oper/f_o_meas.php
 oper ----4 (103) [measurings]
 c: 09.01.2006
-m: 11.11.2015 */
+m: 24.03.2017 */
 
 $dbt_ext="_o";//DON'T MOVE THIS BELOW!
 
@@ -52,6 +52,8 @@ if ( strlen( $key )>8 ) $add_oper_tip=$php_mm["_06_forward_update_btn_tip"];
 else $add_oper_tip=$php_mm["_06_forward_btn_tip"];
 
 $dbt=$opers; Toper_create( $dbt );
+
+$_list_height=$_height-200;
 
 $add_oper=$_POST["add_oper"];
 if ( $add_oper!="" ) {
@@ -124,7 +126,7 @@ if ( $add_oper!="" ) {
 	if ( $div_hide!=1 ) echo "
 	</table>
 </div>
-<div style='height:323px; $tbody_style'>
+<div style='height:".$_list_height."px; $tbody_style'>
 	<table cellspacing='1' class='st2'>";
 	else if ( $varsession!=1 ) {
 		GrTr();

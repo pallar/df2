@@ -2,7 +2,7 @@
 /* DF_2: oper/f_o_vacc.php
 oper ---32 (106) [vaccination]
 c: 09.01.2006
-m: 10.11.2015 */
+m: 24.03.2017 */
 
 $dbt_ext="_o";//DON'T MOVE THIS BELOW!
 
@@ -39,6 +39,8 @@ if ( strlen( $key )>8 ) $add_oper_tip=$php_mm["_06_forward_update_btn_tip"];
 else $add_oper_tip=$php_mm["_06_forward_btn_tip"];
 
 $dbt=$opers; Toper_create( $dbt );
+
+$_list_height=$_height-200;
 
 /*$vcs=0;
 $res=mysql_query( "SELECT id, code, nick FROM $vaccins", $db );
@@ -110,8 +112,7 @@ if ( $add_oper!="" ) {
 	</tr>
 	</table>
 </div>
-
-<div style='height:323px; $tbody_style'>
+<div style='height:".$_list_height."px; $tbody_style'>
 	<table class='st2'>";
 	$j=0;
 	$res=mysql_query( $query, $db );

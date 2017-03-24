@@ -2,7 +2,7 @@
 /* DF_2: oper/f_o_jagg.php
 oper -8192 (114) [jagging and "disable milking"]
 c: 10.08.2009
-m: 10.11.2015 */
+m: 24.03.2017 */
 
 $t0=$_GET["opertype"]; $t1=$_GET["sess_id"]; $t2=$_GET["row_date"]; $key=$_GET["key"];
 if ( empty( $t0 ) & empty( $t1 ) & empty( $t2 ) & empty( $key )) return;
@@ -30,6 +30,9 @@ if ( $add_oper!="" ) {
 	Res_Draw( 1, $ret_url, "", "", $php_mm_tip[0] );
 } else {
 	include_once( "../oper/f_dtdiv.php" );//<tr>'s date
+
+	$_list_height=$_height-200;
+
 	$td1w='10px';
 	$td2w='60px';
 	$td3w='60px';
@@ -80,7 +83,7 @@ function reset_all_keyp( i_ ) {
 	if ( $div_hide!=1 ) echo "
 	</table>
 </div>
-<div style='height:330px; $tbody_style'>
+<div style='height:".$_list_height."px; $tbody_style'>
 	<table cellspacing='1' class='st2'>";
 	$res=mysql_query( "SELECT $cows.id, $cows.cow_num, $cows.nick, $groups.nick
 	 FROM $cows, $groups

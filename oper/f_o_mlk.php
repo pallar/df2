@@ -2,7 +2,7 @@
 /* DF_2: oper/f_o_mlk.php
 oper ----1 (101) [milking]
 c: 09.01.2006
-m: 23.03.2017 */
+m: 24.03.2017 */
 
 $t0=$_GET["opertype"]; $t1=$_GET["sess_id"]; $t2=$_GET["row_date"]; $key=$_GET["key"];
 if ( empty( $t0 ) & empty( $t1 ) & empty( $t2 ) & empty( $key )) return;
@@ -159,7 +159,7 @@ function milksess_keyp( i_ ) {
 	if ( $div_hide!=1 ) echo "
 	</table>
 </div>
-<div style='height:323px; $tbody_style'>
+<div style='height:".$_list_height."px; $tbody_style'>
 	<table class='st2'>";
 	$j=0;
 	$res=mysql_query( $query, $db );
