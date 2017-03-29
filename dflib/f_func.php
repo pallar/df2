@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_func.php
 common functions
 c: 01.02.2006
-m: 24.03.2017 */
+m: 29.03.2017 */
 
 include( "f_dbnew3.php" );
 
@@ -463,7 +463,8 @@ function MainMenu( $pg_title_, $menu_tab_, $body_tag_ ) {
 	echo "
 </head>
 
-<script language='JavaScript' src='../".$hDir["forms"]."f__first.js'></script>
+<script language='JavaScript' src='../dflib/f_first.js'></script>
+<script language='JavaScript' src='../".$hDir["forms"]."f_menu.js'></script>
 <script language='JavaScript' type='text/javascript'>
 function Is_CookiesOn() {
 	if ( navigator.cookieEnabled==false ) alert( 'SWITCH ON COOKIES!' );";

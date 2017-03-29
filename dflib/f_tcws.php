@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tcws.php
 cows list
 c: 10.12.2005
-m: 24.03.2017 */
+m: 29.03.2017 */
 ?>
 
 <script type='text/javascript' src='../dflib/f_tcws_u.js'></script>
@@ -11,26 +11,26 @@ function CowDontuse_ToCoo( cowid, sesss ) {
 	var el_arr=new Array(), el_int=0, el_int1=0, j=32768;
 	var cowid=String( cowid );
 //ovul.
-	var el=El_( "co_"+String( cowid ));
+	var el=$$( "co_"+String( cowid ));
 	if ( el!=null ) var el_bool=el.checked; else el_bool=false;
 	if ( el_bool==true ) el_int1=el_int1+2;
 //trauma
-	var el=El_( "ct_"+String( cowid ));
+	var el=$$( "ct_"+String( cowid ));
 	if ( el!=null ) var el_bool=el.checked; else el_bool=false;
 	if ( el_bool==true ) el_int1=el_int1+4;
 //mast.
-	var el=El_( "cm_"+String( cowid ));
+	var el=$$( "cm_"+String( cowid ));
 	if ( el!=null ) var el_bool=el.checked; else el_bool=false;
 	if ( el_bool==true ) el_int1=el_int1+8;
 //other
 	for ( i=0; i<=sesss; i++ ) {
-		var el=El_( "c"+String( i )+"_"+String( cowid ));
+		var el=$$( "c"+String( i )+"_"+String( cowid ));
 		if ( el!=null ) var el_bool=el.checked; else el_bool=false;
 		if ( el_bool==true ) el_int=el_int+j;
 		if ( j==32768 ) j=1; else j=j*2;//jagg
 		if ( j==8 ) j=16;//dont_use additional starts from 16, not 8
 		el_arr.push( el_bool );
-		El_( "hilight"+"_"+cowid ).style.background="#ffff00";
+		$$( "hilight"+"_"+cowid ).style.background="#ffff00";
 	}
 	var var_names="dont_use;bd_leds";
 	var var_values=el_int+";"+el_int1;
@@ -41,7 +41,7 @@ function Checkboxes_ToCoo( cookiename, ename, ea, ez ) {
 	var elsv=0, j=32768;
 	for ( i=ea; i<=ez; i++ ) {
 		el=String( ename )+i;
-		var elv=El_( el ).checked;
+		var elv=$$( el ).checked;
 		if ( j==32768 ) j=1; else j=j*2;
 		var elsv=elsv*1+j*elv;
 	}

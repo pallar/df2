@@ -2,15 +2,14 @@
 /* DF_2: dflib/f_gldivs.php
 global dividers (user, period etc.)
 c: 13.06.2007
-m: 10.08.2015 */
+m: 29.03.2017 */
 
 echo "
+<script language='JavaScript' src='../dflib/f_date.js'></script>
+<script language='JavaScript' src='../dflib/f_per.js'></script>
+<script language='JavaScript' src='../dflib/f_input.js'></script>
 <script language='JavaScript' src='../dflib/ajax/jshttprq.js'></script>
 <script language='JavaScript' type='text/javascript'>
-function $$( id ) {
-	return document.getElementById( id );
-}
-
 function ok_keyp( i_, ok_ ) {
 	var el=$$( String( i_ ));
 	if ( null!=typeof( el )) {
@@ -129,11 +128,7 @@ function Period_Close() {
 	el.style.visibility='hidden';
 	el.style.display='none';
 }
-
 </script>
-<script language='JavaScript' src='../dflib/f_date.js'></script>
-<script language='JavaScript' src='../dflib/f_per.js'></script>
-<script language='JavaScript' src='../dflib/f_input.js'></script>
 
 <div class='mk' id='login_div' style='border-color:#66a0a0 #66a0a0 #66a0a0 #66a0a0; border-style:solid; border-width:1px; display:none; font-size:12; height:126px; line-height:16px; position:absolute; text-align:center; visibility:hidden; width:270px; z-index:10;' onmouseover='in_menu=true;'>
 </div>

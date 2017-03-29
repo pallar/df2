@@ -1,10 +1,8 @@
 <?php
-/*
-DF_2: oper/f_dt.php
+/* DF_2: oper/f_dt.php
 group operations table row calendar
-created: 25.05.2006
-modified: 30.07.2014
-*/
+c: 25.05.2006
+m: 29.03.2017 */
 ?>
 
 <script language='JavaScript' src='../dflib/f_date.js'></script>
@@ -30,7 +28,7 @@ function table_dates() {
 for ( $i=0; $i<count( $cows_arr )-1; $i++ ) {
 ?>
 	el<?php echo $i;?>=document.getElementById( 'date1<?php echo $i;?>' );
-	el_d=El_( "d1" ); el_m=El_( "m1" ); el_y=El_( "y1" );
+	el_d=$$( "d1" ); el_m=$$( "m1" ); el_y=$$( "y1" );
 	d=Number( el_d.value ); if ( d<10 ) d='0'+d;
 	m=Number( el_m.value ); if ( m<10 ) m='0'+m;
 	el<?php echo $i;?>.value=d+'-'+m+'-'+el_y.value;

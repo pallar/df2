@@ -2,7 +2,7 @@
 /* DF: forms/f__conf.php
 form: config (Dairy Farm [CONF]igurator)
 c: 13.06.2006
-m: 23.03.2017 */
+m: 29.03.2017 */
 
 ob_start();//lock output to set cookies!
 
@@ -127,7 +127,7 @@ MainMenu( $_07_."&nbsp;-&nbsp;".$php_mm["_com_app_"], "conf", "" );
 <script language='JavaScript' src='../dflib/f_input.js'></script>
 <script language='JavaScript'>
 function tempvar_ToCoo( element_id, do_hilight ) {
-	_el=El_( String( element_id )); if ( _el==null ) return;
+	_el=$$( String( element_id )); if ( _el==null ) return;
 	if ( do_hilight==1 ) _el.style.background="#ffff00";
 	var element_val=_el.value;
 	if ( element_val=='off' | element_val=='on' ) var element_val=_el.checked;
