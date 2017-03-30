@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_ttgs.php
 tags list
 c: 30.12.2011
-m: 23.03.2017 */
+m: 30.03.2017 */
 
 $_list_height=$_height-200;
 
@@ -106,7 +106,7 @@ if ( $send_buf!="" ) {
 <table width='100%'>
 <tr height='40px'>
 	<td style='padding:5px' width='150px'></td>
-	<td><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
+	<td><input class='btn btn_h0 gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
 	<td></td>
 </tr>
 </table>

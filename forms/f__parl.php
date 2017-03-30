@@ -2,7 +2,7 @@
 /* DF_2: forms/f__parl.php
 form: parlor report ([PARL]or report)
 c: 25.12.2005
-m: 23.03.2017 */
+m: 30.03.2017 */
 
 ob_start();
 
@@ -12,6 +12,8 @@ include( "../locales/$lang/f_php._$lang" );
 include( "../locales/$lang/f_sel._$lang" );
 include( "../dflib/f_func.php" );
 include( "../dflib/f_librep.php" );
+
+$_list_height=$_height-300;
 
 $local_id=CookieGet( "_id" );
 $tab=$_GET["tab"];
@@ -63,7 +65,7 @@ if( $guest_from_wan==1 & ( $userCoo<=0 | $userCoo==9 )) {
 
 include( "f__jfilt.php" );
 echo "
-<div class='mk' style='border-width:0; height:50%; margin:0; overflow-x:hidden; overflow-y:auto;'>";
+<div style='border-width:0; height:".$_list_height."px; margin:0 0 0 0; overflow-x:hidden; overflow-y:auto;'>";
 include( $rep_url_ );
 echo "
 <form name='df2__parl' method='post'>

@@ -2,7 +2,7 @@
 /* DF_2: forms/f__1st1b.php
 f__1st1.php's ajax back
 c: 25.12.2005
-m: 24.07.2017 */
+m: 30.03.2017 */
 
 include( "../forms/f__1st_.php" );
 
@@ -74,53 +74,53 @@ $res=mysql_query( "SELECT
  bd_num*1<=$dev_last" );
 while ( $row=mysql_fetch_row( $res )) {
 	$a_cnt++;
-	$connected='';
+	$connected="";
 	$bd_num=$row[0]*1;
 	$bd_state=trim( $row[1] );
 	$dev_status_=trim( $row[21] );
 	$dev_status=$dev_status_;//device's last useful status, not current
 	include( "../httpmon/devstats.php" );
-	$bk_color='#0';
+	$bk_color="#0";
 	if ( $bd_state==$php_m[772] )//version
-		$dev_color='#f09000';
+		$dev_color="#f09000";
 	elseif ( $bd_state==$php_m[771] )//RFID updating
-		$dev_color='#9a5050';
+		$dev_color="#9a5050";
 	elseif ( $bd_state==$php_m[770] )//RFID
-		$dev_color='#caca09';
+		$dev_color="#caca09";
 	elseif ( $bd_state==$php_m[769] )//cow number
-		$dev_color='#caca09';
+		$dev_color="#caca09";
 	elseif ( $bd_state==$php_m[768] )//report done
-		$dev_color='#00a000';
+		$dev_color="#00a000";
 	elseif ( $bd_state==$php_m[767] )//connection
-		$dev_color='#ea0000';
+		$dev_color="#ea0000";
 	elseif ( $bd_state==$php_m[766] )//intDB overflow
-		$dev_color='#ea0000';
+		$dev_color="#ea0000";
 	elseif ( $bd_state==$php_m[765] )//error
-		$dev_color='#ea0000';
+		$dev_color="#ea0000";
 	elseif ( $bd_state==$php_m[764] )//report ready
-		$dev_color='#00a000';
+		$dev_color="#00a000";
 	elseif ( $bd_state==$php_m[763] )//milking
-		$dev_color='#b000b0';
+		$dev_color="#b000b0";
 	elseif ( $bd_state==$php_m[762] )//device ready (waiting)
-		$dev_color='#00af00';//'#1f1f1f';
+		$dev_color="#00af00";//"#1f1f1f"
 	elseif ( $bd_state==$php_m[761] )//device washing
-		$dev_color='#00aaff';
-	else//?
-		$dev_color='#aa0000';
-	$dev_style='color:'.$dev_color;
-	if ( $bk_color!='#0' ) $dev_style='background:'.$bk_color.'; '.$dev_style;
-	if ( $dev_status_=='a' )
+		$dev_color="#00aaff";
+	else
+		$dev_color="#aa0000";
+	$dev_style="color:".$dev_color;
+	if ( $bk_color!="#0" ) $dev_style="background:".$bk_color."; ".$dev_style;
+	if ( $dev_status_=="a" )
 		$connected=$id_date.",&nbsp;".$id_time;
-	elseif ( $dev_status_=='x' )
+	elseif ( $dev_status_=="x" )
 		$connected=$id_date.",&nbsp;".$id_time;
-	elseif ( $dev_status_=='i' )
+	elseif ( $dev_status_=="i" )
 		$connected=$id_date.",&nbsp;".$id_time;
-	elseif ( $dev_status_=='r' )
+	elseif ( $dev_status_=="r" )
 		$connected=$rep_date.",&nbsp;".$rep_time;
 	else
 		$connected=$rep_date.",&nbsp;".$rep_time;
 	$connected=$dev_status."&nbsp;<br>".$row[19]."&nbsp;".$rep_time;
-	if ( $row[14]=='+' ) $m_color='#ff0000'; else $m_color='#000000';
+	if ( $row[14]=="+" ) $m_color='#ff0000'; else $m_color='#000000';
 	$r_result=$row[22]*$row[23];
 	if ( $userCoo==2 ) if ( $row[23]*1<0 ) $checked="checked"; else $checked="";
 	else $checked="";
@@ -141,7 +141,7 @@ while ( $row=mysql_fetch_row( $res )) {
 
 for ( $a_i=1; $a_i<=$a_cnt/2; $a_i++ ) {
 	$_RESULT=$_RESULT."
-<tr $cjust bgcolor='".GrTrCol( $rownum )."'><td width='1px' style='background-color:#cccccc'></td>".$a[$a_i]."<td style='background-color:#cccccc'></td>".$a[$a_i+$a_cnt/2]."<td width='1px' style='background-color:#cccccc'></td>
+<tr $cjust ".GrTrCol()."><td width='1px' style='background-color:#cccccc'></td>".$a[$a_i]."<td style='background-color:#cccccc'></td>".$a[$a_i+$a_cnt/2]."<td width='1px' style='background-color:#cccccc'></td>
 </tr>";
 }
 

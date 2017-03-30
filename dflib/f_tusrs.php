@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tusrs.php
 report: personnel list
 c: 03.05.2006
-m: 12.07.2015 */
+m: 30.03.2017 */
 
 echo "
 <div class='zag1'><b>Personnel List</b></div>";
@@ -62,19 +62,19 @@ $res=mysql_query( "SELECT
  FROM $person
  ORDER BY $person.num DESC", $db );
 while ($row=mysql_fetch_row( $res )) {
-	RepTr();
 	echo "
+<tr ".RepTrCol().">
 	<td onclick='' onmouseover='style.cursor=\"pointer\"' title=''><img src='' height='0' width='0'><b><a href='../".$hFrm['0540']."?pers_id=".$row[12]."'>$row[0]&nbsp;</b></td>
 	<td onclick='' onmouseover='style.cursor=\"pointer\"' title=''><img src='' height='0' width='0'><b><a href='../".$hFrm['0540']."?pers_id=".$row[12]."'>$row[1]&nbsp;</b></td>
 	<td onclick='' onmouseover='style.cursor=\"pointer\"' title=''><img src='' height='0' width='0'><a href='..".$hFrm['0540']."?pers_id=".$row[12]."'>$row[2]&nbsp;</td>
 	<td>$row[3]&nbsp;</td>
 	<td>$row[4]&nbsp;</td>
-	<td>$row[5]&nbsp;</td>";
+	<td>$row[5]&nbsp;</td>
+</tr>";
 }
 
 mysql_free_result( $res );
 
 echo "
-</tr>
 </table>";
 ?>

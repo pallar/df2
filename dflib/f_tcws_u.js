@@ -6,7 +6,7 @@ if ( navigator.appName=="Microsoft Internet Explorer" ) {
 	http=new XMLHttpRequest();
 }
 
-function Tcws__var__Update( id, vars, vars_values  ) {
+function Tcws__var__Update( id, vars, vars_values ) {
 	http.abort();
 	http.open( "GET", "../dflib/f_tcws_u.php?id="+id+"&vars="+vars+"&vars_values="+vars_values, true );
 	http.onreadystatechange=function() {

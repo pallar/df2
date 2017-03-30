@@ -2,7 +2,7 @@
 /* DF_2: forms/f__ccw.php
 form: cow's card ([C]ard of [C]o[W])
 c: 17.07.2006
-m: 11.11.2015 */
+m: 30.03.2017 */
 
 ob_start();//lock output to set cookies properly!
 
@@ -28,9 +28,9 @@ $cow_id=$_GET["cow_id"]*1;
 $cw_c=$_13_cwcard_;
 
 $sself="../".$hFrm["0520"];
-MainMenu( $cw_c."&nbsp;-&nbsp;". $php_mm['_com_app_'], "cards", "" );
+MainMenu( $cw_c."&nbsp;-&nbsp;". $php_mm["_com_app_"], "cards", "" );
 
-$chart_h=159; include_once( "../".$hDir['reps']."fgraph.php" );
+$chart_h=159; include_once( "../".$hDir["reps"]."fgraph.php" );
 
 //link to return to [BEGIN]
 $ret_url=$_GET["ret0"]*1;
@@ -420,11 +420,11 @@ function Ccwsect_draw( text, i, j ) {
 	<table cellspacing='0' class='st3'>
 	<tr $view_class>
 		<td width='35%'>
-			<label><input $ccw8_cb class='z_chk' id='ccw8d' type='checkbox' onclick='Ccwcbs_set( \"$sself?cow_id=$cow_id&ret0=05\" ); Ccwsect_draw( \"ccw_table\", 80, 81 ); Ccwsect_draw( \"ccw_table\", 90, 90 )'>".$ged['RHM000hist.']."</label>
+			<label><input $ccw8_cb class='z_chk' id='ccw8d' type='checkbox' onclick='Ccwcbs_set( \"$sself?cow_id=$cow_id&ret0=05\" ); Ccwsect_draw( \"ccw_table\", 80, 81 ); Ccwsect_draw( \"ccw_table\", 90, 90 )'>".$ged["RHM000hist."]."</label>
 			<div style='padding-right:1px; float:right; height:19px; margin-right:1px; text-align:left; width:192px'>";
 	if ( $cow_id>1 ) echo "
 				<div class='oper_cont' id='ccw_table81' style='$ccw8_disp'>
-					<input class='btn gradient_0f0' id='oper_button' name='oper_button' type='button' value='".$php_mm['_06_tip']."'>
+					<input class='btn gradient_0f0' id='oper_button' name='oper_button' type='button' value='".$php_mm["_06_tip"]."'>
 					<div class='oper_list'></div>
 				</div>";
 	echo "
@@ -437,7 +437,7 @@ function Ccwsect_draw( text, i, j ) {
 	if ( $cow_id==1 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_protected_."</b>";
 	else {
 		if ( $userCoo==9 ) echo "<b>".$cw_c.":&nbsp;".$_13_card_anonymous_user_."</b>";
-		else echo "<input class='btn gradient_0f0' name='cwc_prep' style='width:100%' type='submit' value='".$php_mm['_com_accept_btn_']."'>";
+		else echo "<input class='btn gradient_0f0' name='cwc_prep' style='width:100%' type='submit' value='".$php_mm["_com_accept_btn_"]."'>";
 	}
 	echo "</td>
 				<td width='10%'><input class='btn gradient_f00' name='cwc_cancel' style='width:100%' type='submit' value='X'></td>";
@@ -453,7 +453,7 @@ function Ccwsect_draw( text, i, j ) {
 			</table>
 		</td>
 		<td $cjust width='30%'>
-			<b>".StrCutLen1( $nick, 15, $contentCharset )."</b>&nbsp;(".$ged['No.']."&nbsp;<b>".$cow_num."</b>)&nbsp;&nbsp;&nbsp;&nbsp;".$rand_key."
+			<b>".StrCutLen1( $nick, 15, $contentCharset )."</b>&nbsp;(".$ged["No."]."&nbsp;<b>".$cow_num."</b>)&nbsp;&nbsp;&nbsp;&nbsp;".$rand_key."
 		</td>
 	</tr>
 	</table>
@@ -468,7 +468,7 @@ function Ccwsect_draw( text, i, j ) {
 				<td width='25%' $bad_bdate><a onclick='cal_u1( event, 0, 27 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt txt1z' id='date10' name='dates_[0]' value='$b_dmY' onkeypress='return false' onmouseover='style.cursor=\"pointer\"'></a></td>
 			</tr>
 			<tr $view_class>
-				<td>&#8226;&nbsp;".$ged['Number']."</td>
+				<td>&#8226;&nbsp;".$ged["Number"]."</td>
 				<td $bad_num><input class='txt txt1z' maxlength='6' name='cow_num' type='text' value='$cow_num'></td>
 				<td>&#8226;&nbsp;".$ged["Nick"]."</td>
 				<td><input class='txt txt1z' maxlength='100' name='nick' type='text' value='$nick'></td>
@@ -502,14 +502,13 @@ function Ccwsect_draw( text, i, j ) {
 				<td rowspan='8' width='50%'>
 					<table cellspacing='0' class='st2'>
 					<tr $cjust class='st_title2'>
-						<td width='25%'><b>".$ged['Abort_Date~']."</b></td>
-						<td style='height:23px' width='25%'><b>".$ged['Insem_Date~']."</b></td>
-						<td width='25%'><b>".$ged['Zapusk_Date~']."</b></td>
-						<td width='10%'><b>".$ged['Lact._days']."</b></td>
-						<td title='".$ged['Predict~_tip']."'><b>".$ged['Predict~']."</b></td>
+						<td width='25%'><b>".$ged["Abort_Date~"]."</b></td>
+						<td style='height:23px' width='25%'><b>".$ged["Insem_Date~"]."</b></td>
+						<td width='25%'><b>".$ged["Zapusk_Date~"]."</b></td>
+						<td width='10%'><b>".$ged["Lact._days"]."</b></td>
+						<td title='".$ged["Predict~_tip"]."'><b>".$ged["Predict~"]."</b></td>
 					</tr>";
 	for ( $ll=1; $ll<=6; $ll++ ) {
-		RepTr1( $rownum, $cjust );
 		$lact_abort_=$lact_abort[$ll][$cow_id];
 		$lact_insem_=$lact_insem[$ll][$cow_id];
 		$lact_zapus_=$lact_zapus[$ll][$cow_id];
@@ -522,6 +521,7 @@ function Ccwsect_draw( text, i, j ) {
 		if ( $lact_abort[$ll][$cow_id]=="" & $lact_insem[$ll][$cow_id]=="" & $lact_zapus[$ll][$cow_id]=="" ) $lact_days_=0;
 		if ( $lact_days_==0 ) $lact_days_="";
 		echo "
+			<tr $cjust".RepTrCol().">
 						<td>".$lact_abort_."&nbsp;</td>
 						<td $died__>".$lact_insem_."&nbsp;</td>
 						<td>".$lact_zapus_."&nbsp;</td>
@@ -543,7 +543,7 @@ function Ccwsect_draw( text, i, j ) {
 	$res1=mysql_query( "SELECT id, num, nick FROM $groups", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		$selval="value='$r[0]'"; if ( $r[0]==$gr_id ) $selval.=" selected";
-		echo "<option $selval>$r[2]&nbsp;(".$ged['No.']."&nbsp;$r[1])</option>";
+		echo "<option $selval>$r[2]&nbsp;(".$ged["No."]."&nbsp;$r[1])</option>";
 	}
 	mysql_free_result( $res1 );
 	echo "</select></td>
@@ -577,11 +577,11 @@ function Ccwsect_draw( text, i, j ) {
 	 FROM $cows, $breeds
 	 WHERE $breeds.id=$cows.breed_id ORDER BY cow_num*1", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
-		if (( $r[0]!=$cow_id ) || ( $r[0]==1 )) {//dont display current cow in mth list
+		if (( $r[0]!=$cow_id ) || ( $r[0]==1 )) {//dont display current cow in moms list
 			if ( $r[0]!=$mth_id ) $selval=""; else $selval="selected";
-			$r_val=$r[2]."&nbsp;(".$ged['No.']."&nbsp;".$r[1].")";
-			if ( $r[5]>1 ) $r_val=$r_val.",&nbsp;";$r[5]."&nbsp;".$ged['breed'];
-			echo "<option $selval value='$r[0]'>$r_val</option>";
+			$r_val=$r[2]."&nbsp;(".$ged["No."]."&nbsp;".$r[1].")";
+			if ( $r[3]>1 ) $r_val=$r_val.",&nbsp;".$r[5]."&nbsp;".$ged["breed"];
+			echo "<option $selval value='".$r[0]."'>$r_val</option>";
 		}
 	}
 	mysql_free_result( $res1 );
@@ -595,9 +595,9 @@ function Ccwsect_draw( text, i, j ) {
 	 WHERE $breeds.id=$oxes.breed_id", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		if ( $r[0]!=$fth_id ) $selval=""; else $selval="selected";
-		$r_val=$r[2]."&nbsp;(".$ged['No.']."&nbsp;".$r[1].")";
-		if ( $r[5]>1 ) $r_val=$r_val.",&nbsp;";$r[5]."&nbsp;".$ged['breed'];
-		echo "<option $selval value='$r[0]'>$r_val</option>";
+		$r_val=$r[2]."&nbsp;(".$ged["No."]."&nbsp;".$r[1].")";
+		if ( $r[3]>1 ) $r_val=$r_val.",&nbsp;".$r[5]."&nbsp;".$ged["breed"];
+		echo "<option $selval value='".$r[0]."'>$r_val</option>";
 	}
 	mysql_free_result( $res1 );
 	echo "</select></td>
@@ -634,130 +634,82 @@ function Ccwsect_draw( text, i, j ) {
 	</tr>
 	</table>";
 //22.06.2011 disabled
-/*	echo "
-	<table border='0' id='ccw_table40' style='$ccw4_disp' width='100%'>
-	<tr>
-		<td width='49%'>
-			<table cellspacing='1' class='st3'>
-			<tr $edit_class>
-				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_today_."&nbsp;".$_13_cw_kg_.":</b></td>
-				<td width='5%'>".$_13_cw_milk_.":&nbsp;<b>$minus_kg[0]</b></td>
-				<td width='6%'>".$_13_cw_milk_interval_.":&nbsp;<b>$minus_mtime[0]</b></td>
-				<td width='13%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_min[0]</b></td>
-				<td width='13%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_aver[0]</b></td>
-				<td width='13%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_max[0]</b></td>
-			</tr>
-			</table>
-		</td>
-		<td width='1%'>
-		</td>
-		<td width='49%'>
-			<table cellspacing='1' class='st3'>
-			<tr $edit_class>
-				<td width='5%' style='color:#000000; background:#cccccc;'><b>".$_13_cw_yesterday_."&nbsp;".$_13_cw_kg_.":</b></td>
-				<td width='5%'>".$_13_cw_milk_.":&nbsp;<b>$minus_kg[1]</b></td>
-				<td width='6%'>".$_13_cw_milk_interval_.":&nbsp;<b>$minus_mtime[1]</b></td>
-				<td width='13%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_min[1]</b></td>
-				<td width='13%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_aver[1]</b></td>
-				<td width='13%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_max[1]</b></td>
-			</tr>
-			</table>
-		</td>
-	</tr>
-	</table>
-	<table id='ccw_table41' style='$ccw4_disp'><tr height='3'><td></td></tr></table>
-	<table cellspacing='1' class='st3' id='ccw_table42' style='$ccw4_disp'>
-	<tr>
-		<td colspan='8'><b>".$_13_cw_week_."&nbsp;".$_13_cw_kg_.":</b></td>
-	</tr>
-	<tr $edit_class>
-		<td width='10%'>".$_13_cw_today_.":&nbsp;<b>$minus_kg[0]</b></td>
-		<td width='10%'>".$_13_cw_yesterday_.":&nbsp;<b>$minus_kg[1]</b></td>
-		<td width='10%'>".$_13_cw_week_3_days_ago_.":&nbsp;<b>$minus_kg[2]</b></td>
-		<td width='10%'>".$_13_cw_week_4_days_ago_.":&nbsp;<b>$minus_kg[3]</b></td>
-		<td width='10%'>".$_13_cw_week_5_days_ago_.":&nbsp;<b>$minus_kg[4]</b></td>
-		<td width='10%'>".$_13_cw_week_6_days_ago_.":&nbsp;<b>$minus_kg[5]</b></td>
-		<td width='10%'>".$_13_cw_week_7_days_ago_.":&nbsp;<b>$minus_kg[6]</b></td>
-		<td width='10%'>".$_13_cw_week_tot_.":&nbsp;<b>$minus_kg[7]</b></td>
-	</tr>
-	</table>
-	<table id='ccw_table43' style='$ccw4_disp'><tr height='3'><td></td></tr></table>
-	<table cellspacing='1' class='st3'>
-	<tr class='cards_title1'>
-		<td width='10%' title='".$_13_cw_lact_."&nbsp;/&nbsp;".$ged['Lact_Days']."'>".$_13_cw_lact_."&nbsp;".$_13_cw_days_.":&nbsp;<b>$lact_days__</b>&nbsp;/&nbsp;<b>$full_lact_days__</b></td>
-		<td width='10%'>".$_13_cw_lact_tot_milk_.":&nbsp;<b>$milk_tot</b></td>
-		<td width='10%'>".$_13_cw_lact_min_milk_.":&nbsp;<b>$milk_min</b></td>
-		<td width='10%'>".$_13_cw_lact_avg_milk_.":&nbsp;<b>$milk_aver</b></td>
-		<td width='10%'>".$_13_cw_lact_max_milk_.":&nbsp;<b>$milk_max</b></td>
-		<td width='10%'>".$_13_cw_min_intens_.":&nbsp;<b>$milkm_mina</b></td>
-		<td width='10%'>".$_13_cw_avg_intens_.":&nbsp;<b>$milkm_avera</b></td>
-		<td width='10%'>".$_13_cw_max_intens_.":&nbsp;<b>$milkm_maxa</b></td>
-	</tr>
-	</table>";
-*/
-	echo "
-	<div class='mk' id='ccw_table80' style='border-color:#66a000 #66a000 #66a000 #66a000; border-style:solid; border-width:0; $ccw8_disp font-size:12; height:430px; line-height:16px; margin:0 0 0 0; overflow-x:hidden; overflow-y:auto; text-align:center;' onmouseover='in_menu=true'><br>";
-	$outsele_cowid=$cow_id;
-	$dbt_ext="_o";
-	$outsele_=-1; $outsele_table=-1; $outsele_field=-1;
-	$outsele_=-1; $outsele_table=-1; $outsele_field=-1;
-	$hiddenopt=$_GET["hiddenopt"]; $outsele_=$hiddenopt; if ( $outsele_==0 ) $outsele_=-1;
-	if ( $opertype*1<=0 ) $opertype=-1;
-//TEMPORARY!!!
-	if ( $userCoo!=9 ) $operkeys=1;
-	echo "
-<table class='st2'>
-<tr class='st_title2' style='height:28px'>
-	<td $cjust width='5%'><b>".$ged['Date']."</b></td>
-	<td $cjust width='5%'><b>".$ged['Modif._Time']."</b></td>
-	<td $cjust width='15%'>";
-	if ( $userCoo!=9 ) {
-		include_once( "../oper/f_opname.php" );
-		$oper=mysql_query( "SELECT id, descr FROM $operstyp WHERE id>0 ORDER BY id", $db );
-		$j=0;
-		while ( $operrow=mysql_fetch_row( $oper )) {
-			$opermyid[$j]=$operrow[0]*1; $opermydescr[$j]=$operrow[1];
-			$j++;
-		}
-		echo "
-		<select $edit_class name='opertype' id='opt' style='$list_sty0; width:100%'>
-			<option onclick='location.href=$sself?cow_id=$cow_id&ret0=05&hiddenopt=-1'>$ged[RR0131]</option>";
-		for ( $i=0; $i<count( $operspriv ); $i++ ) for ( $j=0; $j<count( $opermyid ); $j++ )
-			if ( $opermyid[$j]==$operspriv[$i] ) {
-				if (( $userCoo*1==9 ) | (( $userCoo*1==3 ) & ( $opermyid[$j]*1<2 )));//oper #2 only for root
-				else {
-					if ( $hiddenopt==$opermyid[$j]*1 ) $cb_checked="selected";
-					else $cb_checked="";
-				$expl=explode( " ", $opermydescr[$j] ); $expl1=$expl[0];
-				if ( strlen( $expl[1] )!=0 ) $expl1=$expl1."&nbsp;".substr( $expl[1], 0, 1).".";
-				echo "
-			<option onclick='location.href=$sself?cow_id=$cow_id&ret0=05&hiddenopt=$opermyid[$j]' $cb_checked>$opermydescr[$j]</option>";
-				}
-		}
-		echo "
-		</select>";
-	} else {
-		echo "<b>".$ged['What_Was_Done']."</b>";
-		$outsele_=-1;
-	}
-	echo "
-	</td>
-	<td $cjust width='45%'><b>".$ged['Detailed_Content']."</b></td>
-	<td $cjust><b>".$ged['Comment.']."</b></td>";
-	echo "
-</tr>";
+//	include( "../forms/f__ccw0.php" );
 	if ( $cow_id>0 ) {
+		echo "
+	<div class='mk' id='ccw_table80' style='border-color:#66a000 #66a000 #66a000 #66a000; border-style:solid; border-width:0; $ccw8_disp font-size:12; height:430px; line-height:16px; margin:0 0 0 0; overflow-x:hidden; overflow-y:auto; text-align:center;' onmouseover='in_menu=true'><br>";
+		$dbt_ext="_o";
+		$outsele_=-1; $outsele_table=-1; $outsele_field=-1;
+		$outsele_=-1; $outsele_table=-1; $outsele_field=-1;
+		$hiddenopt=CookieGet("hiddenopt"); $outsele_=$hiddenopt; if ( $outsele_==0 ) $outsele_=-1;
+		if ( $opertype*1<1 ) $opertype=-1;
+
+		$filt_cowid=$cow_id; $cow_hist=1;
+
 		$stop_f_jfilt_include=1;
 		$dontuse_period=5;
-		$cow_hist=1;
 		$desc=1;
-		$opertype=-1;
 		$yf=1991; $mf=1; $df=01;
 		$yl=2037; $ml=12; $dl=31;
-		include_once( "../".$hRep['o'] );
+		if ( $userCoo!=9 ) $operkeys=1;
+
+		$th1=$ged["Date"];
+		$th2=$ged["Modif._Time"];
+		$th3=$ged["Number"];
+		$th4=$ged["Nick"];
+		$th5=$ged["What_Was_Done"];
+		$th6=$ged["Detailed_Content"];
+		$th7=$ged["Comment."];
+
+		echo "
+<table>
+<thead id='rep_thead'>
+<tr $cjust style='height:28px'>
+	<th width='5%'><b>".$th1."</b></th>
+	<th width='5%'><b>".$th2."</b></th>
+	<th><b>";
+		if ( $userCoo!=9 ) {
+			include_once( "../oper/f_opname.php" );
+			$oper=mysql_query( "SELECT id, descr FROM $operstyp WHERE id>0 ORDER BY id", $db );
+			$j=0;
+			while ( $operrow=mysql_fetch_row( $oper )) {
+				$opermyid[$j]=$operrow[0]*1; $opermydescr[$j]=$operrow[1];
+				$j++;
+			}
+			echo "
+		<select class='sel sel_h0' name='opertype' id='opt' style='width:100%' onchange='CookieSet(\"hiddenopt\", this.value); location.href=\"$sself?cow_id=$cow_id&ret0=05\"'>
+			<option value='-1'>".$ged["RR0131"]."</option>";
+			for ( $i=0; $i<count( $operspriv ); $i++ ) for ( $j=0; $j<count( $opermyid ); $j++ )
+				if ( $opermyid[$j]==$operspriv[$i] ) {
+					if (( $userCoo*1==9 ) | (( $userCoo*1==3 ) & ( $opermyid[$j]*1<2 )));//oper #2 only for root
+					else {
+						if ( $hiddenopt==$opermyid[$j]*1 ) $cb_checked="selected";
+						else $cb_checked="";
+						$expl=explode( " ", $opermydescr[$j] ); $expl1=$expl[0];
+						if ( strlen( $expl[1] )!=0 ) $expl1=$expl1."&nbsp;".substr( $expl[1], 0, 1).".";
+						echo "
+			<option value='".$opermyid[$j]."' $cb_checked>$opermydescr[$j]</option>";
+					}
+				}
+			echo "
+		</select>";
+		} else {
+			echo "<b>".$th5."</b>";
+			$outsele_=-1;
+		}
+		echo "
+	</th>
+	<th width='35%'><b>".$th6."</b></th>
+	<th width='30%'><b>".$th7."</b></th>";
+		echo "
+</tr>
+</thead>
+<tbody id='rep_tbody'>";
+		include_once( "../".$hRep["o"] );
+		echo "
+	</div>";
 	}
 	echo "
-	</div>
 </form>";
 }
 

@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tos.php
 oxes list
 c: 10.12.2005
-m: 24.03.2017 */
+m: 30.03.2017 */
 
 if ( strlen( $oxes_title_ )<=0 ) $oxes_title_=$php_mm["_05_ostab_lnk_"].":&nbsp;".$php_mm["_05_list_"];
 if ( strlen( $oxes_order_ )<=0 ) $oxes_order_="$oxes.num*1";
@@ -95,7 +95,8 @@ $res=mysql_query( "SELECT
  $subgrs.id=$oxes.subgr_id
  ORDER BY $oxes_order_", $db );
 while ( $row=mysql_fetch_row( $res )) {
-	RepTr();
+echo "
+<tr ".RepTrCol().">";
 	$oxnum=$cownum_div.$row[1].$cownum_div1;
 	$bdt=substr( $row[5], 8, 2 ).".".substr( $row[5], 5, 2 ).".".substr( $row[5], 0, 4 );
 	if ( $nocardsfilt!=1 ) echo "

@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tcws.php
 cows list
 c: 10.12.2005
-m: 29.03.2017 */
+m: 30.03.2017 */
 ?>
 
 <script type='text/javascript' src='../dflib/f_tcws_u.js'></script>
@@ -167,7 +167,7 @@ if ( $send_buf!="" ) {
 		}
 		echo "
 	</td>
-	<td rowspan='2'><input class='btn gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
+	<td rowspan='2'><input class='btn btn_h0 gradient_0f0' name='send_buf' style='width:140px' type='submit' value='".$php_mm["_com_accept_btn_"]."'></td>
 	<td rowspan='2'></td>
 	<td rowspan='2' width='111px'>";
 		$_filtsXmode="c";

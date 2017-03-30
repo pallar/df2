@@ -2,7 +2,7 @@
 /* DF_2: dflib/f_tcws1.php
 report: simple cows list
 c: 10.12.2005
-m: 29.09.2015 */
+m: 30.03.2017 */
 
 if ( strlen( $cows_order_ )<=0 ) $cows_order_="$cows.cow_num*1";
 
@@ -23,7 +23,6 @@ $res=mysql_query( "SELECT
  WHERE $cows.gr_id=$groups.id AND $cows.z_dates=''
  ORDER BY $cows_order_", $db );
 while ( $row=mysql_fetch_row( $res )) {
-	RepTr();
 	$cownick=$row[2]; $cownick_sh=StrCutLen1( $cownick, 13, $contentCharset );
 	if ( $cownick>$cownick_sh ) $cownick_title=" title='\"$cownick\"'";
 	else $cownick_title=" ";
@@ -32,8 +31,9 @@ while ( $row=mysql_fetch_row( $res )) {
 	else $grnick_title=" ";
 	if ( $cow_id*1==$row[0]*1 ) $hilight="style='background-color:#ffff00'"; else $hilight="";
 	echo "
+<tr ".RepTrCol.">
 	<td $rjust $hilight onmouseover='style.cursor=\"pointer\"'>
-		<b><a href='../".$hFrm['0520']."?cow_id=".$row[0]."&ret0=05'>".$cownum_div.$row[1].$cownum_div1."</b>
+		<b><a href='../".$hFrm["0520"]."?cow_id=".$row[0]."&ret0=05'>".$cownum_div.$row[1].$cownum_div1."</b>
 	</td>
 	<td $hilight".$cownick_title.">$cownick_sh&nbsp;</td>
 	<td $hilight".$grnick_title.">$grnick_sh&nbsp;</td>

@@ -35,7 +35,7 @@ echo "
 <table width='100%'>
 <tr style='height:25px'>
 	<td>&nbsp;".$php_mm["_11_"];
-if ( $btnToPrn ) echo "<input class='btn gradient_0f0' id='refresh' style='width:121px' type='submit' value='".$php_mm["_com_accept_btn_"]."' onclick='do_reload()'>";
+if ( $btnToPrn ) echo "<input class='btn btn_h0 gradient_0f0' id='refresh' style='width:121px' type='submit' value='".$php_mm["_com_accept_btn_"]."' onclick='do_reload()'>";
 echo "</td>
 </tr>
 <tr>";
@@ -134,8 +134,8 @@ echo "
 		</tr>
 		<tr style='height:25px'>
 			<td colspan='2'>
-				<input class='txt' id='_bd_first' maxlength='2' style='background:#fafafa; margin-left:4px; width:30px' type='text' value='$bd_first' onkeyup='do_setmilkfiltXcoo( \"_filts_devf\", this.value )'>
-				<input class='txt' id='_bd_last' maxlength='2' style='background:#fafafa; margin-left:4px; width:30px' type='text' value='$bd_last' onkeyup='do_setmilkfiltXcoo( \"_filts_devl\", this.value )'>
+				<input class='txt txt_h0' id='_bd_first' maxlength='2' style='background:#fafafa; margin-left:4px; width:30px' type='text' value='$bd_first' onkeyup='do_setmilkfiltXcoo( \"_filts_devf\", this.value )'>
+				<input class='txt txt_h0' id='_bd_last' maxlength='2' style='background:#fafafa; margin-left:4px; width:30px' type='text' value='$bd_last' onkeyup='do_setmilkfiltXcoo( \"_filts_devl\", this.value )'>
 			</td>
 		</tr>
 		</table>
