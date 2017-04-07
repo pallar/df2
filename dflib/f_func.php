@@ -95,7 +95,6 @@ function Is_BitOn( $var, $bit ) {
 //mysql_query with error reporting
 function Sql_query( $query ) {
 	mysql_query( $query );
-	$sqlerr=mysql_errno()*1;
 	if ( $sqlerr!=0 ) {
 		$sqlerr=$sqlerr.": ".mysql_error();
 		echo "<h1>MySQL ERROR $sqlerr.</h1>";
