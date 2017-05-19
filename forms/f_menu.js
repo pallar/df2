@@ -1,44 +1,44 @@
 //DF_2: forms/f_menu.js
 //c: 17.07.2006
-//m: 29.03.2017
+//m: 28.04.2017
 
 //Application.HotKeys
 function App_HotKeys() {
 }
 
-function menu_HotKeys() {
+function Menu_HotKeys() {
 //IE
-	if ( navigator.appName!="Netscape" ) {
-		if ( window.event.keyCode==49 ) {
+	if (navigator.appName!="Netscape") {
+		if (window.event.keyCode==49) {
 			window.location.href='../reports/f__parl.php';
-		} else if ( window.event.keyCode==50 ) {//Ctrl+2
+		} else if (window.event.keyCode==50) {//Ctrl+2
 			window.location.href='../reports/f__reps.php';
 			return true;
-		} else if ( window.event.keyCode==51 ) {//Ctrl+3
+		} else if (window.event.keyCode==51) {//Ctrl+3
 			window.location.href='../reports/f__cards.php';
 			return true;
-		} else if ( window.event.keyCode==52 ) {//Ctrl+4
+		} else if (window.event.keyCode==52) {//Ctrl+4
 			window.location.href='../reports/f__ops.php';
 			return true;
 		}
 	} else {
 //FF
-		if ( document.captureEvents ) {
-			document.onkeypress=function( e ) {
-				if ( e.ctrlKey && e.which==105 ) {//Ctrl+i
+		if (document.captureEvents) {
+			document.onkeypress=function(e) {
+				if (e.ctrlKey && e.which==105) {//Ctrl+i
 					e.preventDefault();//to cancel standard browser hot keys
-				} else if ( e.ctrlKey && e.which==117 ) {//Ctrl+u
+				} else if (e.ctrlKey && e.which==117) {//Ctrl+u
 					e.preventDefault();//to cancel standard browser hot keys
-				} else if ( e.which==49 ) {
+				} else if (e.which==49) {
 					parent.w3.location.href='../reports/f__parl.php';
 					return true;
-				} else if ( e.which==50 ) {//Ctrl+2
+				} else if (e.which==50) {//Ctrl+2
 					parent.w3.location.href='../reports/f__reps.php';
 					return true;
-				} else if ( e.which==51 ) {//Ctrl+3
+				} else if (e.which==51) {//Ctrl+3
 					parent.w3.location.href='../reports/f__cards.php';
 					return true;
-				} else if ( e.which==52 ) {//Ctrl+4
+				} else if (e.which==52) {//Ctrl+4
 					parent.w3.location.href='../reports/f__ops.php';
 					return true;
 				}
@@ -47,61 +47,60 @@ function menu_HotKeys() {
 	}
 }
 
-function url_Parl() {
+function Url_Parl() {
 	window.location="forms/f__parl.php";
 }
 
-function url_Reps() {
+function Url_Reps() {
 	window.location="forms/f__reps.php";
 }
 
-function url_Cards() {
+function Url_Cards() {
 	window.location="forms/f__cards.php";
 }
 
-function url_Opers() {
+function Url_Opers() {
 	window.location="forms/f__ops.php";
 }
 
 //Context Menu
 
-function context_menu( params, event ) {
-	el=document.getElementById( 'cm' );
+function Cm_Show(params, event) {
+	el=document.getElementById('cm');
 	o=event.srcElement;
 	x=event.clientX+document.documentElement.scrollLeft+document.body.scrollLeft;
 	y=event.clientY+document.documentElement.scrollTop+document.body.scrollTop;
 	el.innerHTML='';
-	for ( k in params ) {
-		if ( params[k]=='space' ) {//menu: horiz line
+	for (var k in params) {
+		if (params[k]=='space') {//menu: horizontal line
 			el.innerHTML+='<hr size=1>';
-		} else if ( params[k]['disabled'] ) {//menu: disabled submenu
+		} else if (params[k]['disabled']) {//menu: disabled submenu
 			el.innerHTML+='<a class="cm_gray" href="" onclick="return false;" title="'+params[k]['title']+'" onmouseover="window.status=this.title;return true;" onmouseout="window.status=&quot;&quot;; return true;">&nbsp;&nbsp;&nbsp;&nbsp;'+params[k]['value']+'</a><br>';
-		} else if ( params[k]['frame']=='off' ) {//menu: no frame
-			if ( window.frameElement=='[object HTMLFrameElement]' ) {
+		} else if (params[k]['frame']=='off') {//menu: no frame
+			if (window.frameElement=='[object HTMLFrameElement]') {
 				el.innerHTML+='<a class="cm_black" href="" onclick="window.open('+params[k]['href']+",'','statusbar,menubar,location'); return false;"+'" title="'+params[k]['title']+'" onmouseover="window.status=this.title; return true;" onmouseout="window.status=&quot;&quot;; return true;">&nbsp;&nbsp;&nbsp;&nbsp;'+params[k]['value']+'</a><br>';
 			} else {
 				el.innerHTML+='<a class="cm_black" href="" onclick="window.open('+params[k]['href']+",'','statusbar,menubar,location'); return false;"+'" title="'+params[k]['title']+'" onmouseover="window.status=this.title; return true;" onmouseout="window.status=&quot;&quot;; return true;">&nbsp;&nbsp;&nbsp;&nbsp;'+params[k]['value']+'</a><br>';
 			}
-		} else if ( params[k]['frame']=='on' ) {//menu: frame
+		} else if (params[k]['frame']=='on') {//menu: frame
 			el.innerHTML+='<a class="cm_black" href="" onclick="'+'parent'+params[k]['taget']+".location.href='"+params[k]['href']+"' return false;"+' title="'+params[k]['title']+'" onmouseover="window.status=this.title; return true;" onmouseout="window.status=&quot;&quot;; return true;">&nbsp;&nbsp;&nbsp;&nbsp;'+params[k]['value']+'</a><br>';
 		}
 	}
 	el.style.visibility='visible';
 	el.style.display='block';
 	height=el.scrollHeight-20;
-	if ( window.opera ) height+=30;//opera browser
-		if ( event.clientY+height>document.body.clientHeight ) y-=height+14;
-		else y-=2;
-		el.style.left=x+'px';
-		el.style.top=y+'px';
-		el.style.visibility='hidden';
-		el.style.display='none';
-		el.style.visibility='visible';
-		el.style.display='block';
-		event.returnValue=false;
-	}
+	if (window.opera) height+=30;//opera browser
+	if (event.clientY+height>document.body.clientHeight) y-=height+14; else y-=2;
+	el.style.left=x+'px';
+	el.style.top=y+'px';
+	el.style.visibility='hidden';
+	el.style.display='none';
+	el.style.visibility='visible';
+	el.style.display='block';
+	event.returnValue=false;
+}
 
-function cm( event ) {
+function Cm(event) {
 	var params=new Array();
 	params[1]='space';
 	params[2]=new Array();
@@ -139,22 +138,23 @@ function cm( event ) {
 	params[10]=new Array();
 	params[10]['disabled']=false;
 	params[10]['href']='';
-	params[10]['title']='Print Version';
-	params[10]['value']='Print Version';
+	params[10]['title']='Printed Version';
+	params[10]['value']='Printed Version';
 	params[10]['taget']='';
-	params[10]['frame']='off';
-	context_menu( params, event );
+	params[10]['frame']='on';
+	params[11]='space';
+	Cm_Show(params, event);
 }
 
-function hide_cm() {
-	el=document.getElementById( 'cm' );
+function Cm_Hide() {
+	el=document.getElementById('cm');
 	el.style.visibility='hidden';
 	el.style.display='none';
 }
 
-function cn( el, event ) {
-	if ( event.button==2 || event.button==3 ) {
-		cm( event );
+function Cm_Event(el, event) {
+	if (event.button==2 || event.button==3) {
+		Cm(event);
 		return false;
 	}
 }

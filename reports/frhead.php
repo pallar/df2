@@ -2,14 +2,14 @@
 /* DF_2: reports/frhead.php
 report head
 c: 08.08.2007
-m: 30.03.2017 */
+m: 28.04.2017 */
 
 $_filtsXmode="r";
 include( "ffilt1.php" );
 echo "
 <title>".$title."</title>
 <!--
-<script language='JavaScript' src='fmcontxt.js'></script>
+<script language='JavaScript' src='../forms/f_menu.js'></script>
 -->
 <style>
 table { border-collapse:collapse; width:100%; }

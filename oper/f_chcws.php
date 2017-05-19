@@ -2,7 +2,7 @@
 /* DF_2: oper/f_chcws.php
 form: cows operations: get cows from list
 c: 09.01.2006
-m: 30.03.2017 */
+m: 19.05.2017 */
 
 $_list_height=$_height-200;
 
@@ -43,9 +43,9 @@ function CwsGroupTableTitle_Show( $i, $ii ) {
 	}
 	echo "
 				</td>
-				<td width='7%'>".$ged['Item']."</td>
-				<td width='60px'>".$ged['Number']."</td>
-				<td width='80%'>".$ged['Nick']."</td>
+				<td width='7%'>".$ged["Item"]."</td>
+				<td width='60px'>".$ged["Number"]."</td>
+				<td width='80%'>".$ged["Nick"]."</td>
 			</tr>";
 }
 
@@ -53,7 +53,7 @@ $filts0=CookieGet( "_filts0" )*1;
 if (( $filts0&4 )==4 ) $filts0_3="checked"; else $filts0_3="";
 if (( $filts0&32 )==32 ) $filts0_6="checked"; else $filts0_6="";
 
-$res=mysql_query( "SELECT id, nick FROM $groups", $db ) or die( mysql_error());
+$res=mysql_query( "SELECT id, nick FROM $groups" );
 while ( $row=mysql_fetch_row( $res )) {
 	$gr_nick[$row[0]*1]=$row[1];
 	$sess_str=$sess_str.$row[0].",";
@@ -66,7 +66,7 @@ if ( $submit1!="" ) {
 	$opertype=$_POST["opertype"]*1;
 	$fo_scnt=count( $cows_checkboxes );//checked cows quantity
 	if ( $fo_scnt<=0 )
-		Res_Draw( 3, $PHP_SELF."?opertype=$opertype", "", $php_mm["_com_no_selected_animals_"], $php_mm_tip[0] );
+		Res_Draw( 3, $tmp_phpself."?opertype=$opertype", "", $php_mm["_com_no_selected_animals_"], $php_mm_tip[0] );
 	else {
 		$sess_str="";
 		session_start(); $sess_id=session_id();
@@ -87,15 +87,15 @@ if ( $submit1!="" ) {
 		else if ( $opertype==2048 ) $url_="abrt";
 		else if ( $opertype==4096 ) $url_="abrt";
 		else if ( $opertype==8192 ) $url_="jagg";
-		Res_Draw( 1, "../oper/f_o_".$url_.".php?opertype=$opertype&sess_id=$sess_id&f_chcws_php=f_chcws.php", "", "", $php_mm_tip[0] );
+		Res_Draw( 1, "../oper/f_o_".$url_.".php?opertype=$opertype&sess_id=$sess_id", "", "", $php_mm_tip[0] );
 	}
 } else {
-	$operid_=$_GET[opertype];
+	$operid_=$_GET["opertype"];
 	if ( $operid_."."<>"." ) $opertype=$operid_*1; else $opertype=64;
 	echo "
 
-<form method='post' action='$PHP_SELF'>";
-	$oper=mysql_query( "SELECT id, descr FROM $operstyp WHERE id>0 ORDER BY id", $db );
+<form method='post' action='$tmp_phpself'>";
+	$oper=mysql_query( "SELECT id, descr FROM $operstyp WHERE id>0 ORDER BY id" );
 	$j=0;
 	while ( $operrow=mysql_fetch_row( $oper )) {
 		$opermyid[$j]=$operrow[0]*1; $opermydescr[$j]=$operrow[1];
@@ -238,7 +238,10 @@ if ( $submit1!="" ) {
 echo "
 </div>
 
-</form>";
+</form>
+
+</body>
+</html>";
 
 ob_end_flush();
 ?>

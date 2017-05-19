@@ -13,7 +13,6 @@ include( "../dflib/f_func.php" );
 include( "../dflib/f_lib1.php" );
 include( "../dflib/f_librep.php" );
 
-$f_chcws_php=$_GET["f_chcws_php"];
 $opertype=$_GET["opertype"];
 include( "../oper/f_opname.php" );
 
