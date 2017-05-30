@@ -16,7 +16,7 @@ include( "../dflib/f_lib1.php" );
 
 //link to return [BEGIN]
 $ret_url=$_GET["ret0"]*1;
-if ( $ret_url==0 | $ret_url==5 ) $ret_url="../".$hFrm['0500'];
+if ( $ret_url==0 | $ret_url==5 ) $ret_url="../".$hFrm["0500"];
 //link to return [END]
 $modif_Ymd=date( "Y-m-d" ); $modif_His=date( "H:i:s" );
 $ox_id=$_GET["id"];
@@ -149,31 +149,31 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td width='20%'>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td width='30%'><input class='txt1 txt_h0' maxlength='50' name='ox_nat' value='$ox_nat'></td>
+			<td width='30%'><input class='txt txt_h0' maxlength='50' name='ox_nat' value='$ox_nat'></td>
 			<td width='20%'>&#8226;&nbsp;".$_13_card_birthday_date_."</td>
-			<td><a onclick='cal_u1( event, 0, 80 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt1 txt_h0' id='date10' name='dates_[0]' size='8' style='cursor:pointer' value='$ox_bdt' onkeypress='return false;'></a></td>
+			<td><a onclick='cal_u1( event, 0, 80 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt txt_h0' id='date10' name='dates_[0]' size='8' style='cursor:pointer' value='$ox_bdt' onkeypress='return false;'></a></td>
 		</tr>
 		<tr>
-			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td><input class='txt1 txt_h0' maxlength='4' name='ox_num' value='$ox_num'></td>
+			<td>&#8226;&nbsp;".$ged["Number"]."</td>
+			<td><input class='txt txt_h0' maxlength='4' name='ox_num' value='$ox_num'></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$_13_card_birthday_num_."</td>
-			<td><input class='txt1 txt_h0' maxlength='30' name='ox_bnu' value='$ox_bnu'></td>
+			<td><input class='txt txt_h0' maxlength='30' name='ox_bnu' value='$ox_bnu'></td>
 			<td>&#8226;&nbsp;".$ged["Nick"]."</td>
-			<td><input class='txt1 txt_h0' maxlength='100' name='ox_nic' value='$ox_nic'></td>
+			<td><input class='txt txt_h0' maxlength='100' name='ox_nic' value='$ox_nic'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Exter._Defects"]."</td>
-			<td><input class='txt1 txt_h0' maxlength='100' name='ox_def' value='$ox_def'></td>
+			<td><input class='txt txt_h0' maxlength='100' name='ox_def' value='$ox_def'></td>
 			<td>&#8226;&nbsp;".$_13_card_diff_owner_."</td>
 			<td><input name='ox_ali' type='checkbox' value='$ox_ali'>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Lot"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_loi'>";
+			<td><select class='sel sel_h0' name='ox_loi'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $lots", $db );
 	while ( $l_row=mysql_fetch_row( $res1 )) {
 		$idx=$l_row[0];
@@ -185,7 +185,7 @@ if ( $cox_cancel!="" ) {
 	echo "
 			</select></td>
 			<td>&#8226;&nbsp;".$ged["Group"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_gri'>";
+			<td><select class='sel sel_h0' name='ox_gri'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $groups", $db );
 	while ( $g_row=mysql_fetch_row( $res1 )) {
 		$idx=$g_row[0];
@@ -199,7 +199,7 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Breed"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_bri'>";
+			<td><select class='sel sel_h0' name='ox_bri'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $breeds", $db );
 	while ( $b_row=mysql_fetch_row( $res1 )) {
 		$idx=$b_row[0];
@@ -211,7 +211,7 @@ if ( $cox_cancel!="" ) {
 	echo "
 			</select></td>
 			<td>&#8226;&nbsp;".$ged["Subgroup"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_sgi'>";
+			<td><select class='sel sel_h0' name='ox_sgi'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $subgrs", $db );
 	while ( $s_row=mysql_fetch_row( $res1 )) {
 		$idx=$s_row[0];
@@ -225,7 +225,7 @@ if ( $cox_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Mom"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_moi'>";
+			<td><select class='sel sel_h0' name='ox_moi'>";
 	$res1=mysql_query( "SELECT $cows.id, $cows.cow_num, $cows.nick, $cows.breed_id,
 	 $breeds.num, $breeds.nick
 	 FROM $cows, $breeds
@@ -238,7 +238,7 @@ if ( $cox_cancel!="" ) {
 	mysql_free_result( $res1 );
 	echo "</select></td>
 			<td>&#8226;&nbsp;".$ged["Dad"]."</td>
-			<td><select class='sel1 sel_h0' name='ox_dai'>";
+			<td><select class='sel sel_h0' name='ox_dai'>";
 	$res1=mysql_query( "SELECT $oxes.id, $oxes.num, $oxes.nick, $oxes.breed_id,
 	 $breeds.num, $breeds.nick
 	 FROM $oxes, $breeds
@@ -258,7 +258,7 @@ if ( $cox_cancel!="" ) {
 		<tr height='3px'><td colspan='5'></td></tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='4'><input class='txt1 txt_h0' maxlength='100' name='ox_co_' value='$ox_co_'></td>
+			<td colspan='4'><input class='txt txt_h0' maxlength='100' name='ox_co_' value='$ox_co_'></td>
 		</tr>
 		</table>
 		<table class='tbl1 tbl_h0'>

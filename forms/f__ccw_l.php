@@ -22,7 +22,7 @@ echo "
 
 //link to return [BEGIN]
 $ret_url=$_GET["ret0"]*1;
-if ( $ret_url==0 | $ret_url==5 ) $ret_url="../".$hFrm['0500'];
+if ( $ret_url==0 | $ret_url==5 ) $ret_url="../".$hFrm["0500"];
 //link to return [END]
 $modif_Ymd=date( "Y-m-d" ); $modif_His=date( "H:i:s" );
 $cwl_locked=$_GET["locked"];
@@ -148,41 +148,41 @@ if ( $cgr_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Parent URL</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_url' type='text' value='".$ret_url."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='pr_url' type='text' value='".$ret_url."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Title</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_title' type='text' value='".$cwl_c."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='pr_title' type='text' value='".$cwl_c."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Table</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='9' name='pr_dbt' type='text' value='".$cwl_t."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='9' name='pr_dbt' type='text' value='".$cwl_t."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;Id.</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='9' name='pr_id' type='text' value='".$cwl_id."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='9' name='pr_id' type='text' value='".$cwl_id."'></td>
 			<td colspan='3'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='30' name='pr_nat' type='text' value='".$cgr_nat."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='30' name='pr_nat' type='text' value='".$cgr_nat."'></td>
 			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='4' name='pr_num' type='text' value='".$cgr_num."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='4' name='pr_num' type='text' value='".$cgr_num."'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Name"]."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_nic' type='text' value='".$cgr_nic."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='pr_nic' type='text' value='".$cgr_nic."'></td>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='pr_co_' type='text' value='".$cgr_co_."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='pr_co_' type='text' value='".$cgr_co_."'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='4' name='pr_c_cv1' type='text' value='".$cgr_cv1."'></td>
+			<td colspan='2' width='25%'><input class='txt txt_h0' maxlength='4' name='pr_c_cv1' type='text' value='".$cgr_cv1."'></td>
 			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='5' name='pr_c_cv2' type='text' value='".$cgr_cv2."'></td>
+			<td colspan='2' width='25%'><input class='txt txt_h0' maxlength='5' name='pr_c_cv2' type='text' value='".$cgr_cv2."'></td>
 		</tr>
 		<tr height='5px'>
 			<td></td>
@@ -203,15 +203,15 @@ if ( $cgr_cancel!="" ) {
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='30' name='nat' type='text' value='".$cgr_nat."'></td>
-			<td>&#8226;&nbsp;".$ged['Number']."</td>
-			<td colspan='2' width='25%'><input class='txt1 txt_h0' maxlength='4' name='num' type='text' value='".$cgr_num."'></td>
+			<td colspan='2' width='25%'><input class='txt txt_h0' maxlength='30' name='nat' type='text' value='".$cgr_nat."'></td>
+			<td>&#8226;&nbsp;".$ged["Number"]."</td>
+			<td colspan='2' width='25%'><input class='txt txt_h0' maxlength='4' name='num' type='text' value='".$cgr_num."'></td>
 		</tr>
 		<tr>
 			<td>&#8226;&nbsp;".$ged["Name"]."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='nic' type='text' value='".$cgr_nic."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='nic' type='text' value='".$cgr_nic."'></td>
 			<td>&#8226;&nbsp;".$ged["Comment."]."</td>
-			<td colspan='2'><input class='txt1 txt_h0' maxlength='100' name='co_' type='text' value='".$cgr_co_."'></td>
+			<td colspan='2'><input class='txt txt_h0' maxlength='100' name='co_' type='text' value='".$cgr_co_."'></td>
 		</tr>
 		<tr><td colspan='9' height='3px'></td></tr>";
 	if ( $cwl_id==1 | ( $cwl_locked*1==5230 & $userCoo*1>2 )) {
@@ -229,10 +229,10 @@ if ( $cgr_cancel!="" ) {
 		if ( $cwl_coo=="cw_l" | $cwl_coo=="cw_g" | $cwl_coo=="cw_s" ) echo "
 		<tr>
 			<td>&#8226;&nbsp;".$_13_card_ctrl_value1_."</td>
-			<td width='10%'><input id='c_cv1' class='txt1 txt_h0' maxlength='4' name='c_cv1' type='text' value='".$cgr_cv1."' onkeydown='int_keyp( \"c_cv1\", 0, 999, 3 )'></td>
+			<td width='10%'><input id='c_cv1' class='txt txt_h0' maxlength='4' name='c_cv1' type='text' value='".$cgr_cv1."' onkeydown='int_keyp( \"c_cv1\", 0, 999, 3 )'></td>
 			<td width='15%'></td>
 			<td>&#8226;&nbsp;".$_13_card_ctrl_value2_."</td>
-			<td width='10%'><input id='c_cv2' class='txt1 txt_h0' maxlength='5' name='c_cv2' type='text' value='".$cgr_cv2."' onkeydown='int_keyp( \"c_cv2\", 0, 100, 3 )'></td>
+			<td width='10%'><input id='c_cv2' class='txt txt_h0' maxlength='5' name='c_cv2' type='text' value='".$cgr_cv2."' onkeydown='int_keyp( \"c_cv2\", 0, 100, 3 )'></td>
 			<td width='15%'></td>
 		</tr>
 		</table>";

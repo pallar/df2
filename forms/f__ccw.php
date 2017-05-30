@@ -463,27 +463,27 @@ function Ccwsect_draw( text, i, j ) {
 			<table cellspacing='0' class='st3'>
 			<tr $view_class>
 				<td width='25%'>&#8226;&nbsp;".$ged["Nat._Id."]."</td>
-				<td width='25%'><input class='txt txt1z' maxlength='30' name='national_descr' type='text' value='$national_descr'></td>
+				<td width='25%'><input class='txt txtz' maxlength='30' name='national_descr' type='text' value='$national_descr'></td>
 				<td width='25%'>&#8226;&nbsp;".$_13_card_birthday_date_."</td>
-				<td width='25%' $bad_bdate><a onclick='cal_u1( event, 0, 27 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt txt1z' id='date10' name='dates_[0]' value='$b_dmY' onkeypress='return false' onmouseover='style.cursor=\"pointer\"'></a></td>
+				<td width='25%' $bad_bdate><a onclick='cal_u1( event, 0, 27 ); cal_load1( sender_=0 ); return false;' href=''><input class='txt txtz' id='date10' name='dates_[0]' value='$b_dmY' onkeypress='return false' onmouseover='style.cursor=\"pointer\"'></a></td>
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Number"]."</td>
-				<td $bad_num><input class='txt txt1z' maxlength='6' name='cow_num' type='text' value='$cow_num'></td>
+				<td $bad_num><input class='txt txtz' maxlength='6' name='cow_num' type='text' value='$cow_num'></td>
 				<td>&#8226;&nbsp;".$ged["Nick"]."</td>
-				<td><input class='txt txt1z' maxlength='100' name='nick' type='text' value='$nick'></td>
+				<td><input class='txt txtz' maxlength='100' name='nick' type='text' value='$nick'></td>
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$_13_card_birthday_num_."</td>
-				<td><input class='txt txt1z' maxlength='30' name='b_num' type='text' value='$b_num'></td>
+				<td><input class='txt txtz' maxlength='30' name='b_num' type='text' value='$b_num'></td>
 				<td>&#8226;&nbsp;RFID</td>
-				<td><input class='txt txt1z' maxlength='30' name='rfid_num' type='text' value='$rfid_num' $rfid_locked></td>
+				<td><input class='txt txtz' maxlength='30' name='rfid_num' type='text' value='$rfid_num' $rfid_locked></td>
 			</tr>
 			</table>
 			<table cellspacing='0' class='st3' id='ccw_table11' style='$ccw1_disp'>
 			<tr $view_class>
 				<td width='25%'>&#8226;&nbsp;".$ged["Lot"]."</td>
-				<td width='25%'><select class='sel sel1y' name='lot_id'>";
+				<td width='25%'><select class='sel sely' name='lot_id'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $lots", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		$selval="value='$r[0]'"; if ( $r[0]==$lot_id ) $selval.=" selected";
@@ -539,7 +539,7 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Group"]."</td>
-				<td><select class='sel sel1y' name='gr_id'>";
+				<td><select class='sel sely' name='gr_id'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $groups", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		$selval="value='$r[0]'"; if ( $r[0]==$gr_id ) $selval.=" selected";
@@ -550,7 +550,7 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Subgroup"]."</td>
-				<td><select class='sel sel1y' name='subgr_id'>";
+				<td><select class='sel sely' name='subgr_id'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $subgrs", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		if ( $r[0]!=$subgr_id ) $selval=""; else $selval="selected";
@@ -561,7 +561,7 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Breed"]."</td>
-				<td><select class='sel sel1y' name='breed_id'>";
+				<td><select class='sel sely' name='breed_id'>";
 	$res1=mysql_query( "SELECT id, num, nick FROM $breeds", $db );
 	while ( $r=mysql_fetch_row( $res1 )) {
 		if ( $r[0]!=$breed_id ) $selval=""; else $selval="selected";
@@ -572,7 +572,7 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Mom"]."</td>
-				<td><select class='sel sel1y' name='mth_id'>";
+				<td><select class='sel sely' name='mth_id'>";
 	$res1=mysql_query( "SELECT $cows.id, $cows.cow_num, $cows.nick, $cows.breed_id, $breeds.num, $breeds.nick
 	 FROM $cows, $breeds
 	 WHERE $breeds.id=$cows.breed_id ORDER BY cow_num*1", $db );
@@ -589,7 +589,7 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Dad"]."</td>
-				<td><select class='sel sel1y' name='fth_id'>";
+				<td><select class='sel sely' name='fth_id'>";
 	$res1=mysql_query( "SELECT $oxes.id, $oxes.num, $oxes.nick, $oxes.breed_id, $breeds.num, $breeds.nick
 	 FROM $oxes, $breeds
 	 WHERE $breeds.id=$oxes.breed_id", $db );
@@ -608,14 +608,14 @@ function Ccwsect_draw( text, i, j ) {
 			</tr>
 			<tr $view_class>
 				<td>&#8226;&nbsp;".$ged["Exter._Defects"]."</td>
-				<td><input class='txt txt1z' maxlength='100' name='defects' type='text' value='$defects'></td>
+				<td><input class='txt txtz' maxlength='100' name='defects' type='text' value='$defects'></td>
 			</tr>
 			</table>";
 	echo "
 			<table cellspacing='0' class='st3'>
 			<tr $view_class>
 				<td width='25%'>&#8226;&nbsp;".$ged["Comment."]."</td>
-				<td width='75%'><input class='txt txt1z' maxlength='100' name='comments' type='text' value='$comments'></td>
+				<td width='75%'><input class='txt txtz' maxlength='100' name='comments' type='text' value='$comments'></td>
 			</tr>
 			</table>
 		</td>
