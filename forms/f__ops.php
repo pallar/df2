@@ -2,7 +2,7 @@
 /* DF_2: forms/f__ops.php
 form: cows operations (cows [OP]eration[S])
 c: 09.01.2006
-m: 13.03.2017 */
+m: 02.06.2017 */
 
 ob_start();//lock output to set cookies!
 
@@ -24,7 +24,45 @@ if ( $cow_id>1 ) {
 </head>";
 	$varsession=1;//to skip recursion in including
 	$cows_arr=array( $cow_id );
-	include( "../oper/f_o_.php");
+	switch ( $opertype ) {
+	case 1:
+		$url_="mlk";
+		break;
+	case 2:
+		$url_="mlkt";
+		break;
+	case 4:
+		$url_="meas";
+		break;
+	case 8:
+		$url_="care";
+		break;
+	case 16:
+		$url_="cond";
+		break;
+	case 32:
+		$url_="vacc";
+		break;
+	case 64:
+		$url_="mov";
+		break;
+	case 128:
+	case 256:
+		$url_="insm";
+		break;
+	case 512:
+		$url_="rect";
+		break;
+	case 1024:
+	case 2048:
+	case 4096:
+		$url_="abrt";
+		break;
+	case 8192:
+		$url_="jagg";
+		break;
+	}
+	include_once( "../oper/f_o_".$url_.".php" );
 } else {
 	$title_=$php_mm["_06_tip"].": ".$php_mm["_06_level1_tip"];
 	MainMenu( $php_mm["_06_"].": ".$php_mm["_06_level1_"], "opers", "" );
